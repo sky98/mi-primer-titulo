@@ -1,0 +1,29 @@
+# Informacion del proyecto
+sonar.projectKey=co.ceiba.ceiba.adn:alquiler.bicicletas
+sonar.projectName=Ceiba-Alquiler Bicicletas(fabian.guerrero)
+sonar.projectDescription=Induccion ADN Ceiba
+sonar.projectVersion=1.0
+sonar.sourceEncoding=UTF-8
+
+# Modulo principal
+sonar.modules=principal
+principal.sonar.java.libraries=/home/ic/.gradle/caches/modules-2/files-2.1/**/*.jar
+principal.sonar.java.source=1.8
+
+
+#Datos de los fuentes y binarios modulo principal
+principal.sonar.projectBaseDir=ADN-AlquilerBicicletaBackend
+principal.sonar.sources=java-arquitectura-hexagonal/microservicio/dominio/src/main/java,java-arquitectura-hexagonal/microservicio/aplicacion/src/main/java,java-arquitectura-hexagonal/microservicio/infraestructura/src/main/java
+principal.sonar.java.binaries=java-arquitectura-hexagonal/microservicio/dominio/build/classes/java/main,java-arquitectura-hexagonal/microservicio/aplicacion/build/classes/java/main,java-arquitectura-hexagonal/microservicio/infraestructura/build/classes/java/main
+principal.sonar.java.libraries=/opt/ic/.gradle/caches/modules-2/files-2.1/**/*.jar
+principal.sonar.java.source=1.8
+
+
+#Datos de los fuentes y binarios de los tests modulo principal
+principal.sonar.tests=java-arquitectura-hexagonal/microservicio/dominio/src/test/java,java-arquitectura-hexagonal/microservicio/infraestructura/src/test/java
+principal.sonar.java.test.binaries=java-arquitectura-hexagonal/microservicio/dominio/build/classes/java/test,java-arquitectura-hexagonal/microservicio/infraestructura/build/classes/java/test
+principal.sonar.java.test.libraries=/opt/ic/.gradle/caches/modules-2/files-2.1/**/*.jar
+
+#Envio de reportes de JUnit y Jacoco como resultado de la tarea test modulo principal
+sonar.coverage.jacoco.xmlReportPaths=java-arquitectura-hexagonal/microservicio/dominio/build/reports/jacoco/test/jacocoTestReport.xml,java-arquitectura-hexagonal/microservicio/infraestructura/build/reports/jacoco/test/jacocoTestReport.xml
+sonar.junit.reportPaths=java-arquitectura-hexagonal/microservicio/dominio/build/test-results/test,java-arquitectura-hexagonal/microservicio/infraestructura/build/test-results/test
