@@ -3,6 +3,7 @@ package com.ceiba.docente.servicio;
 import com.ceiba.docente.modelo.entidad.Docente;
 import com.ceiba.docente.puerto.repositorio.RepositorioDocente;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorNoEncontrado;
 
 public class ServicioActualizarDocente {
 
@@ -22,7 +23,7 @@ public class ServicioActualizarDocente {
     private void validarExistenciaPrevia(Docente docente){
         boolean existe = repositorioDocente.existePorId(docente.getId());
         if(!existe){
-            throw new ExcepcionDuplicidad(EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionValorNoEncontrado(EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

@@ -17,5 +17,5 @@ public class ComandoDocente {
     private String apellido;
     private String direccion;
     private String telefono;
-    private String correoElectronico;
+    private String correo;
 }

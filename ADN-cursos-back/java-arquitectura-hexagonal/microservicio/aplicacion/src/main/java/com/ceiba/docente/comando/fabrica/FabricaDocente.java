@@ -14,6 +14,6 @@ public class FabricaDocente {
                 comandoDocente.getApellido(),
                 comandoDocente.getDireccion(),
                 comandoDocente.getTelefono(),
-                comandoDocente.getCorreoElectronico());
+                comandoDocente.getCorreo());
     }
 }

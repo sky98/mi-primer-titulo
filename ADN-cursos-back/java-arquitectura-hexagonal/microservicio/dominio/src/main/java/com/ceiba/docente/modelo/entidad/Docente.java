@@ -29,13 +29,12 @@ public class Docente {
     private String correoElectronico;
 
     public Docente(Long id,String identificacion, String nombre, String apellido, String direccion, String telefono, String correoElectronico){
-
         validarObligatorio(identificacion, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
-        validarObligatorio(nombre, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
-        validarObligatorio(apellido, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
-        validarObligatorio(direccion, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
-        validarObligatorio(telefono, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
-        validarObligatorio(correoElectronico, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
+        validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE);
+        validarObligatorio(apellido, SE_DEBE_INGRESAR_EL_APELLIDO);
+        validarObligatorio(direccion, SE_DEBE_INGRESAR_LA_DIRECCION);
+        validarObligatorio(telefono, SE_DEBE_INGRESAR_EL_TELEFONO);
+        validarObligatorio(correoElectronico, SE_DEBE_INGRESAR_EL_CORREO_ELECTRONICO);
         validarLongitud(identificacion, LONGITUD_MINIMA_IDENTIFICACION, LA_IDENTIFICACION_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A);
 
         this.id = id;
