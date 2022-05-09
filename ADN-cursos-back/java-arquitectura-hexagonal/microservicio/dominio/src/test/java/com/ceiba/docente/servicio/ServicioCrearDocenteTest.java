@@ -27,7 +27,7 @@ public class ServicioCrearDocenteTest {
         // arrange
         Docente docente = new DocenteTestDataBuilder().build();
         RepositorioDocente repositorioDocente = Mockito.mock(RepositorioDocente.class);
-        Mockito.when(repositorioDocente.existe(Mockito.anyString())).thenReturn(true);
+        Mockito.when(repositorioDocente.existePorIdentificacion(Mockito.anyString())).thenReturn(true);
         ServicioCrearDocente servicioCrearDocente = new ServicioCrearDocente(repositorioDocente);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearDocente.ejecutar(docente), ExcepcionDuplicidad.class,"El docente ya existe en el sistema");

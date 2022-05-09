@@ -23,7 +23,7 @@ public class ServicioActualizarDocente {
     private void validarExistenciaPrevia(Docente docente){
         boolean existe = repositorioDocente.existePorId(docente.getId());
         if(!existe){
-            throw new ExcepcionValorNoEncontrado(EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionDuplicidad(EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }

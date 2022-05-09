@@ -94,7 +94,6 @@ public class DocenteTest {
 
     @Test
     void deberiaFallarSinTamanioIdentificacionDeDocente() {
-
         //Arrange
         DocenteTestDataBuilder docenteTestDataBuilder = new DocenteTestDataBuilder().conIdentificacion("123").conId(1L);
         //act-assert

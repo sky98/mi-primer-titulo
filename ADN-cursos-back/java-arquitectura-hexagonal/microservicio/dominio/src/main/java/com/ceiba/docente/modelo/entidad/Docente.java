@@ -16,7 +16,7 @@ public class Docente {
     private static final String SE_DEBE_INGRESAR_LA_DIRECCION = "Se debe ingresar la dirección del docente";
     private static final String SE_DEBE_INGRESAR_EL_TELEFONO = "Se debe ingresar el telefono del docente";
     private static final String SE_DEBE_INGRESAR_EL_CORREO_ELECTRONICO = "Se debe ingresar el correo electronico del docente";
-    private static final String LA_IDENTIFICACION_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La identificación debe tener una longitud mayor o igual a %s";
+    private static final String LA_IDENTIFICACION_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La identificación debe tener una longitud mayor o igual a 4";
 
     private static final int LONGITUD_MINIMA_IDENTIFICACION = 4;
 
