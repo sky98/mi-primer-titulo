@@ -6,7 +6,7 @@ jasypt:
 server:
    port: 8085
    servlet:
-      context-path: /student-service
+      context-path: /university-service
       session:
          timeout: 21600s
 

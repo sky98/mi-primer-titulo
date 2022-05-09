@@ -27,9 +27,9 @@ public class BeanServicio {
         return new ServicioActualizarUsuario(repositorioUsuario);
     }
 
-    @Bean
+    /*@Bean
     public ServicioActualizarDocente servicioActualizarDocente(RepositorioDocente repositorioDocente){
         return new ServicioActualizarDocente(repositorioDocente);
-    }
+    }*/
 
 }
