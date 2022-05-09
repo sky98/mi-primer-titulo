@@ -2,6 +2,7 @@ package com.ceiba.configuracion;
 
 import com.ceiba.docente.puerto.repositorio.RepositorioDocente;
 import com.ceiba.docente.servicio.ServicioActualizarDocente;
+import com.ceiba.docente.servicio.ServicioCrearDocente;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -25,6 +26,11 @@ public class BeanServicio {
     @Bean
     public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
         return new ServicioActualizarUsuario(repositorioUsuario);
+    }
+
+    @Bean
+    public ServicioCrearDocente servicioCrearDocente(RepositorioDocente repositorioDocente){
+        return new ServicioCrearDocente(repositorioDocente);
     }
 
     /*@Bean

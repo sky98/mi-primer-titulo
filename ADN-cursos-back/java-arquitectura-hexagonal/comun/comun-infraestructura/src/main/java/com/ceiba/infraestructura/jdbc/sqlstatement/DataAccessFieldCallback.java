@@ -25,7 +25,7 @@ public class DataAccessFieldCallback implements FieldCallback {
 	/**
 	 * Constructor
 	 * 
-	 * @param bf
+	 * @param bean
 	 * @param bean
 	 */
 	public DataAccessFieldCallback(Object bean) {
