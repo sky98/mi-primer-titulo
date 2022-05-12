@@ -18,9 +18,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ComandoControladorDocente.class)
@@ -45,5 +46,35 @@ public class ComandoControladorDocenteTest {
                         .content(objectMapper.writeValueAsString(docente)))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
+    }
+
+    @Test
+    @DisplayName("Deberia actualizar un docente")
+    void deberiaActualizarUnDocente() throws Exception{
+        // arrange
+        Long id = 1L;
+        ComandoDocente docente = new ComandoDocenteTestDataBuilder().build();
+        // act - assert
+        mocMvc.perform(put("/docentes/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(docente)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("Deberia eliminar un docente")
+    void deberiaEliminarUnDocente() throws Exception {
+        // arrange
+        Long id = 1L;
+        // act - assert
+        mocMvc.perform(delete("/docentes/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        mocMvc.perform(get("/docentes")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 }
