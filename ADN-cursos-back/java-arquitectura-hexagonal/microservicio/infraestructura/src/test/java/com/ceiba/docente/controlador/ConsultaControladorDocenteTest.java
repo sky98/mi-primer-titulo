@@ -37,7 +37,12 @@ class ConsultaControladorDocenteTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].identificacion", is("1234")))
                 .andExpect(jsonPath("$[0].nombre", is("1234")))
+                .andExpect(jsonPath("$[0].apellido", is("1234")))
+                .andExpect(jsonPath("$[0].direccion", is("1234")))
+                .andExpect(jsonPath("$[0].telefono", is("1234")))
+                .andExpect(jsonPath("$[0].correoElectronico", is("1234")))
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }

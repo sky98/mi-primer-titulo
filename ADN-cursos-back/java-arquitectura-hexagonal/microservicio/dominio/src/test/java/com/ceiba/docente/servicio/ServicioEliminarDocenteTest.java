@@ -9,7 +9,7 @@ public class ServicioEliminarDocenteTest {
 
     @Test
     @DisplayName("Deberia eliminar el docente llamando al repositorio")
-    void deberiaEliminarElUsuarioLlamandoAlRepositorio() {
+    void deberiaEliminarElAlumnoLlamandoAlRepositorio() {
         RepositorioDocente repositorioDocente = Mockito.mock(RepositorioDocente.class);
         ServicioEliminarDocente servicioEliminarDocente = new ServicioEliminarDocente(repositorioDocente);
 
