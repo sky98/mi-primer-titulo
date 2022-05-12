@@ -1,5 +1,9 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.alumno.puerto.repositorio.RepositorioAlumno;
+import com.ceiba.alumno.servicio.ServicioActualizarAlumno;
+import com.ceiba.alumno.servicio.ServicioCrearAlumno;
+import com.ceiba.alumno.servicio.ServicioEliminarAlumno;
 import com.ceiba.docente.puerto.repositorio.RepositorioDocente;
 import com.ceiba.docente.servicio.ServicioActualizarDocente;
 import com.ceiba.docente.servicio.ServicioCrearDocente;
@@ -44,4 +48,19 @@ public class BeanServicio {
         return new ServicioEliminarDocente(repositorioDocente);
     }
 
+
+    @Bean
+    public ServicioCrearAlumno servicioCrearAlumno(RepositorioAlumno repositorioAlumno){
+        return new ServicioCrearAlumno(repositorioAlumno);
+    }
+
+    @Bean
+    public ServicioActualizarAlumno servicioActualizarAlumno(RepositorioAlumno repositorioAlumno){
+        return new ServicioActualizarAlumno(repositorioAlumno);
+    }
+
+    @Bean
+    public ServicioEliminarAlumno servicioEliminarAlumno(RepositorioAlumno repositorioAlumno){
+        return new ServicioEliminarAlumno(repositorioAlumno);
+    }
 }

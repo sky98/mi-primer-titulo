@@ -1,8 +1,8 @@
-package com.ceiba.docente.controlador;
+package com.ceiba.alumno.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.docente.comando.ComandoDocente;
-import com.ceiba.docente.servicio.testdatabuilder.ComandoDocenteTestDataBuilder;
+import com.ceiba.alumno.comando.ComandoAlumno;
+import com.ceiba.alumno.servicio.testdatabuilder.ComandoAlumnoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,10 +20,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(ComandoControladorDocente.class)
+@WebMvcTest(ComandoControladorAlumno.class)
 @ContextConfiguration(classes= ApplicationMock.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class ComandoControladorDocenteTest {
+public class ComandoControladorAlumnoTest {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -32,43 +32,43 @@ public class ComandoControladorDocenteTest {
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Deberia crear un docente")
-    void deberiaCrearUnDocente() throws Exception{
+    @DisplayName("Deberia crear un alumno")
+    void deberiaCrearUnAlumno() throws Exception{
         // arrange
-        ComandoDocente docente = new ComandoDocenteTestDataBuilder().build();
+        ComandoAlumno alumno = new ComandoAlumnoTestDataBuilder().build();
         // act - assert
-        mocMvc.perform(post("/docentes")
+        mocMvc.perform(post("/alumnos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(docente)))
+                        .content(objectMapper.writeValueAsString(alumno)))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
     }
 
     @Test
-    @DisplayName("Deberia actualizar un docente")
-    void deberiaActualizarUnDocente() throws Exception{
+    @DisplayName("Deberia actualizar un alumno")
+    void deberiaActualizarUnAlumno() throws Exception{
         // arrange
         Long id = 1L;
-        ComandoDocente docente = new ComandoDocenteTestDataBuilder().build();
+        ComandoAlumno alumno = new ComandoAlumnoTestDataBuilder().build();
         // act - assert
-        mocMvc.perform(put("/docentes/{id}",id)
+        mocMvc.perform(put("/alumnos/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(docente)))
+                        .content(objectMapper.writeValueAsString(alumno)))
                 .andExpect(status().isOk());
     }
 
     @Test
-    @DisplayName("Deberia eliminar un docente")
-    void deberiaEliminarUnDocente() throws Exception {
+    @DisplayName("Deberia eliminar un alumno")
+    void deberiaEliminarUnAlumno() throws Exception {
         // arrange
         Long id = 1L;
         // act - assert
-        mocMvc.perform(delete("/docentes/{id}",id)
+        mocMvc.perform(delete("/alumnos/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        mocMvc.perform(get("/docentes")
+        mocMvc.perform(get("/alumnos")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
