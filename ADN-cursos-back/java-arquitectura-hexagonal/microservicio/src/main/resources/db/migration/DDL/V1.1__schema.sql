@@ -19,3 +19,12 @@ create table alumno (
  correo_electronico varchar(100) not null,
  primary key (id)
 );
+
+create table curso (
+ id int(11) not null auto_increment,
+ identificacion varchar(100) not null,
+ nombre varchar(100) not null,
+ descripcion varchar(100) not null,
+ horas int(11) not null,
+ primary key (id)
+);

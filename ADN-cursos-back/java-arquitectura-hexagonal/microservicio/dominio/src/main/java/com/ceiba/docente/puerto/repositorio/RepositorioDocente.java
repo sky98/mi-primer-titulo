@@ -24,13 +24,6 @@ public interface RepositorioDocente {
     void eliminar(Long id);
 
     /**
-     * Permite validar si existe un docente con un nombre
-     * @param nombre
-     * @return si existe o no
-     */
-    boolean existe(String nombre);
-
-    /**
      * Permite validar si existe un docente con una identificacion
      * @return si existe o no
      */

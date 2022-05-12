@@ -1,44 +1,44 @@
-package com.ceiba.docente.adaptador.repositorio;
+package com.ceiba.curso.adaptador.repositorio;
 
-import com.ceiba.docente.modelo.entidad.Docente;
-import com.ceiba.docente.puerto.repositorio.RepositorioDocente;
+import com.ceiba.curso.modelo.entidad.Curso;
+import com.ceiba.curso.puerto.repositorio.RepositorioCurso;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RepositorioDocenteMysql implements RepositorioDocente {
+public class RepositorioCursoMysql implements RepositorioCurso {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="docente", value="crear")
+    @SqlStatement(namespace="curso", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="docente", value="actualizar")
+    @SqlStatement(namespace="curso", value="actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="docente", value="eliminar")
+    @SqlStatement(namespace="curso", value="eliminar")
     private static String sqlEliminar;
 
-    @SqlStatement(namespace="docente", value="existePorId")
+    @SqlStatement(namespace="curso", value="existePorId")
     private static String sqlExistePorId;
 
-    @SqlStatement(namespace="docente", value="existePorIdentificacion")
+    @SqlStatement(namespace="curso", value="existePorIdentificacion")
     private static String sqlExistePorIdentificacion;
 
-    public RepositorioDocenteMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public RepositorioCursoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(Docente docente) {
-        return this.customNamedParameterJdbcTemplate.crear(docente, sqlCrear);
+    public Long crear(Curso curso) {
+        return this.customNamedParameterJdbcTemplate.crear(curso, sqlCrear);
     }
 
     @Override
-    public void actualizar(Docente docente) {
-        this.customNamedParameterJdbcTemplate.actualizar(docente, sqlActualizar);
+    public void actualizar(Curso curso) {
+        this.customNamedParameterJdbcTemplate.actualizar(curso, sqlActualizar);
     }
 
     @Override
@@ -47,10 +47,11 @@ public class RepositorioDocenteMysql implements RepositorioDocente {
         paramSource.addValue("id", id);
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
+
     @Override
     public boolean existePorIdentificacion(String identificacion) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("identidicacion", identificacion);
+        paramSource.addValue("identificacion", identificacion);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdentificacion,paramSource, Boolean.class);
     }
 
