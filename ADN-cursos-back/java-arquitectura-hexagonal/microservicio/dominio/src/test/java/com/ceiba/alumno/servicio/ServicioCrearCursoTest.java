@@ -14,7 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class ServicioCrearAlumnoTest {
+public class ServicioCrearCursoTest {
 
     @Test
     @DisplayName("Deberia lanzar una exepecion cuando la longitud de la identificación sea menor a 4")
