@@ -5,6 +5,7 @@ import com.ceiba.clase.modelo.entidad.Clase;
 import com.ceiba.clase.puerto.repositorio.RepositorioClase;
 import com.ceiba.clase.servicio.testdatabuilder.ClaseTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorNoEncontrado;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -47,5 +48,16 @@ public class ServicioCrearClaseTest {
         ServicioCrearClase servicioCrearClase = new ServicioCrearClase(repositorioClase);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorNoEncontrado.class,"El curso no existe en el sistema");
+    }
+    @Test
+    @DisplayName("Debería lanzar una excepción cuando se valide el máximo de horas para el docente")
+    void deberiaLanzarUnaExcepcionCuandoSeValidaHorasMaximasDeUnDocente() {
+        // arrange
+        Mockito.when(repositorioClase.existeDocente(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioClase.validaHorasDocente(Mockito.anyLong(), Mockito.anyLong())).thenReturn(16);
+        ServicioCrearClase servicioCrearClase = new ServicioCrearClase(repositorioClase);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorInvalido.class,"Docente supera limite de horas máximas");
     }
 }

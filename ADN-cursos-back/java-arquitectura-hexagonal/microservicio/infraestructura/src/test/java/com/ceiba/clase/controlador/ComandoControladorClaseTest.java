@@ -32,7 +32,7 @@ public class ComandoControladorClaseTest {
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Debería crear un clase")
+    @DisplayName("Debería crear una clase")
     void deberiaCrearUnaClase() throws Exception{
         // arrange
         ComandoClase clase = new ComandoClaseTestDataBuilder().build();

@@ -23,6 +23,8 @@ public class RepositorioClaseMysql implements RepositorioClase {
     private static String sqlExisteDocente;
     @SqlStatement(namespace="curso", value="existePorId")
     private static String sqlExisteCurso;
+    @SqlStatement(namespace="clase", value="horas")
+    private static String sqlHorasDocente;
 
     public RepositorioClaseMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -64,5 +66,13 @@ public class RepositorioClaseMysql implements RepositorioClase {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteDocente,paramSource, Boolean.class);
+    }
+
+    @Override
+    public Integer validaHorasDocente(Long docente, Long curso) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("docente", docente);
+        paramSource.addValue("curso", curso);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlHorasDocente, paramSource, Integer.class);
     }
 }

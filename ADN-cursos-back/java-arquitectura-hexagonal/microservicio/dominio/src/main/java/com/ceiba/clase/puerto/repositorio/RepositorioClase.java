@@ -5,20 +5,20 @@ import com.ceiba.clase.modelo.entidad.Clase;
 public interface RepositorioClase {
 
     /**
-     * Permite crear un clase
+     * Permite crear una clase
      * @param clase
      * @return el id generado
      */
     Long crear(Clase clase);
 
     /**
-     * Permite actualizar un clase
+     * Permite actualizar una clase
      * @param clase
      */
     void actualizar(Clase clase);
 
     /**
-     * Permite eliminar un clase
+     * Permite eliminar una clase
      * @param id
      */
     void eliminar(Long id);
@@ -40,4 +40,11 @@ public interface RepositorioClase {
      * @return si existe o no
      */
     boolean existeDocente(Long id);
+
+    /**
+     * Valida las horas del docente
+     *  @param docente
+     * @return total de horas
+     */
+    Integer validaHorasDocente(Long docente, Long curso);
 }
