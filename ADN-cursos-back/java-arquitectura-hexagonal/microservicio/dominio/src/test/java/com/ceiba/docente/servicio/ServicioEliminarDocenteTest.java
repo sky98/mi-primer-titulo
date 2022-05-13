@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class ServicioEliminarDocenteTest {
-
     @Test
     @DisplayName("Deberia eliminar el docente llamando al repositorio")
-    void deberiaEliminarElAlumnoLlamandoAlRepositorio() {
+    void deberiaEliminarElDocenteLlamandoAlRepositorio() {
         RepositorioDocente repositorioDocente = Mockito.mock(RepositorioDocente.class);
         ServicioEliminarDocente servicioEliminarDocente = new ServicioEliminarDocente(repositorioDocente);
 
