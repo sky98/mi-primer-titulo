@@ -27,7 +27,7 @@ public class ComandoControladorCurso {
     }
 
     @PostMapping
-    @ApiOperation("Crear usuario")
+    @ApiOperation("Crear curso")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCurso comandoCurso){
         return manejadorCrearCurso.ejecutar(comandoCurso);
     }

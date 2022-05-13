@@ -4,6 +4,10 @@ import com.ceiba.alumno.puerto.repositorio.RepositorioAlumno;
 import com.ceiba.alumno.servicio.ServicioActualizarAlumno;
 import com.ceiba.alumno.servicio.ServicioCrearAlumno;
 import com.ceiba.alumno.servicio.ServicioEliminarAlumno;
+import com.ceiba.clase.puerto.repositorio.RepositorioClase;
+import com.ceiba.clase.servicio.ServicioActualizarClase;
+import com.ceiba.clase.servicio.ServicioCrearClase;
+import com.ceiba.clase.servicio.ServicioEliminarClase;
 import com.ceiba.curso.puerto.repositorio.RepositorioCurso;
 import com.ceiba.curso.servicio.ServicioActualizarCurso;
 import com.ceiba.curso.servicio.ServicioCrearCurso;
@@ -69,5 +73,17 @@ public class BeanServicio {
     @Bean
     public ServicioEliminarCurso servicioEliminarCurso(RepositorioCurso repositorioCurso){
         return new ServicioEliminarCurso(repositorioCurso);
+    }
+    @Bean
+    public ServicioCrearClase servicioCrearClase(RepositorioClase repositorioClase){
+        return new ServicioCrearClase(repositorioClase);
+    }
+    @Bean
+    public ServicioActualizarClase servicioActualizarClase(RepositorioClase repositorioClase){
+        return new ServicioActualizarClase(repositorioClase);
+    }
+    @Bean
+    public ServicioEliminarClase servicioEliminarClase(RepositorioClase repositorioClase){
+        return new ServicioEliminarClase(repositorioClase);
     }
 }

@@ -33,7 +33,5 @@ create table clase (
  id int(11) not null auto_increment,
  docente int(11) not null,
  curso int(11) not null,
- primary key (id),
- foreign key(docente) references docente(id),
- foreign key(curso) references curso(id)
+ primary key (id)
 );
