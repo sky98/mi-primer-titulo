@@ -3,7 +3,6 @@ package com.ceiba.curso.entidad;
 import com.ceiba.BasePrueba;
 import com.ceiba.curso.modelo.entidad.Curso;
 import com.ceiba.curso.servicio.testdatabuilder.CursoTestDataBuilder;
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import org.junit.jupiter.api.DisplayName;
@@ -14,22 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CursoTest {
 
     @Test
-    @DisplayName("Debería crear correctamente el curso sin docente")
-    void deberiaCrearCorrectamenteElCursoSinDocente() {
-        // arrange
-        //LocalDateTime fechaCreacion = LocalDateTime.now();
-        //act
-        Curso curso = new CursoTestDataBuilder().conId(1L).conDocente(null).build();
-        //assert
-        assertEquals(1, curso.getId());
-        assertEquals("12345", curso.getIdentificacion());
-        assertEquals("12345", curso.getNombre());
-        assertEquals("12345", curso.getDescripcion());
-        assertEquals(2, curso.getHoras());
-    }
-    @Test
-    @DisplayName("Debería crear correctamente el curso con docente")
-    void deberiaCrearCorrectamenteElCursoConDocente() {
+    @DisplayName("Debería crear correctamente el curso")
+    void deberiaCrearCorrectamenteElCurso() {
         // arrange
         //LocalDateTime fechaCreacion = LocalDateTime.now();
         //act
@@ -40,9 +25,7 @@ public class CursoTest {
         assertEquals("12345", curso.getNombre());
         assertEquals("12345", curso.getDescripcion());
         assertEquals(2, curso.getHoras());
-        assertEquals(1, curso.getDocente());
     }
-
     @Test
     void deberiaFallarSinIdentificacionDelCurso() {
         //Arrange

@@ -16,5 +16,4 @@ public class ComandoCurso {
     private String nombre;
     private String descripcion;
     private Integer horas;
-    private Long docente;
 }

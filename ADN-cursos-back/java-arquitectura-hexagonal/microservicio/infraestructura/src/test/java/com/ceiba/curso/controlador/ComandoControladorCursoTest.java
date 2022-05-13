@@ -35,7 +35,7 @@ public class ComandoControladorCursoTest {
     @DisplayName("Debería crear un curso sin docente")
     void deberiaCrearUnCursoSinDocente() throws Exception{
         // arrange
-        ComandoCurso curso = new ComandoCursoTestDataBuilder().conDocente(null).build();
+        ComandoCurso curso = new ComandoCursoTestDataBuilder().build();
         // act - assert
         mocMvc.perform(post("/cursos")
                         .contentType(MediaType.APPLICATION_JSON)

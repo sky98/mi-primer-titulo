@@ -12,7 +12,6 @@ public class FabricaCurso {
                 comandoCurso.getIdentificacion(),
                 comandoCurso.getNombre(),
                 comandoCurso.getDescripcion(),
-                comandoCurso.getHoras(),
-                comandoCurso.getDocente());
+                comandoCurso.getHoras());
     }
 }

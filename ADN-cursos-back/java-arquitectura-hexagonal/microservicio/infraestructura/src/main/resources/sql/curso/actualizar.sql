@@ -2,6 +2,5 @@ update curso
 set identificacion = :identificacion,
     nombre = :nombre,
     descripcion = :descripcion,
-    horas = :horas,
-    docente = :docente
+    horas = :horas
 where id = :id

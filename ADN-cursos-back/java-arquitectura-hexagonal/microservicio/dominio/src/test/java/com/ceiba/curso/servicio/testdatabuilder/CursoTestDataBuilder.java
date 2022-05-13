@@ -9,14 +9,12 @@ public class CursoTestDataBuilder {
     private String nombre;
     private String descripcion;
     private Integer horas;
-    private Long docente;
 
     public CursoTestDataBuilder(){
         identificacion = "12345";
         nombre = "12345";
         descripcion = "12345";
         horas = 2;
-        docente = 1L;
     }
     public CursoTestDataBuilder conId(Long id){
         this.id = id;
@@ -38,11 +36,7 @@ public class CursoTestDataBuilder {
         this.horas = horas;
         return this;
     }
-    public CursoTestDataBuilder conDocente(Long docente){
-        this.docente = docente;
-        return this;
-    }
     public Curso build(){
-        return new Curso(id, identificacion, nombre, descripcion, horas, docente);
+        return new Curso(id, identificacion, nombre, descripcion, horas);
     }
 }

@@ -18,8 +18,7 @@ public class MapeoCurso implements RowMapper<DtoCurso>, MapperResult {
         String nombre = rs.getString("nombre");
         String descripcion = rs.getString("descripcion");
         Integer horas = rs.getInt("horas");
-        Long docente = rs.getLong("docente");
 
-        return new DtoCurso(id, identificacion, nombre, descripcion, horas, docente);
+        return new DtoCurso(id, identificacion, nombre, descripcion, horas);
     }
 }
