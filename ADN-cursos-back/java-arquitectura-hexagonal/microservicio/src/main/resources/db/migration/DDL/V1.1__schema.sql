@@ -26,5 +26,6 @@ create table curso (
  nombre varchar(100) not null,
  descripcion varchar(100) not null,
  horas int(11) not null,
+ docente int(11),
  primary key (id)
 );

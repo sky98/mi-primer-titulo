@@ -14,8 +14,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CursoTest {
 
     @Test
-    @DisplayName("Deberia crear correctamente el curso")
-    void deberiaCrearCorrectamenteElCurso() {
+    @DisplayName("Debería crear correctamente el curso sin docente")
+    void deberiaCrearCorrectamenteElCursoSinDocente() {
+        // arrange
+        //LocalDateTime fechaCreacion = LocalDateTime.now();
+        //act
+        Curso curso = new CursoTestDataBuilder().conId(1L).conDocente(null).build();
+        //assert
+        assertEquals(1, curso.getId());
+        assertEquals("12345", curso.getIdentificacion());
+        assertEquals("12345", curso.getNombre());
+        assertEquals("12345", curso.getDescripcion());
+        assertEquals(2, curso.getHoras());
+    }
+    @Test
+    @DisplayName("Debería crear correctamente el curso con docente")
+    void deberiaCrearCorrectamenteElCursoConDocente() {
         // arrange
         //LocalDateTime fechaCreacion = LocalDateTime.now();
         //act
@@ -26,6 +40,7 @@ public class CursoTest {
         assertEquals("12345", curso.getNombre());
         assertEquals("12345", curso.getDescripcion());
         assertEquals(2, curso.getHoras());
+        assertEquals(1, curso.getDocente());
     }
 
     @Test

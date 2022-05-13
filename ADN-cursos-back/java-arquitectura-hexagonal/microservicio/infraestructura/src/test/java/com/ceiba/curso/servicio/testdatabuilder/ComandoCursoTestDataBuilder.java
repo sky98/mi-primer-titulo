@@ -11,6 +11,7 @@ public class ComandoCursoTestDataBuilder {
     private String nombre;
     private String descripcion;
     private Integer horas;
+    private Long docente;
 
     public ComandoCursoTestDataBuilder(){
         id = 12345L;
@@ -18,13 +19,12 @@ public class ComandoCursoTestDataBuilder {
         nombre = "1234";
         descripcion = "1234";
         horas = 1;
+        docente = 1L;
     }
-
     public ComandoCursoTestDataBuilder conId(Long id){
         this.id = id;
         return this;
     }
-
     public ComandoCursoTestDataBuilder conIdentificacion(String identificacion){
         this.identificacion =  identificacion;
         return this;
@@ -41,8 +41,11 @@ public class ComandoCursoTestDataBuilder {
         this.horas =  horas;
         return this;
     }
-
+    public ComandoCursoTestDataBuilder conDocente(Long docente){
+        this.docente = docente;
+        return this;
+    }
     public ComandoCurso build(){
-        return new ComandoCurso(id, identificacion, nombre, descripcion, horas);
+        return new ComandoCurso(id, identificacion, nombre, descripcion, horas, docente);
     }
 }

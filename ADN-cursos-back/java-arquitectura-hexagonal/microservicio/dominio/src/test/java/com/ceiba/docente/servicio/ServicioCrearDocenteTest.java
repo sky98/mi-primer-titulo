@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 public class ServicioCrearDocenteTest {
 
     @Test
-    @DisplayName("Deberia lanzar una exepecion cuando la longitud de la identificación sea menor a 4")
+    @DisplayName("Debería lanzar una excepción cuando la longitud de la identificación sea menor a 4")
     void deberiaLanzarUnaExepcionCuandoLaLongitudDeLaIdentificacionSeaMenorACuatro() {
         // arrange
         DocenteTestDataBuilder docenteTestDataBuilder = new DocenteTestDataBuilder().conIdentificacion("124");
@@ -22,12 +22,12 @@ public class ServicioCrearDocenteTest {
     }
 
     @Test
-    @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del Docente")
+    @DisplayName("Debería lanzar una excepción cuando se valide la existencia del Docente")
     void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelDocente() {
         // arrange
-        Docente docente = new DocenteTestDataBuilder().build();
+        Docente docente = new DocenteTestDataBuilder().conId(1L).build();
         RepositorioDocente repositorioDocente = Mockito.mock(RepositorioDocente.class);
-        Mockito.when(repositorioDocente.existePorIdentificacion(Mockito.anyString())).thenReturn(true);
+        Mockito.when(repositorioDocente.existePorId(Mockito.anyLong())).thenReturn(true);
         ServicioCrearDocente servicioCrearDocente = new ServicioCrearDocente(repositorioDocente);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearDocente.ejecutar(docente), ExcepcionDuplicidad.class,"El docente ya existe en el sistema");

@@ -50,7 +50,7 @@ public class RepositorioDocenteMysql implements RepositorioDocente {
     @Override
     public boolean existePorIdentificacion(String identificacion) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("identidicacion", identificacion);
+        paramSource.addValue("identificacion", identificacion);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdentificacion,paramSource, Boolean.class);
     }
 

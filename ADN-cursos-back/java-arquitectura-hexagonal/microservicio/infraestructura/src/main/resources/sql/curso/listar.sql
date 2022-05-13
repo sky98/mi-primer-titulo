@@ -1,2 +1,2 @@
-select id, identificacion, nombre, descripcion, horas
+select id, identificacion, nombre, descripcion, horas, docente
 from curso

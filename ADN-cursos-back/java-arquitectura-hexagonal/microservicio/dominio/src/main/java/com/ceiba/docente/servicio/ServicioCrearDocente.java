@@ -20,7 +20,7 @@ public class ServicioCrearDocente {
     }
 
     private void validarExistenciaPrevia(Docente docente){
-        boolean existe = repositorioDocente.existePorIdentificacion(docente.getIdentificacion());
+        boolean existe = repositorioDocente.existePorId(docente.getId());
         if(existe){
             throw new ExcepcionDuplicidad(EL_DOCENTE_YA_EXISTE_EN_EL_SISTEMA);
         }

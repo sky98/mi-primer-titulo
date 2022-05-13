@@ -22,8 +22,9 @@ public class Curso {
     private String nombre;
     private String descripcion;
     private Integer horas;
+    private Long docente;
 
-    public Curso(Long id, String identificacion, String nombre, String descripcion, Integer horas){
+    public Curso(Long id, String identificacion, String nombre, String descripcion, Integer horas, Long docente){
 
         validarObligatorio(identificacion, SE_DEBE_INGRESAR_LA_IDENTIFICACION);
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE);
@@ -38,6 +39,7 @@ public class Curso {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.horas = horas;
+        this.docente = docente;
     }
 
 }

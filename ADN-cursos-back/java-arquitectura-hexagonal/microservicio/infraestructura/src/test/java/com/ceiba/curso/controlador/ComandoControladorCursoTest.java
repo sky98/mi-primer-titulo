@@ -32,8 +32,20 @@ public class ComandoControladorCursoTest {
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Deberia crear un curso")
-    void deberiaCrearUnCurso() throws Exception{
+    @DisplayName("Debería crear un curso sin docente")
+    void deberiaCrearUnCursoSinDocente() throws Exception{
+        // arrange
+        ComandoCurso curso = new ComandoCursoTestDataBuilder().conDocente(null).build();
+        // act - assert
+        mocMvc.perform(post("/cursos")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(curso)))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': 2}"));
+    }
+    @Test
+    @DisplayName("Debería crear un curso con docente")
+    void deberiaCrearUnCursoConDocente() throws Exception{
         // arrange
         ComandoCurso curso = new ComandoCursoTestDataBuilder().build();
         // act - assert
@@ -43,9 +55,8 @@ public class ComandoControladorCursoTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
     }
-
     @Test
-    @DisplayName("Deberia actualizar un curso")
+    @DisplayName("Debería actualizar un curso")
     void deberiaActualizarUnCurso() throws Exception{
         // arrange
         Long id = 1L;
@@ -56,9 +67,8 @@ public class ComandoControladorCursoTest {
                         .content(objectMapper.writeValueAsString(curso)))
                 .andExpect(status().isOk());
     }
-
     @Test
-    @DisplayName("Deberia eliminar un curso")
+    @DisplayName("Debería eliminar un curso")
     void deberiaEliminarUnCurso() throws Exception {
         // arrange
         Long id = 1L;
