@@ -94,8 +94,8 @@ public class ValidadorArgumento {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
-    public static void validarRangoFecha(LocalDateTime hora, int iniciaJornada, int iniciaDescanso, int finalizaDescanso, int finalizaJornada, String mensaje) {
-        if(!(hora.getHour() >= iniciaJornada && hora.getHour() <= iniciaDescanso) && !(hora.getHour() >= finalizaDescanso && hora.getHour() <= finalizaJornada)){
+    public static void validarRangoComplejoNumero(int hora, int iniciaJornada, int iniciaDescanso, int finalizaDescanso, int finalizaJornada, String mensaje) {
+        if(!(hora >= iniciaJornada && hora <= iniciaDescanso) && !(hora >= finalizaDescanso && hora <= finalizaJornada)){
             throw new ExcepcionValorInvalido(mensaje);
         }
     }

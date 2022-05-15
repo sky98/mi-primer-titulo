@@ -12,6 +12,6 @@ public class DtoHorario {
     private Long id;
     private Long clase;
     private DiasSemana dia;
-    private LocalDateTime horaInicio;
-    private int cantidadHoras;
+    private Integer horaInicio;
+    private Integer cantidadHoras;
 }
