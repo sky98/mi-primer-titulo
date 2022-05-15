@@ -8,9 +8,9 @@ import com.ceiba.dominio.excepcion.ExcepcionValorNoEncontrado;
 
 public class ServicioCrearClase {
 
-    private static final String LA_CLASE_YA_EXISTE_EN_EL_SISTEMA = "La clase ya existe en el sistema";
+    private static final String EL_DOCENTE_YA_SE_ENCUENTRA_INSCRITO_A_ESE_CURSO = "El docente ya se encuentra inscrito a ese curso";
     private static final String EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA = "El docente no existe en el sistema";
-    private static final String DOCENTE_SUPERA_LIMITE_DE_HORAS_MAXIMAS = "Docente supera limite de horas máximas";
+    private static final String EL_DOCENTE_NO_PUEDE_SUPERAR_EL_LIMITE_DE_HORAS_MAXIMAS = "El docente no puede superar el limite de horas máximas";
     private static final String EL_CURSO_NO_EXISTE_EN_EL_SISTEMA = "El curso no existe en el sistema";
     private final RepositorioClase repositorioClase;
 
@@ -27,9 +27,9 @@ public class ServicioCrearClase {
     }
 
     private void validarExistenciaPrevia(Clase clase){
-        boolean existe = repositorioClase.existePorId(clase.getId());
+        boolean existe = repositorioClase.existeDocenteCurso(clase.getDocente(), clase.getCurso());
         if(existe){
-            throw new ExcepcionDuplicidad(LA_CLASE_YA_EXISTE_EN_EL_SISTEMA);
+            throw new ExcepcionDuplicidad(EL_DOCENTE_YA_SE_ENCUENTRA_INSCRITO_A_ESE_CURSO);
         }
     }
     private void validarExistenciaDocente(Clase clase){
@@ -45,9 +45,11 @@ public class ServicioCrearClase {
         }
     }
     private void validarHorasDocente(Clase clase){
-        Integer horasRegistradas = repositorioClase.validaHorasDocente(clase.getDocente(), clase.getCurso());
-        if(horasRegistradas > 15){
-            throw new ExcepcionValorInvalido(DOCENTE_SUPERA_LIMITE_DE_HORAS_MAXIMAS);
+        Integer horasRegistradas = repositorioClase.validaHorasInscritasDocente(clase.getDocente());
+        Integer horaCursoNuevo = repositorioClase.obtenerHorasCurso(clase.getCurso());
+        horaCursoNuevo = (horasRegistradas == null)? horaCursoNuevo: horasRegistradas+horaCursoNuevo;
+        if(horaCursoNuevo > 15 ){
+            throw new ExcepcionValorInvalido(EL_DOCENTE_NO_PUEDE_SUPERAR_EL_LIMITE_DE_HORAS_MAXIMAS);
         }
     }
 }

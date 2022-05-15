@@ -1,0 +1,1 @@
+select horas from curso where id = :id

@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/cursos")
 @Api(tags = "Controlador comando curso")
@@ -29,6 +31,7 @@ public class ComandoControladorCurso {
     @PostMapping
     @ApiOperation("Crear curso")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCurso comandoCurso){
+        comandoCurso.setIdentificacion(UUID.randomUUID().toString());
         return manejadorCrearCurso.ejecutar(comandoCurso);
     }
 

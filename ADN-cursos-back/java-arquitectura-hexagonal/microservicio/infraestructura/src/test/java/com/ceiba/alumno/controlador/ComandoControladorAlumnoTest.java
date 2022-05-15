@@ -32,7 +32,7 @@ public class ComandoControladorAlumnoTest {
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Deberia crear un alumno")
+    @DisplayName("Debería crear un alumno")
     void deberiaCrearUnAlumno() throws Exception{
         // arrange
         ComandoAlumno alumno = new ComandoAlumnoTestDataBuilder().build();
@@ -45,7 +45,7 @@ public class ComandoControladorAlumnoTest {
     }
 
     @Test
-    @DisplayName("Deberia actualizar un alumno")
+    @DisplayName("Debería actualizar un alumno")
     void deberiaActualizarUnAlumno() throws Exception{
         // arrange
         Long id = 1L;
@@ -58,7 +58,7 @@ public class ComandoControladorAlumnoTest {
     }
 
     @Test
-    @DisplayName("Deberia eliminar un alumno")
+    @DisplayName("Debería eliminar un alumno")
     void deberiaEliminarUnAlumno() throws Exception {
         // arrange
         Long id = 1L;

@@ -35,7 +35,7 @@ public class ComandoControladorClaseTest {
     @DisplayName("Debería crear una clase")
     void deberiaCrearUnaClase() throws Exception{
         // arrange
-        ComandoClase clase = new ComandoClaseTestDataBuilder().build();
+        ComandoClase clase = new ComandoClaseTestDataBuilder().conDocente(1L).conCurso(2L).build();
         // act - assert
         mocMvc.perform(post("/clases")
                         .contentType(MediaType.APPLICATION_JSON)

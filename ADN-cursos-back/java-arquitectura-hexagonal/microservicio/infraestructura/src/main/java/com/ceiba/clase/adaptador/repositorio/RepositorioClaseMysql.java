@@ -23,8 +23,12 @@ public class RepositorioClaseMysql implements RepositorioClase {
     private static String sqlExisteDocente;
     @SqlStatement(namespace="curso", value="existePorId")
     private static String sqlExisteCurso;
-    @SqlStatement(namespace="clase", value="horas")
-    private static String sqlHorasDocente;
+    @SqlStatement(namespace="clase", value="existeDocenteCurso")
+    private static String sqlExisteDocenteCurso;
+    @SqlStatement(namespace="clase", value="horasInscritas")
+    private static String sqlHorasInscritasDocente;
+    @SqlStatement(namespace="curso", value="obtenerHoras")
+    private static String sqlObtenerHorasCurso;
 
     public RepositorioClaseMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -69,10 +73,24 @@ public class RepositorioClaseMysql implements RepositorioClase {
     }
 
     @Override
-    public Integer validaHorasDocente(Long docente, Long curso) {
+    public boolean existeDocenteCurso(Long docente, Long curso) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("docente", docente);
         paramSource.addValue("curso", curso);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlHorasDocente, paramSource, Integer.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteDocenteCurso, paramSource, Boolean.class);
+    }
+
+    @Override
+    public Integer validaHorasInscritasDocente(Long docente) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("docente", docente);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlHorasInscritasDocente, paramSource, Integer.class);
+    }
+
+    @Override
+    public Integer obtenerHorasCurso(Long curso) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", curso);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerHorasCurso, paramSource, Integer.class);
     }
 }

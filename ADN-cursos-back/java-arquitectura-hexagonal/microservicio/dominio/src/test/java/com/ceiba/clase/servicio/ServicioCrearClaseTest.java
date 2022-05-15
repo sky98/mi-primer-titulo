@@ -25,10 +25,10 @@ public class ServicioCrearClaseTest {
     @DisplayName("Debería lanzar una excepción cuando se valide la existencia de la clase")
     void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDeLaClase() {
         // arrange
-        Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioClase.existeDocenteCurso(Mockito.anyLong(), Mockito.anyLong())).thenReturn(true);
         ServicioCrearClase servicioCrearClase = new ServicioCrearClase(repositorioClase);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionDuplicidad.class,"La clase ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionDuplicidad.class,"El docente ya se encuentra inscrito a ese curso");
     }
     @Test
     @DisplayName("Debería lanzar una excepción cuando se valide la existencia del docente")
@@ -55,9 +55,10 @@ public class ServicioCrearClaseTest {
         // arrange
         Mockito.when(repositorioClase.existeDocente(Mockito.anyLong())).thenReturn(true);
         Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioClase.validaHorasDocente(Mockito.anyLong(), Mockito.anyLong())).thenReturn(16);
+        Mockito.when(repositorioClase.validaHorasInscritasDocente(Mockito.anyLong())).thenReturn(14);
+        Mockito.when(repositorioClase.obtenerHorasCurso(Mockito.anyLong())).thenReturn(2);
         ServicioCrearClase servicioCrearClase = new ServicioCrearClase(repositorioClase);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorInvalido.class,"Docente supera limite de horas máximas");
+        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorInvalido.class,"El docente no puede superar el limite de horas máximas");
     }
 }

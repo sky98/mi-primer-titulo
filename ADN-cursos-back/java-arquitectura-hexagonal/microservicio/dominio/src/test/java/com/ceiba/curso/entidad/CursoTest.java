@@ -26,16 +26,6 @@ public class CursoTest {
         assertEquals("12345", curso.getDescripcion());
         assertEquals(2, curso.getHoras());
     }
-    @Test
-    void deberiaFallarSinIdentificacionDelCurso() {
-        //Arrange
-        CursoTestDataBuilder cursoTestDataBuilder = new CursoTestDataBuilder().conIdentificacion(null).conId(1L);
-        //act-assert
-        BasePrueba.assertThrows(() -> {
-                    cursoTestDataBuilder.build();
-                },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la identificación del curso");
-    }
 
     @Test
     void deberiaFallarSinNombreDelCurso() {
