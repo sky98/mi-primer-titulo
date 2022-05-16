@@ -8,7 +8,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorNoEncontrado;
 
 public class ServicioCrearClase {
 
-    private static final String EL_DOCENTE_YA_SE_ENCUENTRA_INSCRITO_A_ESE_CURSO = "El docente ya se encuentra inscrito a ese curso";
+    private static final String EL_CURSO_YA_ESTA_ASIGNADO_A_UN_DOCENTE = "El curso ya esta asignado a un docente";
     private static final String EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA = "El docente no existe en el sistema";
     private static final String EL_DOCENTE_NO_PUEDE_SUPERAR_EL_LIMITE_DE_HORAS_MAXIMAS = "El docente no puede superar el limite de horas máximas";
     private static final String EL_CURSO_NO_EXISTE_EN_EL_SISTEMA = "El curso no existe en el sistema";
@@ -27,9 +27,9 @@ public class ServicioCrearClase {
     }
 
     private void validarExistenciaPrevia(Clase clase){
-        boolean existe = repositorioClase.existeDocenteCurso(clase.getDocente(), clase.getCurso());
+        boolean existe = repositorioClase.existeCursoClase(clase.getCurso());
         if(existe){
-            throw new ExcepcionDuplicidad(EL_DOCENTE_YA_SE_ENCUENTRA_INSCRITO_A_ESE_CURSO);
+            throw new ExcepcionDuplicidad(EL_CURSO_YA_ESTA_ASIGNADO_A_UN_DOCENTE);
         }
     }
     private void validarExistenciaDocente(Clase clase){

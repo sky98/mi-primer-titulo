@@ -1,1 +1,1 @@
-select count(1) from clase where docente = :docente and curso = :curso
+select count(1) from clase where curso = :curso

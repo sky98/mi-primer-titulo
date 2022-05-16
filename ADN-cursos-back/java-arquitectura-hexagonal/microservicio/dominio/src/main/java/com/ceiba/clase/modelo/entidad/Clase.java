@@ -2,7 +2,6 @@ package com.ceiba.clase.modelo.entidad;
 
 import lombok.Getter;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarMenor;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter

@@ -1,0 +1,1 @@
+select count(*) from salon where curso = :curso

@@ -1,20 +1,19 @@
 package com.ceiba.horario.servicio.testdatabuilder;
 
-import com.ceiba.dominio.utiles.DiasSemana;
 import com.ceiba.horario.modelo.entidad.Horario;
 
 public class HorarioTestDataBuilder {
 
     private Long id;
     private Long clase;
-    private DiasSemana dia;
+    private Integer dia;
     private Integer horaInicio;
     private Integer cantidadHoras;
 
     public HorarioTestDataBuilder() {
         id = 1L;
         clase = 1L;
-        dia = DiasSemana.LUNES;
+        dia = 1;
         horaInicio = 8;
         cantidadHoras = 2;
     }
@@ -29,7 +28,7 @@ public class HorarioTestDataBuilder {
         return this;
     }
 
-    public HorarioTestDataBuilder conDia(DiasSemana dia) {
+    public HorarioTestDataBuilder conDia(Integer dia) {
         this.dia = dia;
         return this;
     }

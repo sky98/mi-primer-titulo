@@ -11,22 +11,31 @@ import org.springframework.stereotype.Repository;
 public class RepositorioClaseMysql implements RepositorioClase {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+
     @SqlStatement(namespace="clase", value="crear")
     private static String sqlCrear;
+
     @SqlStatement(namespace="clase", value="actualizar")
     private static String sqlActualizar;
+
     @SqlStatement(namespace="clase", value="eliminar")
     private static String sqlEliminar;
+
     @SqlStatement(namespace="clase", value="existePorId")
     private static String sqlExistePorId;
+
     @SqlStatement(namespace="docente", value="existePorId")
     private static String sqlExisteDocente;
+
     @SqlStatement(namespace="curso", value="existePorId")
     private static String sqlExisteCurso;
+
     @SqlStatement(namespace="clase", value="existeDocenteCurso")
     private static String sqlExisteDocenteCurso;
+
     @SqlStatement(namespace="clase", value="horasInscritas")
     private static String sqlHorasInscritasDocente;
+
     @SqlStatement(namespace="curso", value="obtenerHoras")
     private static String sqlObtenerHorasCurso;
 
@@ -73,9 +82,8 @@ public class RepositorioClaseMysql implements RepositorioClase {
     }
 
     @Override
-    public boolean existeDocenteCurso(Long docente, Long curso) {
+    public boolean existeCursoClase(Long curso) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("docente", docente);
         paramSource.addValue("curso", curso);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteDocenteCurso, paramSource, Boolean.class);
     }

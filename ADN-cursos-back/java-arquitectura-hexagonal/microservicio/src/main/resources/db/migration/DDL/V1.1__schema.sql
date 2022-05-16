@@ -39,8 +39,15 @@ create table clase (
 create table horario(
  id int(11) not null auto_increment,
  clase int(11) not null,
- dia varchar(100) not null,
- hora_inicio datetime not null,
+ dia int(11) not null,
+ hora_inicio int(11) not null,
  cantidad_horas int(11) not null,
+ primary key (id)
+);
+
+create table salon(
+ id int(11) not null auto_increment,
+ alumno int(11) not null,
+ curso int(11) not null,
  primary key (id)
 );

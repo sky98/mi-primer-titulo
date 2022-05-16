@@ -1,16 +1,12 @@
 package com.ceiba.horario.entidad;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
-import com.ceiba.dominio.utiles.DiasSemana;
 import com.ceiba.horario.modelo.entidad.Horario;
 import com.ceiba.horario.servicio.testdatabuilder.HorarioTestDataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,7 +22,7 @@ public class HorarioTest {
         //assert
         assertEquals(1, horario.getId());
         assertEquals(1, horario.getClase());
-        assertEquals(DiasSemana.LUNES, horario.getDia());
+        assertEquals(1, horario.getDia());
         assertEquals(8, horario.getHoraInicio());
         assertEquals(2, horario.getCantidadHoras());
     }
@@ -52,6 +48,17 @@ public class HorarioTest {
                     horarioTestDataBuilder.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar el día");
+    }
+
+    @Test
+    void deberiaFallarDiaFinDeSemana() {
+        //Arrange
+        HorarioTestDataBuilder horarioTestDataBuilder = new HorarioTestDataBuilder().conDia(6);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    horarioTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "Día de la clase fuera del rango permitido");
     }
 
     @Test

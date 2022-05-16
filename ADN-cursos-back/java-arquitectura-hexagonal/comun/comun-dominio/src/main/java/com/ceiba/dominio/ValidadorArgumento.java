@@ -95,7 +95,7 @@ public class ValidadorArgumento {
         }
     }
     public static void validarRangoComplejoNumero(int hora, int iniciaJornada, int iniciaDescanso, int finalizaDescanso, int finalizaJornada, String mensaje) {
-        if(!(hora >= iniciaJornada && hora <= iniciaDescanso) && !(hora >= finalizaDescanso && hora <= finalizaJornada)){
+        if(hora < iniciaJornada || hora > finalizaJornada || (hora > iniciaDescanso && hora < finalizaDescanso)){
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
