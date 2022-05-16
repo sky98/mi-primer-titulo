@@ -4,18 +4,15 @@ import com.ceiba.BasePrueba;
 import com.ceiba.alumno.modelo.entidad.Alumno;
 import com.ceiba.alumno.puerto.repositorio.RepositorioAlumno;
 import com.ceiba.alumno.servicio.testdatabuilder.AlumnoTestDataBuilder;
-import com.ceiba.docente.modelo.entidad.Docente;
-import com.ceiba.docente.puerto.repositorio.RepositorioDocente;
-import com.ceiba.docente.servicio.ServicioCrearDocente;
-import com.ceiba.docente.servicio.testdatabuilder.DocenteTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class ServicioCrearCursoTest {
+public class ServicioCrearAlumnoTest {
 
+    // Esto no iria, Solo se hacen validaciones que estan en el servicio
     @Test
     @DisplayName("Deberia lanzar una exepecion cuando la longitud de la identificación sea menor a 4")
     void deberiaLanzarUnaExepcionCuandoLaLongitudDeLaIdentificacionSeaMenorACuatro() {

@@ -1,22 +1,23 @@
 # Informacion del proyecto
-sonar.projectKey=co.ceiba.ceiba.adn:alquiler.bicicletas
-sonar.projectName=Ceiba-Alquiler Bicicletas(fabian.guerrero)
+sonar.projectKey=co.ceiba.ceiba.adn:mi.primer.titulo
+sonar.projectName=Ceiba-Mi primer titulo(rober.sehuanez)
 sonar.projectDescription=Induccion ADN Ceiba
 sonar.projectVersion=1.0
 sonar.sourceEncoding=UTF-8
+sonar.projectDescription=Prueba de Concepto para mostrar la configuración de Integración Continua
 
 # Modulo principal
 sonar.modules=principal
 principal.sonar.java.libraries=/home/ic/.gradle/caches/modules-2/files-2.1/**/*.jar
-principal.sonar.java.source=1.8
+principal.sonar.java.source=11
 
 
 #Datos de los fuentes y binarios modulo principal
-principal.sonar.projectBaseDir=ADN-AlquilerBicicletaBackend
+principal.sonar.projectBaseDir=ADN-cursos-back
 principal.sonar.sources=java-arquitectura-hexagonal/microservicio/dominio/src/main/java,java-arquitectura-hexagonal/microservicio/aplicacion/src/main/java,java-arquitectura-hexagonal/microservicio/infraestructura/src/main/java
 principal.sonar.java.binaries=java-arquitectura-hexagonal/microservicio/dominio/build/classes/java/main,java-arquitectura-hexagonal/microservicio/aplicacion/build/classes/java/main,java-arquitectura-hexagonal/microservicio/infraestructura/build/classes/java/main
 principal.sonar.java.libraries=/opt/ic/.gradle/caches/modules-2/files-2.1/**/*.jar
-principal.sonar.java.source=1.8
+principal.sonar.java.source=11
 
 
 #Datos de los fuentes y binarios de los tests modulo principal

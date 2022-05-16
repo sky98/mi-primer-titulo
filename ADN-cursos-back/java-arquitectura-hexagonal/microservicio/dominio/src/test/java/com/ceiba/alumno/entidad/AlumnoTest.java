@@ -32,10 +32,10 @@ public class AlumnoTest {
     void deberiaFallarSinNombreDeAlumno() {
 
         //Arrange
-        AlumnoTestDataBuilder alumnoTestDataBuilder = new AlumnoTestDataBuilder().conNombre(null).conId(1L);
+        AlumnoTestDataBuilder alumno = new AlumnoTestDataBuilder().conNombre(null).conId(1L);
         //act-assert
         BasePrueba.assertThrows(() -> {
-                    alumnoTestDataBuilder.build();
+                    alumno.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar el nombre del alumno");
     }
