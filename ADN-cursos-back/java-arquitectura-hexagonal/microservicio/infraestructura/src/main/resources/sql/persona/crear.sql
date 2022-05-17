@@ -1,0 +1,2 @@
+insert into persona (identificacion, nombre, apellido, direccion, telefono, correo_electronico, tipo)
+        values (:identificacion, :nombre, :apellido, :direccion, :telefono, :correoElectronico, :tipo)
