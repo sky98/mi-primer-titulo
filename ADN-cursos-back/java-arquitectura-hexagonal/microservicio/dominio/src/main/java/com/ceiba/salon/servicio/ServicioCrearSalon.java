@@ -12,6 +12,7 @@ public class ServicioCrearSalon {
     private static final String NO_SE_PERMITE_PORQUE_EXCEDE_EL_MAXIMO_DE_HORAS_PERMITIDAS = "No se permite, porque excede el máximo de horas permitidas";
     private static final String CANTIDAD_MAXIMA_DE_ALUMNOS_PARA_UN_CURSO_ALCANZADA = "Cantidad maxima de alumnos para un curso alcanzada";
     private static final String EL_CURSO_NO_EXISTE_EN_EL_SISTEMA = "El curso no existe en el sistema";
+    private static final String EL_ALUMNO_NO_EXISTE_EN_EL_SISTEMA = "El alumno no existe en el sistema";
     private static final int HORAS_MAXIMAS_ALUMNO = 30;
     private static final int CANTIDAD_MAXIMA_ALUMNO = 25;
     private final RepositorioSalon repositorioSalon;
@@ -23,6 +24,7 @@ public class ServicioCrearSalon {
     public Long ejecutar(Salon salon){
         validarExistenciaPrevia(salon);
         validarExistenciaPreviaCurso(salon);
+        validarExistenciaPreviaAlumno(salon);
         validarCantidadAlumno(salon);
         validarHorasAlumno(salon);
         return this.repositorioSalon.crear(salon);
@@ -38,6 +40,12 @@ public class ServicioCrearSalon {
         boolean existe = repositorioSalon.existeCurso(salon.getCurso());
         if(!existe){
             throw new ExcepcionValorNoEncontrado(EL_CURSO_NO_EXISTE_EN_EL_SISTEMA);
+        }
+    }
+    private void validarExistenciaPreviaAlumno(Salon salon){
+        boolean existe = repositorioSalon.existeAlumno(salon.getAlumno());
+        if(!existe){
+            throw new ExcepcionValorNoEncontrado(EL_ALUMNO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
     private void validarCantidadAlumno(Salon salon){

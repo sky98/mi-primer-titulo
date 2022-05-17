@@ -33,19 +33,7 @@ public interface RepositorioClase {
      * Permite validar si existe un curso con un id
      * @return si existe o no
      */
-    boolean existeCurso(Long id);
-
-    /**
-     * Permite validar si existe un docente con un id
-     * @return si existe o no
-     */
-    boolean existeDocente(Long id);
-
-    /**
-     * Permite validar si existe un curso con una clase asignada
-     * @return si existe o no
-     */
-    boolean existeCursoClase(Long curso);
+    boolean existeCurso(Long curso);
 
     /**
      * Valida las horas del docente inscritas

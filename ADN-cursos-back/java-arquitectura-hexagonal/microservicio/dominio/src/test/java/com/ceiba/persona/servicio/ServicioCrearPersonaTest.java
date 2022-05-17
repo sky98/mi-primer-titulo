@@ -1,8 +1,6 @@
 package com.ceiba.persona.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.alumno.puerto.repositorio.RepositorioAlumno;
-import com.ceiba.alumno.servicio.testdatabuilder.AlumnoTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.persona.modelo.entidad.Persona;
 import com.ceiba.persona.puerto.repositorio.RepositorioPersona;
@@ -28,10 +26,10 @@ public class ServicioCrearPersonaTest {
         // arrange
         Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioPersona.existePorIdentificacion(Mockito.anyString())).thenReturn(false);
-        //act
         servicioCrearPersona = new ServicioCrearPersona(repositorioPersona);
+        //act
         servicioCrearPersona.ejecutar(persona);
-        // act
+        // assert
         Mockito.verify(repositorioPersona,Mockito.times(1)).crear(persona);
     }
 
@@ -40,9 +38,8 @@ public class ServicioCrearPersonaTest {
     void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDeLaPersona() {
         // arrange
         Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(true);
-        //act
+        // act - assert
         servicioCrearPersona = new ServicioCrearPersona(repositorioPersona);
-        // act
         BasePrueba.assertThrows(() -> servicioCrearPersona.ejecutar(persona), ExcepcionDuplicidad.class,"La persona ya existe en el sistema");
     }
 
@@ -52,9 +49,8 @@ public class ServicioCrearPersonaTest {
         // arrange
         Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioPersona.existePorIdentificacion(Mockito.anyString())).thenReturn(true);
-        //act
+        // act - assert
         servicioCrearPersona = new ServicioCrearPersona(repositorioPersona);
-        // act
         BasePrueba.assertThrows(() -> servicioCrearPersona.ejecutar(persona), ExcepcionDuplicidad.class,"Numero de identificación ya se encuentra en el sistema");
     }
 }

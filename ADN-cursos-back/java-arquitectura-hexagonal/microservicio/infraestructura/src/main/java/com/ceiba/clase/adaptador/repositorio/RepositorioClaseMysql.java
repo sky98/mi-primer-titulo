@@ -24,14 +24,8 @@ public class RepositorioClaseMysql implements RepositorioClase {
     @SqlStatement(namespace="clase", value="existePorId")
     private static String sqlExistePorId;
 
-    @SqlStatement(namespace="docente", value="existePorId")
-    private static String sqlExisteDocente;
-
-    @SqlStatement(namespace="curso", value="existePorId")
+    @SqlStatement(namespace="clase", value="existeCurso")
     private static String sqlExisteCurso;
-
-    @SqlStatement(namespace="clase", value="existeDocenteCurso")
-    private static String sqlExisteDocenteCurso;
 
     @SqlStatement(namespace="clase", value="horasInscritas")
     private static String sqlHorasInscritasDocente;
@@ -68,24 +62,10 @@ public class RepositorioClaseMysql implements RepositorioClase {
     }
 
     @Override
-    public boolean existeCurso(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteCurso,paramSource, Boolean.class);
-    }
-
-    @Override
-    public boolean existeDocente(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteDocente,paramSource, Boolean.class);
-    }
-
-    @Override
-    public boolean existeCursoClase(Long curso) {
+    public boolean existeCurso(Long curso) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("curso", curso);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteDocenteCurso, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteCurso,paramSource, Boolean.class);
     }
 
     @Override

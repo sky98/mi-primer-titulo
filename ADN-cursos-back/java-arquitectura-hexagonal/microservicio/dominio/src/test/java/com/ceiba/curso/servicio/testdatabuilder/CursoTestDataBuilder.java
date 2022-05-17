@@ -1,7 +1,6 @@
 package com.ceiba.curso.servicio.testdatabuilder;
 
 import com.ceiba.curso.modelo.entidad.Curso;
-import com.ceiba.docente.modelo.entidad.Docente;
 
 public class CursoTestDataBuilder {
     private Long id;

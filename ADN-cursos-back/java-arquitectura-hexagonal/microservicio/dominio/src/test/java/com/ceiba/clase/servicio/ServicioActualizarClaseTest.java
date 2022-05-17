@@ -5,7 +5,6 @@ import com.ceiba.clase.modelo.entidad.Clase;
 import com.ceiba.clase.puerto.repositorio.RepositorioClase;
 import com.ceiba.clase.servicio.testdatabuilder.ClaseTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.dominio.excepcion.ExcepcionValorNoEncontrado;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,34 +28,10 @@ public class ServicioActualizarClaseTest {
         BasePrueba.assertThrows(() -> servicioActualizarClase.ejecutar(clase), ExcepcionDuplicidad.class,"La clase no existe en el sistema");
     }
     @Test
-    @DisplayName("Debería validar la existencia previa del docente")
-    void deberiaValidarLaExistenciaPreviaDelDocente() {
-        // arrange
-        Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioClase.existeDocente(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarClase servicioActualizarClase = new ServicioActualizarClase(repositorioClase);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarClase.ejecutar(clase), ExcepcionValorNoEncontrado.class,"El docente no existe en el sistema");
-    }
-    @Test
-    @DisplayName("Debería validar la existencia previa del curso")
-    void deberiaValidarLaExistenciaPreviaDelCurso() {
-        // arrange
-        Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioClase.existeDocente(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarClase servicioActualizarClase = new ServicioActualizarClase(repositorioClase);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarClase.ejecutar(clase), ExcepcionValorNoEncontrado.class,"El curso no existe en el sistema");
-    }
-
-    @Test
     @DisplayName("Debería actualizar correctamente en el repositorio")
     void deberiaActualizarCorrectamenteEnElRepositorio() {
         // arrange
         Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioClase.existeDocente(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(true);
         ServicioActualizarClase servicioActualizarClase = new ServicioActualizarClase(repositorioClase);
         // act
         servicioActualizarClase.ejecutar(clase);

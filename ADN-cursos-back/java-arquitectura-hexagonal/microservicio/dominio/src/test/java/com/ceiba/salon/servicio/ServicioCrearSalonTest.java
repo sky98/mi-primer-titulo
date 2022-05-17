@@ -25,6 +25,23 @@ public class ServicioCrearSalonTest {
     }
 
     @Test
+    @DisplayName("Debería crear correctamente en el repositorio")
+    void deberiaCrearCorrectamenteEnElRepositorio() {
+        // arrange
+        Mockito.when(repositorioSalon.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioSalon.existeCurso(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioSalon.existeAlumno(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioSalon.obtenerCantidadAlumnos(Mockito.anyLong())).thenReturn(25);
+        Mockito.when(repositorioSalon.contadorHorasAlumno(Mockito.anyLong())).thenReturn(28);
+        Mockito.when(repositorioSalon.obtenerHorasCurso(Mockito.anyLong())).thenReturn(2);
+        servicioCrearSalon = new ServicioCrearSalon(repositorioSalon);
+        // act
+        servicioCrearSalon.ejecutar(salon);
+        //assert
+        Mockito.verify(repositorioSalon,Mockito.times(1)).crear(salon);
+    }
+
+    @Test
     @DisplayName("Debería lanzar una excepción cuando el salon ya existe en el sistema")
     void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDelSalon() {
         // arrange
@@ -43,12 +60,26 @@ public class ServicioCrearSalonTest {
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearSalon.ejecutar(salon), ExcepcionValorNoEncontrado.class,"El curso no existe en el sistema");
     }
+
+    @Test
+    @DisplayName("Debería lanzar una excepción validando la existencia del alumno")
+    void deberiaLanzarUnaExcepcionValidandoLaExistenciaDelAlumno() {
+        // arrange
+        Mockito.when(repositorioSalon.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioSalon.existeCurso(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioSalon.existeAlumno(Mockito.anyLong())).thenReturn(false);
+        servicioCrearSalon = new ServicioCrearSalon(repositorioSalon);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearSalon.ejecutar(salon), ExcepcionValorNoEncontrado.class,"El alumno no existe en el sistema");
+    }
+
     @Test
     @DisplayName("Debería lanzar una excepción cuando la cantidad de alumnos se excede")
     void deberiaLanzarUnaExcepcionCuandoLaCantidadDeAlumnosSeExcede() {
         // arrange
         Mockito.when(repositorioSalon.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioSalon.existeCurso(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioSalon.existeAlumno(Mockito.anyLong())).thenReturn(true);
         Mockito.when(repositorioSalon.obtenerCantidadAlumnos(Mockito.anyLong())).thenReturn(26);
         servicioCrearSalon = new ServicioCrearSalon(repositorioSalon);
         // act - assert
@@ -60,27 +91,12 @@ public class ServicioCrearSalonTest {
         // arrange
         Mockito.when(repositorioSalon.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioSalon.existeCurso(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioSalon.existeAlumno(Mockito.anyLong())).thenReturn(true);
         Mockito.when(repositorioSalon.obtenerCantidadAlumnos(Mockito.anyLong())).thenReturn(25);
         Mockito.when(repositorioSalon.contadorHorasAlumno(Mockito.anyLong())).thenReturn(30);
         Mockito.when(repositorioSalon.obtenerHorasCurso(Mockito.anyLong())).thenReturn(2);
         servicioCrearSalon = new ServicioCrearSalon(repositorioSalon);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearSalon.ejecutar(salon), ExcepcionValorInvalido.class,"No se permite, porque excede el máximo de horas permitidas");
-    }
-
-    @Test
-    @DisplayName("Debería crear correctamente en el repositorio")
-    void deberiaCrearCorrectamenteEnElRepositorio() {
-        // arrange
-        Mockito.when(repositorioSalon.existePorId(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioSalon.existeCurso(Mockito.anyLong())).thenReturn(true);
-        Mockito.when(repositorioSalon.obtenerCantidadAlumnos(Mockito.anyLong())).thenReturn(25);
-        Mockito.when(repositorioSalon.contadorHorasAlumno(Mockito.anyLong())).thenReturn(28);
-        Mockito.when(repositorioSalon.obtenerHorasCurso(Mockito.anyLong())).thenReturn(2);
-        servicioCrearSalon = new ServicioCrearSalon(repositorioSalon);
-        // act
-        servicioCrearSalon.ejecutar(salon);
-        //assert
-        Mockito.verify(repositorioSalon,Mockito.times(1)).crear(salon);
     }
 }

@@ -37,6 +37,19 @@ public interface RepositorioSalon {
     boolean existeCurso(Long curso);
 
     /**
+     * Permite validar si existe un alumno por el id
+     * @return si existe o no
+     */
+    boolean existeAlumno(Long alumno);
+
+    /**
+     * Obtiene la cantidad de alumnos inscritos a un curso
+     *  @param curso
+     * @return horas del curso
+     */
+    Integer obtenerCantidadAlumnos(Long curso);
+
+    /**
      * Permite obtener el total de horas inscritas por el alumno
      * @return total de las horas
      */
@@ -48,11 +61,4 @@ public interface RepositorioSalon {
      * @return horas del curso
      */
     Integer obtenerHorasCurso(Long curso);
-
-    /**
-     * Obtiene la cantidad de alumnos inscritos a un curso
-     *  @param curso
-     * @return horas del curso
-     */
-    Integer obtenerCantidadAlumnos(Long curso);
 }
