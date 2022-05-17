@@ -22,7 +22,7 @@ public class ServicioActualizarAlumnoTest {
     }
 
     @Test
-    @DisplayName("Deberia validar la existencia previa del alumno")
+    @DisplayName("Debería validar la existencia previa del alumno")
     void deberiaValidarLaExistenciaPreviaDelAlumno() {
         // arrange
         Mockito.when(repositorioAlumno.existePorId(Mockito.anyLong())).thenReturn(false);
@@ -32,7 +32,7 @@ public class ServicioActualizarAlumnoTest {
     }
 
     @Test
-    @DisplayName("Deberia actualizar correctamente en el repositorio")
+    @DisplayName("Debería actualizar correctamente en el repositorio")
     void deberiaActualizarCorrectamenteEnElRepositorio() {
         // arrange
         Mockito.when(repositorioAlumno.existePorId(Mockito.anyLong())).thenReturn(true);
