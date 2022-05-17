@@ -13,24 +13,6 @@ import org.mockito.Mockito;
 public class ServicioCrearCursoTest {
 
     @Test
-    @DisplayName("Debería lanzar una excepción cuando las horas del curso es menor a 1")
-    void deberiaLanzarUnaExcepcionCuandoLasHorasSeanMenorAUno() {
-        // arrange
-        CursoTestDataBuilder cursoTestDataBuilder = new CursoTestDataBuilder().conHoras(1/2);
-        // act - assert
-        BasePrueba.assertThrows(cursoTestDataBuilder::build, ExcepcionValorInvalido.class, "El valor mínimo de horas es 1");
-    }
-
-    @Test
-    @DisplayName("Debería lanzar una excepción cuando las horas del curso es mayor a 4")
-    void deberiaLanzarUnaExcepcionCuandoLasHorasSeanMayorACuatro() {
-        // arrange
-        CursoTestDataBuilder cursoTestDataBuilder = new CursoTestDataBuilder().conHoras(5);
-        // act - assert
-        BasePrueba.assertThrows(cursoTestDataBuilder::build, ExcepcionValorInvalido.class, "El valor máximo de horas es 4");
-    }
-
-    @Test
     @DisplayName("Debería lanzar una excepción cuando se valide la existencia del Curso")
     void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDelCurso() {
         // arrange

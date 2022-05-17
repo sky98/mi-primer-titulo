@@ -14,6 +14,7 @@ public class ServicioActualizarHorarioTest {
 
     private static Horario horario;
     private static RepositorioHorario repositorioHorario;
+    private static ServicioActualizarHorario servicioActualizarHorario;
 
     @BeforeAll
     public static void iniciandoObjetos(){
@@ -26,7 +27,7 @@ public class ServicioActualizarHorarioTest {
     void deberiaValidarLaExistenciaPreviaDelHorario() {
         // arrange
         Mockito.when(repositorioHorario.existePorId(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarHorario servicioActualizarHorario = new ServicioActualizarHorario(repositorioHorario);
+        servicioActualizarHorario = new ServicioActualizarHorario(repositorioHorario);
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarHorario.ejecutar(horario), ExcepcionDuplicidad.class,"El horario no existe en el sistema");
     }
@@ -36,7 +37,7 @@ public class ServicioActualizarHorarioTest {
     void deberiaActualizarCorrectamenteEnElRepositorio() {
         // arrange
         Mockito.when(repositorioHorario.existePorId(Mockito.anyLong())).thenReturn(true);
-        ServicioActualizarHorario servicioActualizarHorario = new ServicioActualizarHorario(repositorioHorario);
+        servicioActualizarHorario = new ServicioActualizarHorario(repositorioHorario);
         // act
         servicioActualizarHorario.ejecutar(horario);
         //assert

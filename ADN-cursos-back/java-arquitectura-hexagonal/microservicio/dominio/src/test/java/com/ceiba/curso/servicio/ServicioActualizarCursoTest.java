@@ -22,16 +22,6 @@ public class ServicioActualizarCursoTest {
     }
 
     @Test
-    @DisplayName("Debería validar la existencia previa del curso")
-    void deberiaValidarLaExistenciaPreviaDelCurso() {
-        // arrange
-        Mockito.when(repositorioCurso.existePorId(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarCurso servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarCurso.ejecutar(curso), ExcepcionDuplicidad.class,"El curso no existe en el sistema");
-    }
-
-    @Test
     @DisplayName("Debería actualizar correctamente en el repositorio")
     void deberiaActualizarCorrectamenteEnElRepositorio() {
         // arrange
@@ -41,5 +31,15 @@ public class ServicioActualizarCursoTest {
         servicioActualizarCurso.ejecutar(curso);
         //assert
         Mockito.verify(repositorioCurso,Mockito.times(1)).actualizar(curso);
+    }
+
+    @Test
+    @DisplayName("Debería validar la existencia previa del curso")
+    void deberiaValidarLaExistenciaPreviaDelCurso() {
+        // arrange
+        Mockito.when(repositorioCurso.existePorId(Mockito.anyLong())).thenReturn(false);
+        ServicioActualizarCurso servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioActualizarCurso.ejecutar(curso), ExcepcionDuplicidad.class,"El curso no existe en el sistema");
     }
 }

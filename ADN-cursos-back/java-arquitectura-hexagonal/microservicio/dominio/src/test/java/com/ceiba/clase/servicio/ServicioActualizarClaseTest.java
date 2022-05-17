@@ -18,15 +18,7 @@ public class ServicioActualizarClaseTest {
         clase = new ClaseTestDataBuilder().conId(1L).build();
         repositorioClase = Mockito.mock(RepositorioClase.class);
     }
-    @Test
-    @DisplayName("Debería validar la existencia previa de la clase")
-    void deberiaValidarLaExistenciaPreviaDeLaClase() {
-        // arrange
-        Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarClase servicioActualizarClase = new ServicioActualizarClase(repositorioClase);
-        // act - assert
-        BasePrueba.assertThrows(() -> servicioActualizarClase.ejecutar(clase), ExcepcionDuplicidad.class,"La clase no existe en el sistema");
-    }
+
     @Test
     @DisplayName("Debería actualizar correctamente en el repositorio")
     void deberiaActualizarCorrectamenteEnElRepositorio() {
@@ -37,5 +29,15 @@ public class ServicioActualizarClaseTest {
         servicioActualizarClase.ejecutar(clase);
         //assert
         Mockito.verify(repositorioClase,Mockito.times(1)).actualizar(clase);
+    }
+
+    @Test
+    @DisplayName("Debería validar la existencia previa de la clase")
+    void deberiaValidarLaExistenciaPreviaDeLaClase() {
+        // arrange
+        Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(false);
+        ServicioActualizarClase servicioActualizarClase = new ServicioActualizarClase(repositorioClase);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioActualizarClase.ejecutar(clase), ExcepcionDuplicidad.class,"La clase no existe en el sistema");
     }
 }

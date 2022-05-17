@@ -22,18 +22,6 @@ public class ServicioActualizarPersonaTest {
         persona = new PersonaTestDataBuilder().conId(1L).build();
         repositorioPersona = Mockito.mock(RepositorioPersona.class);
     }
-
-    @Test
-    @DisplayName("Debería validar la existencia previa de la persona")
-    void deberiaValidarLaExistenciaPreviaDeLaPersona() {
-        // arrange
-        Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(false);
-        // act
-        servicioActualizarPersona = new ServicioActualizarPersona(repositorioPersona);
-        // assert
-        BasePrueba.assertThrows(() -> servicioActualizarPersona.ejecutar(persona), ExcepcionDuplicidad.class,"La persona no existe en el sistema");
-    }
-
     @Test
     @DisplayName("Debería actualizar correctamente en el repositorio")
     void deberiaActualizarCorrectamenteEnElRepositorio() {
@@ -44,5 +32,16 @@ public class ServicioActualizarPersonaTest {
         servicioActualizarPersona.ejecutar(persona);
         //assert
         Mockito.verify(repositorioPersona,Mockito.times(1)).actualizar(persona);
+    }
+
+    @Test
+    @DisplayName("Debería validar la existencia previa de la persona")
+    void deberiaValidarLaExistenciaPreviaDeLaPersona() {
+        // arrange
+        Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(false);
+        // act
+        servicioActualizarPersona = new ServicioActualizarPersona(repositorioPersona);
+        // assert
+        BasePrueba.assertThrows(() -> servicioActualizarPersona.ejecutar(persona), ExcepcionDuplicidad.class,"La persona no existe en el sistema");
     }
 }
