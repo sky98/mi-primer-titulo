@@ -27,15 +27,15 @@ pipeline {
 	stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        sh 'chmod +x ./microservicio/gradlew'
-    	sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
+        sh 'chmod +x ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio'
+    	sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle clean'
       }
     }
     
     stage('Compile & Unit Tests') {
       steps{
-        sh 'chmod +x ./microservicio/gradlew'
-        sh './microservicio/gradlew --b ./microservicio/build.gradle test'
+        sh 'chmod +x ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio'
+        sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
       }
     }
 
@@ -56,7 +56,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
 		//Construir sin tarea test que se ejecutó previamente
-		sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
+		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle build -x test'
       }
     }  
   }
@@ -67,7 +67,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-	  junit 'microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
+	  junit '/ADN-cursos-back/java-arquitectura-hexagonal/microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
     }
     failure {
       echo 'This will run only if failed'
