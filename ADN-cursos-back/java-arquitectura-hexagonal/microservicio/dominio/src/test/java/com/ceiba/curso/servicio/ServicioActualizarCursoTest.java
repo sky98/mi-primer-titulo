@@ -14,6 +14,7 @@ public class ServicioActualizarCursoTest {
 
     private static Curso curso;
     private static RepositorioCurso repositorioCurso;
+    private static ServicioActualizarCurso servicioActualizarCurso;
 
     @BeforeAll
     public static void iniciandoObjetos(){
@@ -26,7 +27,7 @@ public class ServicioActualizarCursoTest {
     void deberiaActualizarCorrectamenteEnElRepositorio() {
         // arrange
         Mockito.when(repositorioCurso.existePorId(Mockito.anyLong())).thenReturn(true);
-        ServicioActualizarCurso servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
+        servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
         // act
         servicioActualizarCurso.ejecutar(curso);
         //assert
@@ -38,7 +39,7 @@ public class ServicioActualizarCursoTest {
     void deberiaValidarLaExistenciaPreviaDelCurso() {
         // arrange
         Mockito.when(repositorioCurso.existePorId(Mockito.anyLong())).thenReturn(false);
-        ServicioActualizarCurso servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
+        servicioActualizarCurso = new ServicioActualizarCurso(repositorioCurso);
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarCurso.ejecutar(curso), ExcepcionDuplicidad.class,"El curso no existe en el sistema");
     }

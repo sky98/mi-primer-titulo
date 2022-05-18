@@ -41,7 +41,7 @@ public class ComandoControladorCursoTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(curso)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
+                .andExpect(content().json("{'valor': 3}"));
     }
     @Test
     @DisplayName("Debería actualizar un curso")
@@ -69,6 +69,6 @@ public class ComandoControladorCursoTest {
         mocMvc.perform(get("/cursos")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
+                .andExpect(jsonPath("$", hasSize(1)));
     }
 }

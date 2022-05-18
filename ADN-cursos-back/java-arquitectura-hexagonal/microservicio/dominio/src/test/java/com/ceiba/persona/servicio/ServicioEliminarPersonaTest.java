@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class ServicioEliminarPersonaTest {
+
     private static RepositorioPersona repositorioPersona;
     private static ServicioEliminarPersona servicioEliminarPersona;
 
@@ -18,6 +19,7 @@ public class ServicioEliminarPersonaTest {
     public static void iniciandoObjetos(){
         repositorioPersona = Mockito.mock(RepositorioPersona.class);
     }
+
     @Test
     @DisplayName("Debería eliminar la persona llamando al repositorio")
     void deberiaEliminarLaPersonaLlamandoAlRepositorio() {

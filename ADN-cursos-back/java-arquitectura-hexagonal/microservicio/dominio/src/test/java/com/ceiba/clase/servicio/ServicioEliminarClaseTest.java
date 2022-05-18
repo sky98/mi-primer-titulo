@@ -12,12 +12,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class ServicioEliminarClaseTest {
+
     private static RepositorioClase repositorioClase;
     private static ServicioEliminarClase servicioEliminarClase;
+
     @BeforeAll
     public static void iniciandoObjetos(){
         repositorioClase = Mockito.mock(RepositorioClase.class);
     }
+
     @Test
     @DisplayName("Debería eliminar la clase llamando al repositorio")
     void deberiaEliminarLaClaseLlamandoAlRepositorio() {
@@ -28,8 +31,8 @@ public class ServicioEliminarClaseTest {
         servicioEliminarClase.ejecutar(1l);
         // assert
         Mockito.verify(repositorioClase, Mockito.times(1)).eliminar(1l);
-
     }
+
     @Test
     @DisplayName("Debería validar la existencia previa de la clase")
     void deberiaValidarLaExistenciaPreviaDeLaClase() {

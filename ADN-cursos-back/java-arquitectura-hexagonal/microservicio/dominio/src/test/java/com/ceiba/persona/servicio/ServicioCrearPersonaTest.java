@@ -15,11 +15,13 @@ public class ServicioCrearPersonaTest {
     private static Persona persona;
     private static RepositorioPersona repositorioPersona;
     private static ServicioCrearPersona servicioCrearPersona;
+
     @BeforeAll
     public static void iniciandoObjetos(){
         persona = new PersonaTestDataBuilder().conId(1L).build();
         repositorioPersona = Mockito.mock(RepositorioPersona.class);
     }
+
     @Test
     @DisplayName("Debería crear correctamente en el repositorio")
     void deberiaCrearCorrectamenteEnElRepositorio() {
@@ -38,8 +40,8 @@ public class ServicioCrearPersonaTest {
     void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDeLaPersona() {
         // arrange
         Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(true);
-        // act - assert
         servicioCrearPersona = new ServicioCrearPersona(repositorioPersona);
+        // act - assert
         BasePrueba.assertThrows(() -> servicioCrearPersona.ejecutar(persona), ExcepcionDuplicidad.class,"La persona ya existe en el sistema");
     }
 
@@ -49,8 +51,8 @@ public class ServicioCrearPersonaTest {
         // arrange
         Mockito.when(repositorioPersona.existePorId(Mockito.anyLong())).thenReturn(false);
         Mockito.when(repositorioPersona.existePorIdentificacion(Mockito.anyString())).thenReturn(true);
-        // act - assert
         servicioCrearPersona = new ServicioCrearPersona(repositorioPersona);
+        // act - assert
         BasePrueba.assertThrows(() -> servicioCrearPersona.ejecutar(persona), ExcepcionDuplicidad.class,"Numero de identificación ya se encuentra en el sistema");
     }
 }
