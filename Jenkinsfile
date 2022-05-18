@@ -27,7 +27,7 @@ pipeline {
 	stage('Clean') {
       steps{
         echo "------------>Clean<------------"
-        sh 'chmod +x ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradle'
+        sh 'chmod +x ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew'
     	sh './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle clean'
       }
     }
@@ -35,8 +35,8 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
 	  
-		sh 'chmod +x /ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradle'
-		sh './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
+		sh 'chmod +x /ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew'
+		sh './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
       }
     }
 
@@ -57,7 +57,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
 		//Construir sin tarea test que se ejecutó previamente
-		sh './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle build -x test'
+		sh './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle build -x test'
       }
     }  
   }
