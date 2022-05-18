@@ -35,7 +35,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
 	  
-		sh 'chmod +x /ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew'
+		sh 'chmod +x ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew'
 		sh './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/gradlew --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
       }
     }
