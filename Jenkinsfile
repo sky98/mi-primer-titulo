@@ -27,7 +27,11 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-		sh 'chmod +x gradle'
+		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle clean' //Asegurar no tener datos basura de compilaciones anteriores
+		//sh 'chmod +x gradle'
+		echo "------------>Clean de compilaciones pasadas<------------"
+		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle compileJava'
+		echo "------------>Se compiló<------------"
 		sh './gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
       }
     }
