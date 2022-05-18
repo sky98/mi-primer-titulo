@@ -6,18 +6,18 @@ pipeline {
     label 'Slave_Induccion'
   }
 
-  //Opciones específicas de Pipeline dentro del Pipeline
+  //Opciones especÃ­ficas de Pipeline dentro del Pipeline
   options {
-    	buildDiscarder(logRotator(numToKeepStr: '3')) //Número maximo de ejecuciones a guardar
+    	buildDiscarder(logRotator(numToKeepStr: '3')) //NÃºmero maximo de ejecuciones a guardar
  	disableConcurrentBuilds() //No permitir compilaciones simultaneas
   }
 
-  //Una sección que define las herramientas “preinstaladas” en Jenkins
+  //Una secciÃ³n que define las herramientas â€œpreinstaladasâ€ en Jenkins
   tools {
-    jdk 'JDK11_Centos' //Versión preinstalada en la Configuración del Master
+    jdk 'JDK11_Centos' //VersiÃ³n preinstalada en la ConfiguraciÃ³n del Master
   }
 
-  //Aquí comienzan los “items” del Pipeline
+  //AquÃ­ comienzan los â€œitemsâ€ del Pipeline
   stages{
     stage('Checkout') {
       steps{
@@ -36,7 +36,7 @@ pipeline {
 
     stage('Static Code Analysis') {
       steps{
-        echo '------------>Análisis de código estático<------------'
+        echo '------------>AnÃ¡lisis de cÃ³digo estÃ¡tico<------------'
 			withSonarQubeEnv('Sonar') {
 			sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
 			sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:miprimertitulo-rober.sehuanez', 
@@ -50,7 +50,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-		//Construir sin tarea test que se ejecutó previamente
+		//Construir sin tarea test que se ejecutÃ³ previamente
 		sh './gradlew --b ./build.gradle build -x test'
       }
     }  
