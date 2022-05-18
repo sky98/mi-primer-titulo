@@ -43,8 +43,6 @@ pipeline {
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
-			withSonarQubeEnv('Sonar') {
-			sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
 			sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:miprimertitulo-rober.sehuanez', 
 			sonarName:'CeibaADN-MiPrimerTitulo(rober.sehuanez)', 
 			sonarPathProperties:'./sonar-project.properties')
@@ -68,7 +66,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-	  junit '/ADN-cursos-back/java-arquitectura-hexagonal/microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
+	  junit './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
     }
     failure {
       echo 'This will run only if failed'
