@@ -48,7 +48,6 @@ pipeline {
 						sonarName:'CeibaADN-MiPrimerTitulo(rober.sehuanez)', 
 						sonarPathProperties:'./sonar-project.properties')
 
-        }
       }
     }
 
