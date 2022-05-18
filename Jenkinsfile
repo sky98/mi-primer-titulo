@@ -21,14 +21,15 @@ pipeline {
       steps{
         echo "------------>Checkout<------------"
 		checkout scm
+		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle clean' //Asegurar no tener datos basura de compilaciones anteriores
       }
     }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-		sh 'chmod +x gradlew'
-		sh './gradlew --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
+		sh 'chmod +x gradle'
+		sh './gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
       }
     }
 
@@ -49,7 +50,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
 		//Construir sin tarea test que se ejecutó previamente
-		sh './gradlew --b ./build.gradle build -x test'
+		sh './gradle --b ./build.gradle build -x test'
       }
     }  
   }
