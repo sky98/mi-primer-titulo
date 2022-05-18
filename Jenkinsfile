@@ -1,3 +1,4 @@
+@Library('ceiba-jenkins-library') _
 pipeline {
   //Donde se va a ejecutar el Pipeline
   agent {
@@ -43,9 +44,9 @@ pipeline {
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
-			sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:miprimertitulo-rober.sehuanez', 
-			sonarName:'CeibaADN-MiPrimerTitulo(rober.sehuanez)', 
-			sonarPathProperties:'./sonar-project.properties')
+		sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:miprimertitulo-rober.sehuanez', 
+						sonarName:'"CeibaADN-MiPrimerTitulo(rober.sehuanez)"', 
+						sonarPathProperties:'./sonar-project.properties')
 
         }
       }
