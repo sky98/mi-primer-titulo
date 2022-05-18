@@ -7,7 +7,7 @@ pipeline {
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
     	buildDiscarder(logRotator(numToKeepStr: '3')) //Número maximo de ejecuciones a guardar
- 	disableConcurrentBuilds() //No permitir compilaciones simultaneas
+		disableConcurrentBuilds() //No permitir compilaciones simultaneas
   }
 
   //Una sección que define las herramientas “preinstaladas” en Jenkins
@@ -21,7 +21,6 @@ pipeline {
       steps{
         echo "------------>Checkout<------------"
 		checkout scm
-		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle clean' //Asegurar no tener datos basura de compilaciones anteriores
       }
     }
     
