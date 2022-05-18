@@ -23,16 +23,19 @@ pipeline {
 		checkout scm
       }
     }
+	
+	stage('Clean') {
+      steps{
+        echo "------------>Clean<------------"
+        sh 'chmod +x ./microservicio/gradlew'
+    	sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
+      }
+    }
     
     stage('Compile & Unit Tests') {
       steps{
-        echo "------------>Compile & Unit Tests<------------"
-		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle clean' //Asegurar no tener datos basura de compilaciones anteriores
-		//sh 'chmod +x gradle'
-		echo "------------>Clean de compilaciones pasadas<------------"
-		sh 'gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle compileJava'
-		echo "------------>Se compiló<------------"
-		sh './gradle --b ./ADN-cursos-back/java-arquitectura-hexagonal/microservicio/build.gradle test'
+        sh 'chmod +x ./microservicio/gradlew'
+        sh './microservicio/gradlew --b ./microservicio/build.gradle test'
       }
     }
 
@@ -53,7 +56,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
 		//Construir sin tarea test que se ejecutó previamente
-		sh './gradle --b ./build.gradle build -x test'
+		sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
       }
     }  
   }
@@ -64,7 +67,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-	  junit 'build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
+	  junit 'microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
     }
     failure {
       echo 'This will run only if failed'
