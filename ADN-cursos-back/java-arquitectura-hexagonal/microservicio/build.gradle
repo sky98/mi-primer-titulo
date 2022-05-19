@@ -64,7 +64,6 @@ allprojects {
 			"io.springfox:springfox-swagger2:2.9.2"
 	]
 
-	//project.ext.db = ["mysql:mysql-connector-java"]
 	project.ext.db = ["com.h2database:h2"]
 
 	project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
