@@ -66,7 +66,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-	  junit './ADN-cursos-back/java-arquitectura-hexagonal/microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
+	  junit 'ADN-cursos-back/java-arquitectura-hexagonal/microservicio/dominio/build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
     }
     failure {
       echo 'This will run only if failed'
