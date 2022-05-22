@@ -10,7 +10,8 @@ public class ServicioCrearClase {
 
     private static final String LA_CLASE_YA_ESTA_REGISTRADA_EN_EL_SISTEMA = "La clase ya esta registrada en el sistema";
     private static final String EL_DOCENTE_NO_PUEDE_SUPERAR_EL_LIMITE_DE_HORAS_MAXIMAS = "El docente no puede superar el limite de horas máximas";
-    private static final String EL_CURSO_YA_EXISTE_EN_EL_SISTEMA = "El curso ya existe en el sistema";
+    private static final String EL_CURSO_YA_ESTA_ASIGNADO_A_UNA_CLASE = "El curso ya esta asignado a una clase";
+    private static final String EL_CURSO_NO_EXISTE_EN_EL_SISTEMA = "El curso no existe en el sistema";
     private final RepositorioClase repositorioClase;
 
     public ServicioCrearClase(RepositorioClase repositorioClase) {
@@ -19,6 +20,7 @@ public class ServicioCrearClase {
 
     public Long ejecutar(Clase clase){
         validarExistenciaPrevia(clase);
+        validarAsignacionPreviaCurso(clase);
         validarExistenciaPreviaCurso(clase);
         validarHorasDocente(clase);
         return this.repositorioClase.crear(clase);
@@ -29,10 +31,16 @@ public class ServicioCrearClase {
             throw new ExcepcionDuplicidad(LA_CLASE_YA_ESTA_REGISTRADA_EN_EL_SISTEMA);
         }
     }
+    private void validarAsignacionPreviaCurso(Clase clase){
+        boolean existe = repositorioClase.existeAsignacionCurso(clase.getCurso());
+        if(existe){
+            throw new ExcepcionValorNoEncontrado(EL_CURSO_YA_ESTA_ASIGNADO_A_UNA_CLASE);
+        }
+    }
     private void validarExistenciaPreviaCurso(Clase clase){
         boolean existe = repositorioClase.existeCurso(clase.getCurso());
-        if(existe){
-            throw new ExcepcionValorNoEncontrado(EL_CURSO_YA_EXISTE_EN_EL_SISTEMA);
+        if(!existe){
+            throw new ExcepcionValorNoEncontrado(EL_CURSO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
     private void validarHorasDocente(Clase clase){

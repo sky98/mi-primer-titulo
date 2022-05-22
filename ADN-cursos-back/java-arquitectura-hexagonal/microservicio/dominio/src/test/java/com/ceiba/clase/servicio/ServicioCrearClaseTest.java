@@ -27,7 +27,8 @@ public class ServicioCrearClaseTest {
     void deberiaCrearCorrectamenteEnElRepositorio() {
         // arrange
         Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioClase.existeAsignacionCurso(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(true);
         Mockito.when(repositorioClase.validaHorasInscritasDocente(Mockito.anyLong())).thenReturn(12);
         Mockito.when(repositorioClase.obtenerHorasCurso(Mockito.anyLong())).thenReturn(2);
         servicioCrearClase = new ServicioCrearClase(repositorioClase);
@@ -46,21 +47,33 @@ public class ServicioCrearClaseTest {
         BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionDuplicidad.class,"La clase ya esta registrada en el sistema");
     }
     @Test
+    @DisplayName("Debería lanzar una excepción cuando se valide la asignación del curso")
+    void deberiaLanzarUnaExcepcionCuandoSeValideLaAsignacionDelCurso() {
+        // arrange
+        Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioClase.existeAsignacionCurso(Mockito.anyLong())).thenReturn(true);
+        servicioCrearClase = new ServicioCrearClase(repositorioClase);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorNoEncontrado.class,"El curso ya esta asignado a una clase");
+    }
+    @Test
     @DisplayName("Debería lanzar una excepción cuando se valide la existencia del curso")
     void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDelCurso() {
         // arrange
         Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(true);
+        Mockito.when(repositorioClase.existeAsignacionCurso(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(false);
         servicioCrearClase = new ServicioCrearClase(repositorioClase);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorNoEncontrado.class,"El curso ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioCrearClase.ejecutar(clase), ExcepcionValorNoEncontrado.class,"El curso no existe en el sistema");
     }
     @Test
     @DisplayName("Debería lanzar una excepción cuando se valide el máximo de horas para el docente")
     void deberiaLanzarUnaExcepcionCuandoSeValidaHorasMaximasDeUnDocente() {
         // arrange
         Mockito.when(repositorioClase.existePorId(Mockito.anyLong())).thenReturn(false);
-        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioClase.existeAsignacionCurso(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioClase.existeCurso(Mockito.anyLong())).thenReturn(true);
         Mockito.when(repositorioClase.validaHorasInscritasDocente(Mockito.anyLong())).thenReturn(14);
         Mockito.when(repositorioClase.obtenerHorasCurso(Mockito.anyLong())).thenReturn(2);
         servicioCrearClase = new ServicioCrearClase(repositorioClase);

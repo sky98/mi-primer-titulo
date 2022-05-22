@@ -33,6 +33,12 @@ public interface RepositorioClase {
      * Permite validar si existe un curso con un id
      * @return si existe o no
      */
+    boolean existeAsignacionCurso(Long curso);
+
+    /**
+     * Permite validar si existe un curso con un id
+     * @return si existe o no
+     */
     boolean existeCurso(Long curso);
 
     /**
