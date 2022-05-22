@@ -27,7 +27,7 @@ public class RepositorioSalonMysql implements RepositorioSalon {
     @SqlStatement(namespace="curso", value="existePorId")
     private static String sqlExisteCurso;
 
-    @SqlStatement(namespace="persona", value="existePorId")
+    @SqlStatement(namespace="persona", value="existeAlumno")
     private static String sqlExisteAlumno;
 
     @SqlStatement(namespace="salon", value="cantidadAlumnos")
