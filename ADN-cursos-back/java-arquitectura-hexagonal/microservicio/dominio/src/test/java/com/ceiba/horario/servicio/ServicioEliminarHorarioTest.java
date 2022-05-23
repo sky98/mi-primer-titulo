@@ -37,6 +37,6 @@ public class ServicioEliminarHorarioTest {
         Mockito.when(repositorioHorario.existePorId(Mockito.anyLong())).thenReturn(false);
         servicioEliminarHorario = new ServicioEliminarHorario(repositorioHorario);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioEliminarHorario.ejecutar(1L), ExcepcionDuplicidad.class,"No se encuentra registro en el sistema");
+        BasePrueba.assertThrows(() -> servicioEliminarHorario.ejecutar(1L), ExcepcionDuplicidad.class,"El horario no existe en el sistema");
     }
 }

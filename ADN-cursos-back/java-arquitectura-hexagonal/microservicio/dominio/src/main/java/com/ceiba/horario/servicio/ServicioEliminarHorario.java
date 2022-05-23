@@ -5,7 +5,7 @@ import com.ceiba.horario.puerto.repositorio.RepositorioHorario;
 
 public class ServicioEliminarHorario {
 
-    private static final String NO_SE_ENCUENTRA_REGISTRO_EN_EL_SISTEMA = "No se encuentra registro en el sistema";
+    private static final String EL_HORARIO_NO_EXISTE_EN_EL_SISTEMA = "El horario no existe en el sistema";
 
     private final RepositorioHorario repositorioHorario;
 
@@ -21,7 +21,7 @@ public class ServicioEliminarHorario {
     private void validarExistenciaPrevia(Long horario) {
         boolean existe = this.repositorioHorario.existePorId(horario);
         if(!existe) {
-            throw new ExcepcionDuplicidad(NO_SE_ENCUENTRA_REGISTRO_EN_EL_SISTEMA);
+            throw new ExcepcionDuplicidad(EL_HORARIO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 }
