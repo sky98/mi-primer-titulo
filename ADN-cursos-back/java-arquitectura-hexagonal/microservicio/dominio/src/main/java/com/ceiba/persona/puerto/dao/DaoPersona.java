@@ -10,5 +10,5 @@ public interface DaoPersona {
      * Permite listar personas
      * @return los personas
      */
-    List<DtoPersona> listar();
+    List<DtoPersona> listar(Long tipo);
 }

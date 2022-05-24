@@ -14,7 +14,7 @@ public class FabricaPersona {
                 comandoPersona.getApellido(),
                 comandoPersona.getDireccion(),
                 comandoPersona.getTelefono(),
-                comandoPersona.getCorreo(),
+                comandoPersona.getCorreoElectronico(),
                 comandoPersona.getTipo());
     }
 }

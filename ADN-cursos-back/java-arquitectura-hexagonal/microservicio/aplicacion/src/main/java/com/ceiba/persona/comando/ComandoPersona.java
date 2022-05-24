@@ -17,6 +17,6 @@ public class ComandoPersona {
     private String apellido;
     private String direccion;
     private String telefono;
-    private String correo;
+    private String correoElectronico;
     private int tipo;
 }

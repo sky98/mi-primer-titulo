@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/personas")
 @Api(tags = "Controlador comando persona")
+@CrossOrigin(value = "*")
 public class ComandoControladorPersona {
 
     private final ManejadorCrearPersona manejadorCrearPersona;

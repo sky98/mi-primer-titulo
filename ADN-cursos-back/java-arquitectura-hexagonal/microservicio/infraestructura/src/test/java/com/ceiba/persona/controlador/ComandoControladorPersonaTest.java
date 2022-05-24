@@ -59,8 +59,8 @@ public class ComandoControladorPersonaTest {
     }
 
     @Test
-    @DisplayName("Debería eliminar un persona")
-    void deberiaEliminarUnPersona() throws Exception {
+    @DisplayName("Debería eliminar una persona")
+    void deberiaEliminarUnaPersona() throws Exception {
         // arrange
         Long id = 1L;
         // act - assert
@@ -69,7 +69,7 @@ public class ComandoControladorPersonaTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        mocMvc.perform(get("/personas")
+        mocMvc.perform(get("/personas/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));

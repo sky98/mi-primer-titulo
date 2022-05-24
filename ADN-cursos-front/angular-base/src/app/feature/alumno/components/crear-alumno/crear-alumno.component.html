@@ -1,0 +1,64 @@
+<h1>Registrar Alumno</h1>
+<form [formGroup]="alumnoForm" (ngSubmit)="crear()" autocomplete="off">
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Identificacion:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="idAlumno" name="idAlumno" placeholder="Identificacion" class="form-control"
+        formControlName="identificacion">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Nombre:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="nombreAlumno" name="nombre" placeholder="Nombre"
+        class="form-control" formControlName="nombre">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Apellido:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="apellidoAlumno" name="apellido" placeholder="Apellido"
+        class="form-control" formControlName="apellido">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Dirección:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="direccionAlumno" name="direccion" placeholder="Dirección"
+        class="form-control" formControlName="direccion">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Telefono:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="telefonoAlumno" name="telefono" placeholder="Telefono"
+        class="form-control" formControlName="telefono">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Correo Electrónico:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="correoElectronioAlumno" name="correoElectronico" placeholder="Correo Electrónico"
+        class="form-control" formControlName="correoElectronico">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-info" [disabled]="alumnoForm.invalid">Guardar</button>
+    </div>
+  </div>
+
+</form>
