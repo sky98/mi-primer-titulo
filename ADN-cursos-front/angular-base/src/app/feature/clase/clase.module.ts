@@ -5,6 +5,7 @@ import { ListarClaseComponent } from './components/listar-clase/listar-clase.com
 import { ClaseComponent } from './components/clase/clase.component';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@shared/material/material.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '@shared/shared.module';
   ],
   imports: [
     ClaseRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ]
 })
 export class ClaseModule { }

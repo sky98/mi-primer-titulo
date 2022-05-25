@@ -1,29 +1,27 @@
 <h1>Registrar Clase</h1>
 <form [formGroup]="claseForm" (ngSubmit)="crear()" autocomplete="off">
   <div class="row">
-    <div class="col-sm-2">
-      <label>Curso:</label>
-    </div>
     <div class="col-sm-4">
-      <input validar type="text" id="cursoClase" name="cursoClase" placeholder="Curso" class="form-control"
-        formControlName="curso">
+        <mat-form-field appearance="fill">
+            <mat-label>Curso</mat-label>
+            <mat-select  formControlName="curso">
+                <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
+                </mat-option>
+            </mat-select>
+            <mat-error >error</mat-error>
+        </mat-form-field>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Docente:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="docenteClase" name="docente" placeholder="Docente"
-        class="form-control" formControlName="docente">
-
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-
+  <div class="row">    
+    <div class="col-sm-4">      
+        <mat-form-field appearance="fill">
+            <mat-label>Docente</mat-label>
+            <mat-select  formControlName="docente">
+                <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id"> {{ docente.nombre }} {{ docente.apellido }}
+                </mat-option>
+            </mat-select>
+            <mat-error >error</mat-error>
+        </mat-form-field>
     </div>
   </div>
   <br>

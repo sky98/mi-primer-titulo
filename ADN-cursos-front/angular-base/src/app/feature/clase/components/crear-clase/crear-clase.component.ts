@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClaseService } from '@clase/shared/service/clase.service';
+import { Curso } from '@curso/shared/model/curso';
+import { CursoService } from '@curso/shared/service/curso.service';
+import { Docente } from '@docente/shared/model/docente';
+import { DocenteService } from '@docente/shared/service/docente.service';
 
 @Component({
   selector: 'app-crear-clase',
@@ -12,10 +16,28 @@ export class CrearClaseComponent implements OnInit {
 
   claseForm: FormGroup;
 
-  constructor(protected claseService: ClaseService, protected router: Router) { }
+  listaCursos: Curso[];
+  listaDocentes: Docente[];
+
+  constructor(protected claseService: ClaseService, protected cursoServie:CursoService, 
+              protected docenteService: DocenteService, protected router: Router) { }
 
   ngOnInit() {
     this.construirFormularioClase();
+    this.getCursos();
+    this.getDocentes();
+  }
+
+  getCursos(){
+    this.cursoServie.consultar().subscribe( cursos =>{
+      this.listaCursos = cursos
+    });
+  }
+
+  getDocentes(){
+    this.docenteService.consultar().subscribe( docentes =>{
+      this.listaDocentes = docentes
+    });
   }
 
   crear(){
