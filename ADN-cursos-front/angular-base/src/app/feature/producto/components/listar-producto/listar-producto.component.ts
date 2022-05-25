@@ -10,6 +10,7 @@ import { Producto } from '@producto/shared/model/producto';
   styleUrls: ['./listar-producto.component.css']
 })
 export class ListarProductoComponent implements OnInit {
+  
   public listaProductos: Observable<Producto[]>;
 
   constructor(protected productoService: ProductoService) { }

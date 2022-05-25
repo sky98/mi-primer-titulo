@@ -36,6 +36,15 @@
       "@alumno/*": [
         "src/app/feature/alumno/*"
       ],
+      "@docente/*": [
+        "src/app/feature/docente/*"
+      ],
+      "@curso/*": [
+        "src/app/feature/curso/*"
+      ],
+      "@clase/*": [
+        "src/app/feature/clase/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

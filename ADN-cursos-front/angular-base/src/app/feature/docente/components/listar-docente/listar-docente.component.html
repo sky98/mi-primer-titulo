@@ -1,0 +1,22 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Número de identificacion</th>
+        <th scope="col">Nombre completo</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaDocentes | async">
+        <th scope="row">{{item.identificacion}}</th>
+        <td>{{item.nombre}} {{item.apellido}}</td>
+        <td>{{item.direccion}}</td>
+        <td>{{item.telefono}}</td>
+        <td>
+          <u class="pointer" (click)="eliminar(item)"><strong>Eliminar</strong></u>
+        </td>
+      </tr>
+    </tbody>
+  </table>

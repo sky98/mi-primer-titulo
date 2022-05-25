@@ -15,6 +15,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/cursos")
 @Api(tags = "Controlador comando curso")
+@CrossOrigin(value = "*")
 public class ComandoControladorCurso {
 
     private final ManejadorCrearCurso manejadorCrearCurso;

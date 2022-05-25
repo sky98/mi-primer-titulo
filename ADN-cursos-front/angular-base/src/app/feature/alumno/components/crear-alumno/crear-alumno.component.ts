@@ -1,5 +1,5 @@
-import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { Component, OnInit } from '@angular/core';
+import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 

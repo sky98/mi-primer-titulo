@@ -1,7 +1,8 @@
-import { Alumno } from '@alumno/shared/model/alumno';
-import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { Alumno } from '@alumno/shared/model/alumno';
+import { AlumnoService } from '@alumno/shared/service/alumno.service';
 
 @Component({
   selector: 'app-listar-alumno',

@@ -13,9 +13,9 @@
       <th scope="row">{{item.identificacion}}</th>
       <td>{{item.nombre}} {{item.apellido}}</td>
       <td>{{item.direccion}}</td>
-      <td>@{{item.telefono}}</td>
+      <td>{{item.telefono}}</td>
       <td>
-        <u (click)="eliminar(item)"><strong>Eliminar</strong></u>
+        <u class="pointer" (click)="eliminar(item)"><strong>Eliminar</strong></u>
       </td>
     </tr>
   </tbody>

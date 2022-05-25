@@ -1,0 +1,37 @@
+<h1>Registrar Curso</h1>
+<form [formGroup]="cursoForm" (ngSubmit)="crear()" autocomplete="off">
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Nombre:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="nombreCurso" name="nombre" placeholder="Nombre"
+        class="form-control" formControlName="nombre">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Descripción:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="descripcionCurso" name="descripcion" placeholder="Descripción"
+        class="form-control" formControlName="descripcion">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Horas:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="number" id="horasCurso" name="horas" placeholder="Horas"
+        class="form-control" formControlName="horas">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-info" [disabled]="cursoForm.invalid">Guardar</button>
+    </div>
+  </div>
+
+</form>
