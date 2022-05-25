@@ -10,5 +10,17 @@ public interface DaoPersona {
      * Permite listar personas
      * @return los personas
      */
-    List<DtoPersona> listar(Long tipo);
+    List<DtoPersona> listar();
+
+    /**
+     * Permite listar alumnos
+     * @return los alumnos
+     */
+    List<DtoPersona> listarAlumnos();
+
+    /**
+     * Permite listar alumnos
+     * @return los alumnos
+     */
+    List<DtoPersona> listarDocentes();
 }

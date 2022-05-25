@@ -20,7 +20,15 @@ public class ConsultaControladorPersona {
         this.manejadorListarPersonas = manejadorListarPersonas;
     }
 
-    @GetMapping(value = "/{tipo}")
+    @GetMapping
     @ApiOperation("Listar personas")
-    public List<DtoPersona> listar(@PathVariable Long tipo){ return this.manejadorListarPersonas.listar(tipo); }
+    public List<DtoPersona> listar(){ return this.manejadorListarPersonas.listar(); }
+
+    @GetMapping(value = "/listar-alumnos")
+    @ApiOperation("Listar personas")
+    public List<DtoPersona> listarAlumnos(){ return this.manejadorListarPersonas.listarAlumnos(); }
+
+    @GetMapping(value = "/listar-docentes")
+    @ApiOperation("Listar personas")
+    public List<DtoPersona> listarDocentes(){ return this.manejadorListarPersonas.listarDocentes(); }
 }

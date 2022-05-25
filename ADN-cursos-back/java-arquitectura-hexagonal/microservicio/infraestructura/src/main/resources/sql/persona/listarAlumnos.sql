@@ -1,2 +1,2 @@
 select id, identificacion, nombre, apellido, direccion, telefono, correo_electronico, tipo
-from persona
+from persona where tipo = 1

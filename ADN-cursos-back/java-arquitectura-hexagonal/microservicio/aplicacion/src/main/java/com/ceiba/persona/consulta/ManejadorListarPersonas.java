@@ -15,7 +15,15 @@ public class ManejadorListarPersonas {
         this.daoPersona = daoPersona;
     }
 
-    public List<DtoPersona> listar(Long tipo){
-        return this.daoPersona.listar(tipo);
+    public List<DtoPersona> listar(){
+        return this.daoPersona.listar();
+    }
+
+    public List<DtoPersona> listarAlumnos(){
+        return this.daoPersona.listarAlumnos();
+    }
+
+    public List<DtoPersona> listarDocentes(){
+        return this.daoPersona.listarDocentes();
     }
 }

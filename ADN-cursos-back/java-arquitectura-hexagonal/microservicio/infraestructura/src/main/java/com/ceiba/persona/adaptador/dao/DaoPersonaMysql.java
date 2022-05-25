@@ -17,14 +17,28 @@ public class DaoPersonaMysql implements DaoPersona {
     @SqlStatement(namespace="persona", value="listar")
     private static String sqlListar;
 
+    @SqlStatement(namespace="persona", value="listarAlumnos")
+    private static String sqlListarAlumnos;
+
+    @SqlStatement(namespace="persona", value="listarDocentes")
+    private static String sqlListarDocentes;
+
     public DaoPersonaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public List<DtoPersona> listar(Long tipo) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("tipo", tipo);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, paramSource, new MapeoPersona());
+    public List<DtoPersona> listar() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoPersona());
+    }
+
+    @Override
+    public List<DtoPersona> listarAlumnos() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarAlumnos, new MapeoPersona());
+    }
+
+    @Override
+    public List<DtoPersona> listarDocentes() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarDocentes, new MapeoPersona());
     }
 }
