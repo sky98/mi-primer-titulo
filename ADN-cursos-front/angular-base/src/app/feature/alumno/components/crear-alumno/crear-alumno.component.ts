@@ -1,6 +1,7 @@
 import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 const LONGITUD_MINIMA_IDENTIFICACION = 4;
 
@@ -13,14 +14,14 @@ export class CrearAlumnoComponent implements OnInit {
 
   alumnoForm: FormGroup;
 
-  constructor( protected alumnoService: AlumnoService ) { }
+  constructor( protected alumnoService: AlumnoService, protected router: Router ) { }
 
   ngOnInit() {
     this.construirFormularioAlumno()
   }
 
   crear(){
-    this.alumnoService.guardar(this.alumnoForm.value).subscribe(resp => console.log(resp))
+    this.alumnoService.guardar(this.alumnoForm.value).subscribe(() => this.router.navigate(['alumno/listar']))
   }
 
   private construirFormularioAlumno() {

@@ -18,8 +18,8 @@ export class ListarAlumnoComponent implements OnInit {
     this.listaAlumnos = this.alumnoService.consultar();
   }
 
-  eliminar(id: Alumno){
-    console.log(id)
+  eliminar(alumno: Alumno){
+    this.alumnoService.eliminar(alumno).subscribe(  );
   }
 
 }
