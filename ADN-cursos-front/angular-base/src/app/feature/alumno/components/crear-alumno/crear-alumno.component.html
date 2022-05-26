@@ -1,4 +1,3 @@
-
 <a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
   <mat-icon>arrow_back</mat-icon>
 </a>
@@ -7,40 +6,45 @@
   <form [formGroup]="alumnoForm" (ngSubmit)="crear()" autocomplete="off">
     <br>
     <div class="row">
-      <mat-form-field appearance="fill" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+      <mat-form-field appearance="fill">
         <mat-label>Identificación</mat-label>
         <input matInput formControlName="identificacion">
-        <mat-error *ngIf="validarCampo('identificacion')">{{ validarCampo('identificacion') }}</mat-error>
+        <mat-error>{{ validarCampo('identificacion') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre">
+        <mat-error>{{ validarCampo('nombre') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
         <input matInput formControlName="apellido">
+        <mat-error>{{ validarCampo('apellido') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Dirección</mat-label>
         <input matInput formControlName="direccion">
+        <mat-error>{{ validarCampo('direccion') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Telefóno</mat-label>
         <input matInput formControlName="telefono">
+        <mat-error>{{ validarCampo('telefono') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Correo Electrónico</mat-label>
         <input matInput formControlName="correoElectronico">
+        <mat-error>{{ validarCampo('correoElectronico') }}</mat-error>
       </mat-form-field>
     </div>
     <br>

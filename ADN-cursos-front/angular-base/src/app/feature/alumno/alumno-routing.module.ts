@@ -5,15 +5,11 @@ import { CrearAlumnoComponent } from './components/crear-alumno/crear-alumno.com
 import { ListarAlumnoComponent } from './components/listar-alumno/listar-alumno.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
-      { path: 'crear', component: CrearAlumnoComponent },
-      { path: 'listar', component: ListarAlumnoComponent },
-      { path: '', redirectTo: 'listar' },
-      { path: '**', redirectTo: 'listar' },
-    ]
-  }
+  { path: 'listar', component: ListarAlumnoComponent },
+  { path: 'crear', component: CrearAlumnoComponent },
+  { path: '', redirectTo: 'listar' },
+  { path: '**', redirectTo: 'listar' }
+
 ];
 
 @NgModule({

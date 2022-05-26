@@ -6,26 +6,29 @@ import { AlumnoService } from '@alumno/shared/service/alumno.service';
 @Component({
   selector: 'app-listar-alumno',
   templateUrl: './listar-alumno.component.html',
-  styleUrls: ['./listar-alumno.component.css']
+  styleUrls: ['./listar-alumno.component.css'],
 })
 export class ListarAlumnoComponent implements OnInit {
 
-  public listaAlumnos: Alumno[] = [];
-
-  flagAlumnos: boolean = true
+  dataSource: Alumno[] = [];
+  flagAlumnos: boolean = false;
+  displayedColumns = ['identificacion', 'nombres', 'direccion', 'telefono', 'accion'];
 
   constructor(protected alumnoService: AlumnoService) { }
 
   ngOnInit() {
     this.alumnoService.consultar().subscribe( alumnos =>{
-      (alumnos.length>0)?this.listaAlumnos=alumnos: this.flagAlumnos = false
+      if(alumnos.length>0){
+        this.dataSource = alumnos;
+        this.flagAlumnos = true;
+      }
     });
   }
 
   eliminar(alumno: Alumno){
     this.alumnoService.eliminar(alumno).subscribe( ()=> {
-      this.listaAlumnos = this.listaAlumnos.filter(x => x.id!=alumno.id);
-      (this.listaAlumnos.length<1)?this.flagAlumnos=false:'';
+      this.dataSource = this.dataSource.filter(x => x.id!=alumno.id);
+      (this.dataSource.length<1)?this.flagAlumnos=false:this.flagAlumnos=true;
     });
   }
 

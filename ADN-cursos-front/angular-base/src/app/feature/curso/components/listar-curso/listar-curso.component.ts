@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { Curso } from '@curso/shared/model/curso';
 import { CursoService } from '@curso/shared/service/curso.service';
@@ -11,16 +10,26 @@ import { CursoService } from '@curso/shared/service/curso.service';
 })
 export class ListarCursoComponent implements OnInit {
 
-  public listaCursos: Observable<Curso[]>;
-
+  flagCursos: boolean = false;  
+  dataSource: Curso[] = [];
+  displayedColumns = ['nombre', 'descripcion', 'horas', 'accion'];
+  
   constructor(protected cursoService: CursoService) { }
 
   ngOnInit() {
-    this.listaCursos = this.cursoService.consultar();
+    this.cursoService.consultar().subscribe(cursos =>{
+      if(cursos.length>0){
+        this.dataSource = cursos;
+        this.flagCursos = true;
+      }
+    });
   }
 
   eliminar(curso: Curso){
-    this.cursoService.eliminar(curso).subscribe();
+    this.cursoService.eliminar(curso).subscribe( ()=>{
+      this.dataSource = this.dataSource.filter(x => x.id!=curso.id);
+      (this.dataSource.length<1)?this.flagCursos=false:this.flagCursos=true;
+    });
   }
 
 }

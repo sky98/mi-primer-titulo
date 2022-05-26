@@ -1,64 +1,54 @@
-<h1>Registrar Docente</h1>
-<form [formGroup]="docenteForm" (ngSubmit)="crear()" autocomplete="off">
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Identificacion:</label>
+<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+  <mat-icon>arrow_back</mat-icon>
+</a>
+<div class="center"><h1>Registrar Docente</h1></div>
+<div class="center">
+  <form [formGroup]="docenteForm" (ngSubmit)="crear()" autocomplete="off">
+    <br>
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Identificación</mat-label>
+        <input matInput formControlName="identificacion">
+        <mat-error>{{ validarCampo('identificacion') }}</mat-error>
+      </mat-form-field>
     </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="idDocente" name="idDocente" placeholder="Identificacion" class="form-control"
-        formControlName="identificacion">
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre">
+        <mat-error>{{ validarCampo('nombre') }}</mat-error>
+      </mat-form-field>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Nombre:</label>
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido">
+        <mat-error>{{ validarCampo('apellido') }}</mat-error>
+      </mat-form-field>
     </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="nombreDocente" name="nombre" placeholder="Nombre"
-        class="form-control" formControlName="nombre">
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccion">
+        <mat-error>{{ validarCampo('direccion') }}</mat-error>
+      </mat-form-field>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Apellido:</label>
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Telefóno</mat-label>
+        <input matInput formControlName="telefono">
+        <mat-error>{{ validarCampo('telefono') }}</mat-error>
+      </mat-form-field>
     </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="apellidoDocente" name="apellido" placeholder="Apellido"
-        class="form-control" formControlName="apellido">
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="correoElectronico">
+        <mat-error>{{ validarCampo('correoElectronico') }}</mat-error>
+      </mat-form-field>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Dirección:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="direccionDocente" name="direccion" placeholder="Dirección"
-        class="form-control" formControlName="direccion">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Telefono:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="telefonoDocente" name="telefono" placeholder="Telefono"
-        class="form-control" formControlName="telefono">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Correo Electrónico:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="correoElectronioDocente" name="correoElectronico" placeholder="Correo Electrónico"
-        class="form-control" formControlName="correoElectronico">
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-info" [disabled]="docenteForm.invalid">Guardar</button>
-    </div>
-  </div>
+    <br>
+    <button mat-raised-button color="primary" [disabled]="docenteForm.invalid">Guardar</button>
+  </form>
 
-</form>
+</div>
