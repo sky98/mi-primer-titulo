@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { ClaseService } from '@clase/shared/service/clase.service';
 import { Curso } from '@curso/shared/model/curso';
 import { CursoService } from '@curso/shared/service/curso.service';
@@ -19,6 +20,9 @@ export class CrearClaseComponent implements OnInit {
   listaCursos: Curso[];
   listaDocentes: Docente[];
 
+  flagDocente: boolean = false;
+  flagCurso: boolean = false;
+
   constructor(protected claseService: ClaseService, protected cursoServie:CursoService, 
               protected docenteService: DocenteService, protected router: Router) { }
 
@@ -30,13 +34,19 @@ export class CrearClaseComponent implements OnInit {
 
   getCursos(){
     this.cursoServie.consultar().subscribe( cursos =>{
-      this.listaCursos = cursos
+      if(cursos.length >0){
+        this.listaCursos = cursos
+        this.flagCurso = true;
+      }
     });
   }
 
   getDocentes(){
     this.docenteService.consultar().subscribe( docentes =>{
-      this.listaDocentes = docentes
+      if(docentes.length > 0){
+        this.listaDocentes = docentes
+        this.flagDocente = true;
+      }
     });
   }
 

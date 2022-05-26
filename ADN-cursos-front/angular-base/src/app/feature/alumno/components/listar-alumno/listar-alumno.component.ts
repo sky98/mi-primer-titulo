@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { Alumno } from '@alumno/shared/model/alumno';
 import { AlumnoService } from '@alumno/shared/service/alumno.service';
@@ -11,16 +10,23 @@ import { AlumnoService } from '@alumno/shared/service/alumno.service';
 })
 export class ListarAlumnoComponent implements OnInit {
 
-  public listaAlumnos: Observable<Alumno[]>;
+  public listaAlumnos: Alumno[] = [];
+
+  flagAlumnos: boolean = true
 
   constructor(protected alumnoService: AlumnoService) { }
 
   ngOnInit() {
-    this.listaAlumnos = this.alumnoService.consultar();
+    this.alumnoService.consultar().subscribe( alumnos =>{
+      (alumnos.length>0)?this.listaAlumnos=alumnos: this.flagAlumnos = false
+    });
   }
 
   eliminar(alumno: Alumno){
-    this.alumnoService.eliminar(alumno).subscribe(  );
+    this.alumnoService.eliminar(alumno).subscribe( ()=> {
+      this.listaAlumnos = this.listaAlumnos.filter(x => x.id!=alumno.id);
+      (this.listaAlumnos.length<1)?this.flagAlumnos=false:'';
+    });
   }
 
 }

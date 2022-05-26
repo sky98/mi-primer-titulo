@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Clase } from '@clase/shared/model/clase';
+import { ClaseService } from '@clase/shared/service/clase.service';
+
 @Component({
   selector: 'app-listar-clase',
   templateUrl: './listar-clase.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarClaseComponent implements OnInit {
 
-  constructor() { }
+  public listaClase: Clase[] = [];
 
-  ngOnInit(): void {
+  constructor(protected claseService: ClaseService) { }
+
+  ngOnInit() {
+    this.claseService.consultar().subscribe( clases =>{
+      this.listaClase = clases;
+      console.log(this.listaClase)
+    });
   }
 
 }

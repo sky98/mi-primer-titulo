@@ -1,34 +1,46 @@
-<h1>Registrar Clase</h1>
-<form [formGroup]="claseForm" (ngSubmit)="crear()" autocomplete="off">
-  <div class="row">
-    <div class="col-sm-4">
-        <mat-form-field appearance="fill">
-            <mat-label>Curso</mat-label>
-            <mat-select  formControlName="curso">
-                <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
-                </mat-option>
-            </mat-select>
-            <mat-error >error</mat-error>
-        </mat-form-field>
+<div class="">
+  <h1>Registrar Clase</h1>
+  <form [formGroup]="claseForm" (ngSubmit)="crear()" autocomplete="off">
+    <div class="row">
+      <div class="col-sm-4">
+        <div *ngIf="flagCurso; else notCurso">
+          <mat-form-field appearance="fill">
+              <mat-label>Curso</mat-label>
+              <mat-select  formControlName="curso">
+                  <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
+                  </mat-option>
+              </mat-select>
+              <mat-error >error</mat-error>
+          </mat-form-field>
+        </div>
+        <ng-template #notCurso>
+          <mat-label class="mat-label-red">No hay <strong>CURSOS</strong> registrados</mat-label>
+        </ng-template>
+      </div>
     </div>
-  </div>
-  <div class="row">    
-    <div class="col-sm-4">      
-        <mat-form-field appearance="fill">
-            <mat-label>Docente</mat-label>
-            <mat-select  formControlName="docente">
-                <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id"> {{ docente.nombre }} {{ docente.apellido }}
-                </mat-option>
-            </mat-select>
-            <mat-error >error</mat-error>
-        </mat-form-field>
+    <div class="row">    
+      <div class="col-sm-4">   
+        <div *ngIf="flagDocente; else notDocente">
+          <mat-form-field appearance="fill">
+              <mat-label>Docente</mat-label>
+              <mat-select  formControlName="docente">
+                  <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id"> {{ docente.nombre }} {{ docente.apellido }}
+                  </mat-option>
+              </mat-select>
+              <mat-error >error</mat-error>
+          </mat-form-field>
+        </div>   
+        <ng-template #notDocente>
+          <mat-label class="mat-label-red">No hay <strong>DOCENTES</strong> registrados</mat-label>
+        </ng-template>
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-info" [disabled]="claseForm.invalid">Guardar</button>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-info" [disabled]="claseForm.invalid">Guardar</button>
+      </div>
     </div>
-  </div>
 
-</form>
+  </form>
+</div>

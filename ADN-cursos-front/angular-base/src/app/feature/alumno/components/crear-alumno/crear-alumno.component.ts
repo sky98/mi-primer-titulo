@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AlumnoService } from '@alumno/shared/service/alumno.service';
 
 const LONGITUD_MINIMA_IDENTIFICACION = 4;
 
@@ -18,6 +19,15 @@ export class CrearAlumnoComponent implements OnInit {
 
   ngOnInit() {
     this.construirFormularioAlumno()
+  }
+
+  validarCampo(campo: string){
+    if(this.alumnoForm.touched){
+      if(this.alumnoForm.get(campo)?.hasError('required')){
+        return `El campo es obligatorio`
+      }
+    }
+    return;
   }
 
   crear(){

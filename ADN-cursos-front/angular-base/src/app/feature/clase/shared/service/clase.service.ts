@@ -13,7 +13,7 @@ export class ClaseService {
   constructor(protected http: HttpService) { }
 
   consultar(){
-    return this.http.doGet<Clase[]>(`${this.BASE_URL_CLASE}/listar-clases`, this.http.optsName('consultar clases'));
+    return this.http.doGet<Clase[]>(`${this.BASE_URL_CLASE}`, this.http.optsName('consultar clases'));
   }
 
   guardar(clase: Clase) {

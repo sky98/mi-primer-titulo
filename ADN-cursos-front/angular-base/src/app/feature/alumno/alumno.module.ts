@@ -6,6 +6,7 @@ import { ListarAlumnoComponent } from './components/listar-alumno/listar-alumno.
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { SharedModule } from '@shared/shared.module';
 import { AlumnoService } from './shared/service/alumno.service';
+import { MaterialModule } from '@shared/material/material.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { AlumnoService } from './shared/service/alumno.service';
   ],
   imports: [
     AlumnoRoutingModule,
+    MaterialModule,
     SharedModule
   ],
   providers: [AlumnoService]

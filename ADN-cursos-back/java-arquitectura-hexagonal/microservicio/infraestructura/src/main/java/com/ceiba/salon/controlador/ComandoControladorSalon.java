@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/salones")
 @Api(tags = "Controlador comando salon")
+@CrossOrigin(value = "*")
 public class ComandoControladorSalon {
 
     private final ManejadorCrearSalon manejadorCrearSalon;

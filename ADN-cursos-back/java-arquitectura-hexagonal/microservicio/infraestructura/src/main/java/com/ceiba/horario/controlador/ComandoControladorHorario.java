@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/horarios")
 @Api(tags = "Controlador comando horario")
+@CrossOrigin(value = "*")
 public class ComandoControladorHorario {
 
     private final ManejadorCrearHorario manejadorCrearHorario;

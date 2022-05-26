@@ -16,8 +16,8 @@ import { MaterialModule } from '@shared/material/material.module';
   ],
   imports: [
     ClaseRoutingModule,
-    SharedModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class ClaseModule { }
