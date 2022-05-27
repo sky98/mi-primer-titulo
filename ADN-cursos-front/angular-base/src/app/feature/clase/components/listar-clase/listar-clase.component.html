@@ -1,1 +1,40 @@
-<p>listar-clase works!</p>
+<div class="mg-1">
+    <a routerLink="../crear" class="pointer" style="color:green;" matTooltip="Agregar Clase" matTooltipPosition="above">
+      <mat-icon>assignment</mat-icon>
+    </a>
+    <div class="mg-1">
+      <div *ngIf="flagClases; else notClases">
+  
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+   
+          <ng-container matColumnDef="nombre_docente">
+            <th mat-header-cell *matHeaderCellDef> Nombre Docente </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} {{ element.apellido }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="nombre_curso">
+            <th mat-header-cell *matHeaderCellDef> Nombre Curso </th>
+            <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef>Acción</th>
+            <td mat-cell *matCellDef="let element">
+              <a class="pointer" style="color:forestgreen;" matTooltip="Editar" matTooltipPosition="above">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a class="pointer" style="color:red;" matTooltip="Eliminar" matTooltipPosition="above"
+                (click)="eliminar(element)">
+                <mat-icon>delete</mat-icon>
+              </a>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <ng-template #notClases>
+        <mat-label class="mat-label-red">No hay <strong>CLASES</strong> registrados</mat-label>
+      </ng-template>
+    </div>
+  </div>

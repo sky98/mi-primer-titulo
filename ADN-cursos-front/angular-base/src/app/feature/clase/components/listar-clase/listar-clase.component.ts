@@ -10,14 +10,25 @@ import { ClaseService } from '@clase/shared/service/clase.service';
 })
 export class ListarClaseComponent implements OnInit {
 
-  public listaClase: Clase[] = [];
+  dataSource: Clase[] = [];
+  flagClases: boolean = false;
+  displayedColumns = ['nombre_docente', 'nombre_curso', 'accion'];
 
   constructor(protected claseService: ClaseService) { }
 
   ngOnInit() {
     this.claseService.consultar().subscribe( clases =>{
-      this.listaClase = clases;
-      console.log(this.listaClase)
+      if(clases.length>0){
+        this.dataSource = clases;
+        this.flagClases = true;
+      }
+    });
+  }
+
+  eliminar(clase: Clase){
+    this.claseService.eliminar(clase).subscribe( ()=> {
+      this.dataSource = this.dataSource.filter(x => x.id!=clase.id);
+      (this.dataSource.length<1)?this.flagClases=false:this.flagClases=true;
     });
   }
 

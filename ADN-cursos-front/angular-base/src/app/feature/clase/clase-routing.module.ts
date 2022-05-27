@@ -1,24 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClaseComponent } from './components/clase/clase.component';
+
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { ListarClaseComponent } from './components/listar-clase/listar-clase.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ClaseComponent,
-    children: [
-      {
-        path: 'crear',
-        component: CrearClaseComponent
-      },
-      {
-        path: 'listar',
-        component: ListarClaseComponent
-      }
-    ]
-  }
+  { path: 'listar', component: ListarClaseComponent },
+  { path: 'crear', component: CrearClaseComponent },
+  { path: '', redirectTo: 'listar' },
+  { path: '**', redirectTo: 'listar' }
 ];
 
 @NgModule({

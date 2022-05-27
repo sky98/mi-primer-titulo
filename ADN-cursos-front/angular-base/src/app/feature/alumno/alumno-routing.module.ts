@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'crear', component: CrearAlumnoComponent },
   { path: '', redirectTo: 'listar' },
   { path: '**', redirectTo: 'listar' }
-
 ];
 
 @NgModule({
