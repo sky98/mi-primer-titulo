@@ -23,4 +23,10 @@ public interface DaoPersona {
      * @return los alumnos
      */
     List<DtoPersona> listarDocentes();
+
+    /**
+     * Permite obtener un docente segun su id
+     * @return los alumnos
+     */
+    DtoPersona obtenerDocente(Long id);
 }

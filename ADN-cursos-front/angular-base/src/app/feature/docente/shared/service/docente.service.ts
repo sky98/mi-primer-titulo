@@ -17,6 +17,10 @@ export class DocenteService {
     return this.http.doGet<Docente[]>(`${this.BASE_URL_DOCENTE}/listar-docentes`, this.http.optsName('consultar docentes'));
   }
 
+  obtenerDocente(docenteId: number){
+    return this.http.doGet<Docente>(`${this.BASE_URL_DOCENTE}/docente/${docenteId}`, this.http.optsName('obtener docente'));
+  }
+
   guardar(docente: Docente) {
     return this.http.doPost<Docente, boolean>(this.BASE_URL_DOCENTE, docente,
                                                 this.http.optsName('crear/actualizar docentes'));

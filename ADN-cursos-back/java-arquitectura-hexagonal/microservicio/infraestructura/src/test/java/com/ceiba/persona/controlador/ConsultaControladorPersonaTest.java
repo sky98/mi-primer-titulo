@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -44,6 +45,59 @@ class ConsultaControladorPersonaTest {
                 .andExpect(jsonPath("$[0].correoElectronico", is("1234")))
                 .andExpect(jsonPath("$[0].tipo", is(1)))
                 .andExpect(jsonPath("$[0].id", is(1)));
+
+    }
+
+    @Test
+    @DisplayName("Debería listar los alumnos")
+    void deberiaListarAlumnos() throws Exception {
+        // arrange
+        // act - assert
+        mocMvc.perform(get("/personas/listar-alumnos")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].identificacion", is("1234")))
+                .andExpect(jsonPath("$[0].nombre", is("1234")))
+                .andExpect(jsonPath("$[0].apellido", is("1234")))
+                .andExpect(jsonPath("$[0].direccion", is("1234")))
+                .andExpect(jsonPath("$[0].telefono", is("1234")))
+                .andExpect(jsonPath("$[0].correoElectronico", is("1234")))
+                .andExpect(jsonPath("$[0].tipo", is(1)))
+                .andExpect(jsonPath("$[0].id", is(1)));
+
+    }
+
+    @Test
+    @DisplayName("Debería listar los docentes")
+    void deberiaListarDocentes() throws Exception {
+        // arrange
+        // act - assert
+        mocMvc.perform(get("/personas/listar-docentes")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].identificacion", is("12345")))
+                .andExpect(jsonPath("$[0].nombre", is("12345")))
+                .andExpect(jsonPath("$[0].apellido", is("12345")))
+                .andExpect(jsonPath("$[0].direccion", is("12345")))
+                .andExpect(jsonPath("$[0].telefono", is("12345")))
+                .andExpect(jsonPath("$[0].correoElectronico", is("12345")))
+                .andExpect(jsonPath("$[0].tipo", is(2)))
+                .andExpect(jsonPath("$[0].id", is(2)));
+
+    }
+
+    @Test
+    @DisplayName("Debería obtener docente por el id")
+    void deberiaObtenerDocente() throws Exception {
+        // arrange
+        Long id = 2L;
+        // act - assert
+        mocMvc.perform(get("/personas/docente/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
 
     }
 }

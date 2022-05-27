@@ -1,34 +1,10 @@
 package com.ceiba.salon.puerto.repositorio;
 
 
+import com.ceiba.base.BaseRepositorio;
 import com.ceiba.salon.modelo.entidad.Salon;
 
-public interface RepositorioSalon {
-
-    /**
-     * Permite crear una salon
-     * @param salon
-     * @return el id generado
-     */
-    Long crear(Salon salon);
-
-    /**
-     * Permite actualizar una salon
-     * @param salon
-     */
-    void actualizar(Salon salon);
-
-    /**
-     * Permite eliminar una salon
-     * @param id
-     */
-    void eliminar(Long id);
-
-    /**
-     * Permite validar si existe un salon con un id
-     * @return si existe o no
-     */
-    boolean existePorId(Long id);
+public interface RepositorioSalon extends BaseRepositorio<Salon> {
 
     /**
      * Permite validar si existe un curso con un id

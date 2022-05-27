@@ -31,4 +31,8 @@ public class ConsultaControladorPersona {
     @GetMapping(value = "/listar-docentes")
     @ApiOperation("Listar personas")
     public List<DtoPersona> listarDocentes(){ return this.manejadorListarPersonas.listarDocentes(); }
+
+    @GetMapping(value = "/docente/{id}")
+    @ApiOperation("Obtener docente")
+    public DtoPersona obtenerDocente(@PathVariable Long id){ return this.manejadorListarPersonas.obtenerDocente(id); }
 }
