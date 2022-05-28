@@ -41,6 +41,17 @@ class ConsultaControladorCursoTest {
                 .andExpect(jsonPath("$[0].descripcion", is("1234")))
                 .andExpect(jsonPath("$[0].horas", is(3)))
                 .andExpect(jsonPath("$[0].id", is(1)));
+    }
 
+    @Test
+    @DisplayName("Debería obtener un curso según su id")
+    void deberiaObtenerCursoSegunId() throws Exception {
+        // arrange
+        Long id = 1L;
+        // act - assert
+       mocMvc.perform(get("/cursos/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }

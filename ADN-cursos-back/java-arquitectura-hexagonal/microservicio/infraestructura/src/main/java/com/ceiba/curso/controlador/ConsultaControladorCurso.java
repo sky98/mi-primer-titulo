@@ -4,10 +4,7 @@ import com.ceiba.curso.consulta.ManejadorListarCursos;
 import com.ceiba.curso.modelo.dto.DtoCurso;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +23,8 @@ public class ConsultaControladorCurso {
     @GetMapping
     @ApiOperation("Listar cursos")
     public List<DtoCurso> listar(){ return this.manejadorListarCursos.listar(); }
+
+    @GetMapping(value = "/{id}")
+    @ApiOperation("Obtener curso por id")
+    public DtoCurso obtenerCursoPorId(@PathVariable Long id){ return this.manejadorListarCursos.obtenerCursoPorId(id); }
 }

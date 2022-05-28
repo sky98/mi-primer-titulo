@@ -28,5 +28,5 @@ public interface DaoPersona {
      * Permite obtener un docente segun su id
      * @return los alumnos
      */
-    DtoPersona obtenerDocente(Long id);
+    DtoPersona obtenerDocentePorId(Long id);
 }

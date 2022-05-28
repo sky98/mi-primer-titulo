@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Clase } from '@clase/shared/model/clase';
 import { ClaseService } from '@clase/shared/service/clase.service';
+import { CursoService } from '@curso/shared/service/curso.service';
 import { DocenteService } from '@docente/shared/service/docente.service';
 
 @Component({
@@ -15,14 +16,15 @@ export class ListarClaseComponent implements OnInit {
   flagClases: boolean = false;
   displayedColumns = ['nombre_docente', 'nombre_curso', 'accion'];
 
-  constructor(protected claseService: ClaseService, protected docenteService: DocenteService) { }
+  constructor(protected claseService: ClaseService, protected docenteService: DocenteService, protected cursoService: CursoService) { }
 
   ngOnInit() {
     this.claseService.consultar().subscribe( clases =>{
       if(clases.length>0){
         this.dataSource = clases;
         this.flagClases = true;
-        this.obtenerDocentesSegunClase(this.dataSource)
+        this.obtenerDocentesSegunClase(this.dataSource);
+        this.obtenerCursoSegunClase(this.dataSource);
       }
     });
   }
@@ -36,7 +38,12 @@ export class ListarClaseComponent implements OnInit {
 
   obtenerDocentesSegunClase(clases: Clase[]){
     clases.forEach(element =>{
-      this.docenteService.obtenerDocente(element.docente).subscribe( docente => element.nombreDocente=`${docente.nombre} ${docente.apellido}`);
+      this.docenteService.obtenerDocente(element.docente).subscribe( docente => element.nombreDocente =`${docente.nombre} ${docente.apellido}`);
+    });
+  }
+  obtenerCursoSegunClase(clases: Clase[]){
+    clases.forEach(element =>{
+      this.cursoService.obtenerCurso(element.curso).subscribe( curso => element.nombreCurso = curso.nombre);
     });
   }
 

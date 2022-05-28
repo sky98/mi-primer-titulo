@@ -11,4 +11,10 @@ public interface DaoCurso {
      * @return los cursos
      */
     List<DtoCurso> listar();
+
+    /**
+     * Permite obtener un curso según su id
+     * @return curso
+     */
+    DtoCurso obtenerCursoPorId(Long id);
 }

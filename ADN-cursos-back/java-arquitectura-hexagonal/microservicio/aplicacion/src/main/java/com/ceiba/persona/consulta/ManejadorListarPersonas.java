@@ -27,7 +27,7 @@ public class ManejadorListarPersonas {
         return this.daoPersona.listarDocentes();
     }
 
-    public DtoPersona obtenerDocente(Long id){
-        return this.daoPersona.obtenerDocente(id);
+    public DtoPersona obtenerDocentePorId(Long id){
+        return this.daoPersona.obtenerDocentePorId(id);
     }
 }

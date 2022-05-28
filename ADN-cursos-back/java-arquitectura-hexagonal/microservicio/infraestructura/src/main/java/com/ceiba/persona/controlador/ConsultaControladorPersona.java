@@ -34,5 +34,5 @@ public class ConsultaControladorPersona {
 
     @GetMapping(value = "/docente/{id}")
     @ApiOperation("Obtener docente")
-    public DtoPersona obtenerDocente(@PathVariable Long id){ return this.manejadorListarPersonas.obtenerDocente(id); }
+    public DtoPersona obtenerDocentePorId(@PathVariable Long id){ return this.manejadorListarPersonas.obtenerDocentePorId(id); }
 }

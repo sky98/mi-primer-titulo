@@ -16,6 +16,10 @@ export class CursoService {
     return this.http.doGet<Curso[]>(this.BASE_URL_CURSO, this.http.optsName('consultar cursos'));
   }
 
+  obtenerCurso(id: number){
+    return this.http.doGet<Curso>(`${this.BASE_URL_CURSO}/${id}`, this.http.optsName('obtener curso'));
+  }
+
   public guardar(curso: Curso) {
     return this.http.doPost<Curso, boolean>(this.BASE_URL_CURSO, curso,
                                                 this.http.optsName('crear/actualizar cursos'));

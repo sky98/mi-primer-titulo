@@ -18,4 +18,8 @@ public class ManejadorListarCursos {
     public List<DtoCurso> listar(){
         return this.daoCurso.listar();
     }
+
+    public DtoCurso obtenerCursoPorId(Long id){
+        return this.daoCurso.obtenerCursoPorId(id);
+    }
 }
