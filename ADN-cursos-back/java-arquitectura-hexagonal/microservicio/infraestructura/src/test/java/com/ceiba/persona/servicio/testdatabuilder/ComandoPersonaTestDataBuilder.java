@@ -15,7 +15,7 @@ public class ComandoPersonaTestDataBuilder {
 
     public ComandoPersonaTestDataBuilder(){
         id = 1234L;
-        identificacion = "12345";
+        identificacion = "123456";
         nombre = "12345";
         apellido = "12345";
         direccion = "12345";

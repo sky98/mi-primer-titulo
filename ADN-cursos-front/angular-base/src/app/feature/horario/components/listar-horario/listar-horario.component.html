@@ -1,0 +1,50 @@
+<div class="mg-1">
+    <a routerLink="../crear" class="pointer" style="color:green;" matTooltip="Agregar horario" matTooltipPosition="above">
+      <mat-icon>chrome_reader_mode</mat-icon>
+    </a>
+    <div class="mg-1">
+      <div *ngIf="flagHorarios; else notHorarios">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+          <ng-container matColumnDef="nombre_clase">
+            <th mat-header-cell *matHeaderCellDef> Nombre clase </th>
+            <td mat-cell *matCellDef="let element"> {{element.identificacion}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="dia">
+            <th mat-header-cell *matHeaderCellDef> Día </th>
+            <td mat-cell *matCellDef="let element"> {{element.dia}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="hora_inicio">
+            <th mat-header-cell *matHeaderCellDef> Hora Inicio </th>
+            <td mat-cell *matCellDef="let element"> {{element.horaInicio}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="cantidad_horas">
+            <th mat-header-cell *matHeaderCellDef> Cantidad horas </th>
+            <td mat-cell *matCellDef="let element"> {{element.cantidadHoras}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef>Acción</th>
+            <td mat-cell *matCellDef="let element">
+              <a class="pointer" style="color:forestgreen;" matTooltip="Editar" matTooltipPosition="above">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a class="pointer" style="color:red;" matTooltip="Eliminar" matTooltipPosition="above"
+                (click)="eliminar(element)">
+                <mat-icon>delete</mat-icon>
+              </a>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>  
+      <ng-template #notHorarios>
+        <mat-label class="mat-label-red">No hay <strong>HORARIOS</strong> registrados</mat-label>
+      </ng-template>
+    </div>
+  </div>
+  

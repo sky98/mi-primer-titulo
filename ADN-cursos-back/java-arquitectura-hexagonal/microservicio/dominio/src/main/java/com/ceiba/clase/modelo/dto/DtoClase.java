@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class DtoClase {
     private Long id;
+    private String nombre;
     private Long docente;
     private Long curso;
 }

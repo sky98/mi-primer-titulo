@@ -1,2 +1,2 @@
-insert into clase (docente, curso)
-        values (:docente, :curso)
+insert into clase (nombre, docente, curso)
+        values (:nombre, :docente, :curso)

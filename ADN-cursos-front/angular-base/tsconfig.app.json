@@ -29,6 +29,9 @@
       "@clase/*": [
         "src/app/feature/clase/*"
       ],
+      "@horario/*": [
+        "src/app/feature/horario/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

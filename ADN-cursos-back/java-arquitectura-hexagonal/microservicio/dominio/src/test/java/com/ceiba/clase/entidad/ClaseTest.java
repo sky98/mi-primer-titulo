@@ -19,8 +19,20 @@ public class ClaseTest {
         Clase clase = new ClaseTestDataBuilder().conId(1L).build();
         //assert
         assertEquals(1, clase.getId());
+        assertEquals("1", clase.getNombre());
         assertEquals(1, clase.getCurso());
         assertEquals(1, clase.getDocente());
+    }
+
+    @Test
+    void deberiaFallarSinNombreDeClase() {
+        //Arrange
+        ClaseTestDataBuilder claseTestDataBuilder = new ClaseTestDataBuilder().conNombre(null).conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    claseTestDataBuilder.build();
+                },
+                ExcepcionValorObligatorio.class, "Se debe ingresar el nombre de la clase");
     }
 
     @Test

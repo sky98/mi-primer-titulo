@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { DocenteRoutingModule } from './docente-routing.module';
-import { ListarDocenteComponent } from './components/listar-docente/listar-docente.component';
 import { CrearDocenteComponent } from './components/crear-docente/crear-docente.component';
+import { DocenteRoutingModule } from './docente-routing.module';
 import { DocenteService } from './shared/service/docente.service';
-import { SharedModule } from '@shared/shared.module';
+import { ListarDocenteComponent } from './components/listar-docente/listar-docente.component';
 import { MaterialModule } from '@shared/material/material.module';
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({

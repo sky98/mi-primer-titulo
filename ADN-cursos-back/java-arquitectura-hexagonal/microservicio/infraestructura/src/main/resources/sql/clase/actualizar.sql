@@ -1,4 +1,5 @@
 update clase
-set docente = :docente,
+set nombre = :nombre,
+    docente = :docente,
     curso = :curso
 where id = :id

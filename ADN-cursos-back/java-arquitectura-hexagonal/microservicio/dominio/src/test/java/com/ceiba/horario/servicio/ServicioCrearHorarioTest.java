@@ -27,6 +27,7 @@ public class ServicioCrearHorarioTest {
     void deberiaCrearCorrectamenteEnElRepositorio() {
         // arrange
         Mockito.when(repositorioHorario.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioHorario.existeClasePorId(Mockito.anyLong())).thenReturn(true);
         servicioCrearHorario = new ServicioCrearHorario(repositorioHorario);
         // act
         servicioCrearHorario.ejecutar(horario);
@@ -41,5 +42,15 @@ public class ServicioCrearHorarioTest {
         servicioCrearHorario = new ServicioCrearHorario(repositorioHorario);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearHorario.ejecutar(horario), ExcepcionDuplicidad.class,"El horario ya existe en el sistema");
+    }
+    @Test
+    @DisplayName("Debería lanzar una excepción cuando la clase no existe en el sistema")
+    void deberiaLanzarUnaExcepcionCuandoSeValideLaExistenciaDeLaClase() {
+        // arrange
+        Mockito.when(repositorioHorario.existePorId(Mockito.anyLong())).thenReturn(false);
+        Mockito.when(repositorioHorario.existeClasePorId(Mockito.anyLong())).thenReturn(false);
+        servicioCrearHorario = new ServicioCrearHorario(repositorioHorario);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearHorario.ejecutar(horario), ExcepcionDuplicidad.class,"La clase no existe en el sistema");
     }
 }

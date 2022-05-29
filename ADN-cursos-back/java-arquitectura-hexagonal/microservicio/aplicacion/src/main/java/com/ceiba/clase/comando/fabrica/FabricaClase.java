@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class FabricaClase {
     public Clase crear(ComandoClase comandoClase){
         return new Clase(comandoClase.getId(),
+                comandoClase.getNombre(),
                 comandoClase.getDocente(),
                 comandoClase.getCurso());
     }

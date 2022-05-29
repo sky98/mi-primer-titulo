@@ -1,0 +1,48 @@
+<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+    <mat-icon>arrow_back</mat-icon>
+  </a>
+  <div class="center"><h1>Registrar Horario</h1></div>
+  <div class="center">
+    <form [formGroup]="horarioForm" (ngSubmit)="crear()" autocomplete="off">
+      <br>
+
+      <div class="row">
+        <mat-form-field appearance="fill" *ngIf="flagClases; else notClases">
+          <mat-label>Clase</mat-label>
+          <mat-select formControlName="clase">
+              <mat-option *ngFor="let clase of listaClases" [value]="clase.id"> {{ clase.descripcion }}
+              </mat-option>
+          </mat-select>
+          <mat-error>{{ validarCampo('clase') }}</mat-error>
+        </mat-form-field>
+        <ng-template #notClases>
+          <mat-label class="mat-label-red">No hay <strong>CLASES</strong> registrados</mat-label>
+        </ng-template>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+          <mat-error>{{ validarCampo('nombre') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <input matInput formControlName="descripcion">
+          <mat-error>{{ validarCampo('descripcion') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Horas</mat-label>
+          <input matInput type="number" formControlName="horas">
+          <mat-error>{{ validarCampo('horas') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <button mat-raised-button color="primary" [disabled]="horarioForm.invalid">Guardar</button>
+    </form>
+  
+  </div>

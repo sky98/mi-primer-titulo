@@ -14,9 +14,10 @@ public class MapeoClase implements RowMapper<DtoClase>, MapperResult {
     public DtoClase mapRow(ResultSet rs, int rowNum) throws SQLException {
 
         Long id = rs.getLong("id");
+        String nombre = rs.getString("nombre");
         Long docente = rs.getLong("docente");
         Long curso = rs.getLong("curso");
 
-        return new DtoClase(id, docente, curso);
+        return new DtoClase(id, nombre, docente, curso);
     }
 }

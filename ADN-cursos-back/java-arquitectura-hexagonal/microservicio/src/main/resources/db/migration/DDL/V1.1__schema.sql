@@ -9,6 +9,7 @@ create table curso (
 
 create table clase (
  id int(11) not null auto_increment,
+ nombre varchar(100) not null,
  docente int(11) not null,
  curso int(11) not null,
  primary key (id)

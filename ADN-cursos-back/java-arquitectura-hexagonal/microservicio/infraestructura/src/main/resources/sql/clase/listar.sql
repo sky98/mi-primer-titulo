@@ -1,2 +1,2 @@
-select id, docente, curso
+select id, nombre, docente, curso
 from clase

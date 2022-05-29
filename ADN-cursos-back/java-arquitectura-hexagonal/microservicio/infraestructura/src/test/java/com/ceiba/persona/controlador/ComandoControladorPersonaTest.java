@@ -33,16 +33,16 @@ public class ComandoControladorPersonaTest {
     private MockMvc mocMvc;
 
     @Test
-    @DisplayName("Debería crear un persona")
-    void deberiaCrearUnPersona() throws Exception{
+    @DisplayName("Debería crear una persona")
+    void deberiaCrearUnaPersona() throws Exception{
         // arrange
-        ComandoPersona persona = new ComandoPersonaTestDataBuilder().build();
+        ComandoPersona comandoPersona = new ComandoPersonaTestDataBuilder().build();
         // act - assert
         mocMvc.perform(post("/personas")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(persona)))
+                        .content(objectMapper.writeValueAsString(comandoPersona)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
+                .andExpect(content().json("{'valor': 3}"));
     }
 
     @Test
@@ -63,6 +63,13 @@ public class ComandoControladorPersonaTest {
     void deberiaEliminarUnaPersona() throws Exception {
         // arrange
         Long id = 1L;
+        // act - assert
+        mocMvc.perform(delete("/personas/{id}",id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        id = 2L;
         // act - assert
         mocMvc.perform(delete("/personas/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
