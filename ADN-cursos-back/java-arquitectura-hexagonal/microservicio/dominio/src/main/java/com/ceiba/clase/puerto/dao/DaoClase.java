@@ -11,4 +11,10 @@ public interface DaoClase {
      * @return los clases
      */
     List<DtoClase> listar();
+
+    /**
+     * Obtiene la clase segun su id
+     * @return clase
+     */
+    DtoClase detallesClase(Long id);
 }

@@ -14,7 +14,8 @@ export class AppComponent {
     { url: '/docente', nombre: 'docente' },
     { url: '/curso', nombre: 'curso' },    
     { url: '/clase', nombre: 'clase' },    
-    { url: '/horario', nombre: 'horario' }    
+    { url: '/horario', nombre: 'horario' },    
+    { url: '/salon', nombre: 'salon' }    
   ];
 
   

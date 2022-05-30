@@ -32,6 +32,9 @@
       "@horario/*": [
         "src/app/feature/horario/*"
       ],
+      "@salon/*": [
+        "src/app/feature/salon/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

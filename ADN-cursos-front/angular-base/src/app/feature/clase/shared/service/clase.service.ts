@@ -17,6 +17,10 @@ export class ClaseService {
     return this.http.doGet<Clase[]>(`${this.BASE_URL_CLASE}`, this.http.optsName('consultar clases'));
   }
 
+  detalleClase(claseId: number){
+    return this.http.doGet<Clase>(`${this.BASE_URL_CLASE}/${claseId}`, this.http.optsName('detalles clase'));
+  }
+
   guardar(clase: Clase) {
     return this.http.doPost<Clase, boolean>(this.BASE_URL_CLASE, clase,
                                                 this.http.optsName('crear/actualizar clases'));

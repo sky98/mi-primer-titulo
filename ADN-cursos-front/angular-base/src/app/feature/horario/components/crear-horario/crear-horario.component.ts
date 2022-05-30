@@ -5,6 +5,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { Router } from '@angular/router';
 import { Clase } from '@clase/shared/model/clase';
 import { ClaseService } from '@clase/shared/service/clase.service';
+import { Dias } from '@horario/shared/model/horario';
 
 import { HorarioService } from '@horario/shared/service/horario.service';
 
@@ -16,13 +17,7 @@ import { HorarioService } from '@horario/shared/service/horario.service';
 })
 export class CrearHorarioComponent implements OnInit {
 
-  dias = [
-    {id: 1, nombre: 'Lunes'},
-    {id: 2, nombre: 'Martes'},
-    {id: 3, nombre: 'Miercoles'},
-    {id: 4, nombre: 'Jueves'},
-    {id: 5, nombre: 'Viernes'}
-  ];
+  dias: Dias[] = [];
 
   horas = [
     {id: 8, nombre: "8 AM"},
@@ -59,6 +54,7 @@ export class CrearHorarioComponent implements OnInit {
   ngOnInit() {
     this.construirFormularioHorario();
     this.getClases();
+    this.dias = this.horarioService.getDias();
   }
 
   selectHoraInicio(valor: number){

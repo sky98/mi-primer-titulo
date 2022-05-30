@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClaseService } from '@clase/shared/service/clase.service';
 import { Horario } from '@horario/shared/model/horario';
 import { HorarioService } from '@horario/shared/service/horario.service';
 
@@ -14,14 +15,25 @@ export class ListarHorarioComponent implements OnInit {
   dataSource: Horario[] = [];
   displayedColumns = ['nombre_clase', 'dia', 'hora_inicio', 'cantidad_horas', 'accion'];
 
-  constructor(private horarioService: HorarioService) { }
+  constructor(private horarioService: HorarioService, private claseService: ClaseService) { }
 
   ngOnInit() {
     this.horarioService.consultar().subscribe(horarios =>{
       if(horarios.length>0){
         this.dataSource = horarios;
+        this.getDatosClases(this.dataSource);
         this.flagHorarios = true;
       }
+    });
+  }
+
+  getDatosClases(horarios: Horario[]){
+    horarios.forEach(element => {
+      element.nombreDia = this.horarioService.getDia(element.dia);
+      element.horaInicioConTiempo = (element.horaInicio < 11)? `${element.horaInicio} AM`: `${element.horaInicio} PM`;
+      this.claseService.detalleClase(element.clase).subscribe( clase =>{
+          element.nombreClase = clase.nombre;
+      });
     });
   }
 

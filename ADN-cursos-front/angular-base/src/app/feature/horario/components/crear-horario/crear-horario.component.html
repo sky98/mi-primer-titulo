@@ -3,11 +3,10 @@
   </a>
   <div class="center"><h1>Registrar Horario</h1></div>
   <div class="center">
-    <form [formGroup]="horarioForm" (ngSubmit)="crear()" autocomplete="off">
+    <form [formGroup]="horarioForm" (ngSubmit)="crear()" autocomplete="off" *ngIf="flagClases; else notClases">
       <br>
-
       <div class="row">
-        <mat-form-field appearance="fill" *ngIf="flagClases; else notClases">
+        <mat-form-field appearance="fill" >
           <mat-label>Clase</mat-label>
           <mat-select formControlName="clase">
               <mat-option *ngFor="let clase of listaClases" [value]="clase.id"> {{ clase.nombre }}
@@ -15,9 +14,6 @@
           </mat-select>
           <mat-error>{{ validarCampo('clase') }}</mat-error>
         </mat-form-field>
-        <ng-template #notClases>
-          <mat-label class="mat-label-red">No hay <strong>CLASES</strong> registrados</mat-label>
-        </ng-template>
 
         <div class="row">
           <mat-form-field appearance="fill">
@@ -55,5 +51,8 @@
       <br>
       <button mat-raised-button color="primary" [disabled]="horarioForm.invalid">Guardar</button>
     </form>
+    <ng-template #notClases>
+      <mat-label class="mat-label-red">No hay <strong>CLASES</strong> registrados</mat-label>
+    </ng-template>
   
   </div>

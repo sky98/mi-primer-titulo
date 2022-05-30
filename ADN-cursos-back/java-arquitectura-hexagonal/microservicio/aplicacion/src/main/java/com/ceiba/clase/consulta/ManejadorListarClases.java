@@ -18,4 +18,8 @@ public class ManejadorListarClases {
     public List<DtoClase> listar(){
         return this.daoClase.listar();
     }
+
+    public DtoClase detallesClase( Long id ){
+        return this.daoClase.detallesClase(id);
+    }
 }

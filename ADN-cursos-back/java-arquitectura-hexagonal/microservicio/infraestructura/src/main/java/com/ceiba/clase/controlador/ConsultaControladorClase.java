@@ -4,10 +4,7 @@ import com.ceiba.clase.consulta.ManejadorListarClases;
 import com.ceiba.clase.modelo.dto.DtoClase;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +23,8 @@ public class ConsultaControladorClase {
     @GetMapping
     @ApiOperation("Listar clases")
     public List<DtoClase> listar(){ return this.manejadorListarClases.listar(); }
+
+    @GetMapping(value = "/{id}")
+    @ApiOperation("Detalles clase")
+    public DtoClase detallesClase(@PathVariable Long id){ return this.manejadorListarClases.detallesClase(id); }
 }

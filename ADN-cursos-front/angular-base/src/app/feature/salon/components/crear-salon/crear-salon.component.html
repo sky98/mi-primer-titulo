@@ -1,0 +1,43 @@
+<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+    <mat-icon>arrow_back</mat-icon>
+  </a>
+  <div class="center"><h1>Registrar Salon</h1></div>
+  <div class="center">
+    <form [formGroup]="salonForm" (ngSubmit)="crear()" autocomplete="off" *ngIf="flagAlumno && flagCurso">
+      <br>
+      <div class="row">
+        <mat-form-field appearance="fill" >
+          <mat-label>Alumno</mat-label>
+          <mat-select formControlName="alumno">
+              <mat-option *ngFor="let alumno of listaAlumnos" [value]="alumno.id"> {{ alumno.nombre }} {{ alumno.apellido }}
+              </mat-option>
+          </mat-select>
+          <mat-error>{{ validarCampo('alumno') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill" >
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="curso">
+              <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
+              </mat-option>
+          </mat-select>
+          <mat-error>{{ validarCampo('curso') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <button mat-raised-button color="primary" [disabled]="salonForm.invalid">Guardar</button>
+    </form>
+
+    <form>
+      <div class="row" *ngIf="!flagAlumno">
+        <mat-label class="mat-label-red">No hay <strong>ALUMNOS</strong> registrados</mat-label>
+      </div>
+  
+      <div class="row" *ngIf="!flagCurso">
+        <mat-label class="mat-label-red">No hay <strong>CURSOS</strong> registrados</mat-label>
+      </div>
+
+    </form>
+  
+  </div>

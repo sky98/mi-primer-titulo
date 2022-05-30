@@ -8,17 +8,17 @@
   
           <ng-container matColumnDef="nombre_clase">
             <th mat-header-cell *matHeaderCellDef> Nombre clase </th>
-            <td mat-cell *matCellDef="let element"> {{element.identificacion}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.nombreClase}} </td>
           </ng-container>
   
           <ng-container matColumnDef="dia">
             <th mat-header-cell *matHeaderCellDef> Día </th>
-            <td mat-cell *matCellDef="let element"> {{element.dia}}</td>
+            <td mat-cell *matCellDef="let element"> {{element.nombreDia}}</td>
           </ng-container>
   
           <ng-container matColumnDef="hora_inicio">
             <th mat-header-cell *matHeaderCellDef> Hora Inicio </th>
-            <td mat-cell *matCellDef="let element"> {{element.horaInicio}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.horaInicioConTiempo}} </td>
           </ng-container>
   
           <ng-container matColumnDef="cantidad_horas">
