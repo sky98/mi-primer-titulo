@@ -10,7 +10,7 @@
         <mat-form-field appearance="fill" *ngIf="flagClases; else notClases">
           <mat-label>Clase</mat-label>
           <mat-select formControlName="clase">
-              <mat-option *ngFor="let clase of listaClases" [value]="clase.id"> {{ clase.descripcion }}
+              <mat-option *ngFor="let clase of listaClases" [value]="clase.id"> {{ clase.nombre }}
               </mat-option>
           </mat-select>
           <mat-error>{{ validarCampo('clase') }}</mat-error>
@@ -18,28 +18,39 @@
         <ng-template #notClases>
           <mat-label class="mat-label-red">No hay <strong>CLASES</strong> registrados</mat-label>
         </ng-template>
-      </div>
 
-      <div class="row">
-        <mat-form-field appearance="fill">
-          <mat-label>Nombre</mat-label>
-          <input matInput formControlName="nombre">
-          <mat-error>{{ validarCampo('nombre') }}</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field appearance="fill">
-          <mat-label>Descripción</mat-label>
-          <input matInput formControlName="descripcion">
-          <mat-error>{{ validarCampo('descripcion') }}</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field appearance="fill">
-          <mat-label>Horas</mat-label>
-          <input matInput type="number" formControlName="horas">
-          <mat-error>{{ validarCampo('horas') }}</mat-error>
-        </mat-form-field>
+        <div class="row">
+          <mat-form-field appearance="fill">
+            <mat-label>Día</mat-label>
+            <mat-select formControlName="dia">
+                <mat-option *ngFor="let dia of dias" [value]="dia.id"> {{ dia.nombre }}
+                </mat-option>
+            </mat-select>
+            <mat-error>{{ validarCampo('dia') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="fill">
+            <mat-label>Hora de inicio</mat-label>
+            <mat-select formControlName="horaInicio">
+                <mat-option (click)="selectHoraInicio(hora.id)" *ngFor="let hora of horas" [value]="hora.id"> {{ hora.nombre }}
+                </mat-option>
+            </mat-select>
+            <mat-error>{{ validarCampo('dia') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="fill">
+            <mat-label>Numero de horas</mat-label>
+            <mat-select formControlName="cantidadHoras">
+                <mat-option *ngFor="let cantidadHora of cantidadHoras" [value]="cantidadHora.id"> {{ cantidadHora.nombre }}
+                </mat-option>
+            </mat-select>
+            <mat-error>{{ validarCampo('cantidadHoras') }}</mat-error>
+          </mat-form-field>
+        </div>
       </div>
       <br>
       <button mat-raised-button color="primary" [disabled]="horarioForm.invalid">Guardar</button>

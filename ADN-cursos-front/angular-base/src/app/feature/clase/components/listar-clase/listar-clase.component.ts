@@ -14,7 +14,7 @@ export class ListarClaseComponent implements OnInit {
 
   dataSource: Clase[] = [];
   flagClases: boolean = false;
-  displayedColumns = ['nombre_docente', 'nombre_curso', 'accion'];
+  displayedColumns = [ 'nombre_clase', 'nombre_docente', 'nombre_curso', 'accion'];
 
   constructor(protected claseService: ClaseService, protected docenteService: DocenteService, protected cursoService: CursoService) { }
 

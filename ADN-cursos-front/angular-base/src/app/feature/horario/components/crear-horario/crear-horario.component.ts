@@ -3,13 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Clase } from '@clase/shared/model/clase';
+import { ClaseService } from '@clase/shared/service/clase.service';
 
 import { HorarioService } from '@horario/shared/service/horario.service';
 
-const HORAS_MAÑANA = '([8-11])';
-const HORAS_TARDE = '([14-17])';
-const DIAS_ADMITIDOS = '([1-5])';
-const CANTIDAD_HORAS = '([1-5])';
 
 @Component({
   selector: 'app-crear-horario',
@@ -18,7 +16,7 @@ const CANTIDAD_HORAS = '([1-5])';
 })
 export class CrearHorarioComponent implements OnInit {
 
-  dia = [
+  dias = [
     {id: 1, nombre: 'Lunes'},
     {id: 2, nombre: 'Martes'},
     {id: 3, nombre: 'Miercoles'},
@@ -26,12 +24,68 @@ export class CrearHorarioComponent implements OnInit {
     {id: 5, nombre: 'Viernes'}
   ];
 
+  horas = [
+    {id: 8, nombre: "8 AM"},
+    {id: 9, nombre: "9 AM"},
+    {id: 10, nombre: "10 AM"},
+    {id: 11, nombre: "11 AM"},
+    {id: 14, nombre: "14 PM"},
+    {id: 15, nombre: "15 PM"},
+    {id: 16, nombre: "16 PM"},
+    {id: 17, nombre: "17 PM"}
+  ];
+
+  cantidadHoras = [
+    {id: 4, nombre: 4},
+    {id: 3, nombre: 3},
+    {id: 2, nombre: 2},
+    {id: 1, nombre: 1}
+  ];
+
+  controlHoras = [
+    {id: 4, nombre: 4},
+    {id: 3, nombre: 3},
+    {id: 2, nombre: 2},
+    {id: 1, nombre: 1}
+  ];
+
   horarioForm: FormGroup;
 
-  constructor(private horarioService: HorarioService, private router: Router, private snackBar: MatSnackBar) { }
+  listaClases: Clase[] = [];
+  flagClases: boolean = false;
+
+  constructor(private horarioService: HorarioService, private router: Router, private snackBar: MatSnackBar, private claseService: ClaseService) { }
 
   ngOnInit() {
     this.construirFormularioHorario();
+    this.getClases();
+  }
+
+  selectHoraInicio(valor: number){
+    if(valor == 8 || valor == 14){
+      this.deshabilitarOpcionesEnLosNumerosDeHoras(5);
+    } else if(valor == 9 || valor == 15){
+      this.deshabilitarOpcionesEnLosNumerosDeHoras(4);
+    } else if(valor == 10 || valor == 16){
+      this.deshabilitarOpcionesEnLosNumerosDeHoras(3);
+    } else if(valor == 11 || valor == 17){
+      this.deshabilitarOpcionesEnLosNumerosDeHoras(2);
+    }
+    this.horarioForm.controls['cantidadHoras'].setValue(null);
+    this.horarioForm.controls['cantidadHoras'].enable();
+  }
+
+  deshabilitarOpcionesEnLosNumerosDeHoras(valor: number){
+    this.cantidadHoras = this.controlHoras.filter(x => x.id<valor);
+  }
+
+  getClases(){
+    this.claseService.consultar().subscribe( clases =>{
+      if(clases.length>0){
+        this.listaClases = clases;
+        this.flagClases = true;
+      }
+    });
   }
 
   validarCampo(campo: string) {
@@ -58,9 +112,9 @@ export class CrearHorarioComponent implements OnInit {
     this.horarioForm = new FormGroup({
       id            : new FormControl(''),
       clase         : new FormControl('', [Validators.required]),
-      dia           : new FormControl('', [Validators.required, Validators.pattern(DIAS_ADMITIDOS)]),
-      horaInicio    : new FormControl('', [Validators.required, Validators.pattern(HORAS_MAÑANA), Validators.pattern(HORAS_TARDE)]),
-      cantidadHoras : new FormControl('', [Validators.required, Validators.pattern(CANTIDAD_HORAS)])
+      dia           : new FormControl('', [Validators.required]),
+      horaInicio    : new FormControl('', [Validators.required]),
+      cantidadHoras : new FormControl({value:'', disabled: true}, [Validators.required])
     });
   }
 

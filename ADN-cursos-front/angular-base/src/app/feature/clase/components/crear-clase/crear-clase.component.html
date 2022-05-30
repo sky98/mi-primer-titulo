@@ -5,32 +5,41 @@
 <div class="center">
   <form [formGroup]="claseForm" (ngSubmit)="crear()" autocomplete="off">
     <br>
-    <div class="row">
-      <mat-form-field appearance="fill" *ngIf="flagCurso; else notCurso">
-        <mat-label>Curso</mat-label>
-        <mat-select formControlName="curso">
-            <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
-            </mat-option>
-        </mat-select>
-        <mat-error>{{ validarCampo('curso') }}</mat-error>
-      </mat-form-field>
-      <ng-template #notCurso>
-        <mat-label class="mat-label-red">No hay <strong>CURSOS</strong> registrados</mat-label>
-      </ng-template>
+    <div *ngIf="flagCurso && flagDocente">
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+          <mat-error>{{ validarCampo('nombre') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill" *ngIf="flagCurso">
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="curso">
+              <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
+              </mat-option>
+          </mat-select>
+          <mat-error>{{ validarCampo('curso') }}</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="row">
+        <mat-form-field appearance="fill" *ngIf="flagDocente">
+          <mat-label>Docente</mat-label>
+          <mat-select formControlName="docente">
+              <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id"> {{ docente.nombre }}
+              </mat-option>
+          </mat-select>
+          <mat-error>{{ validarCampo('docente') }}</mat-error>
+        </mat-form-field>
+      </div>
     </div>
-    <br>
-    <div class="row">
-      <mat-form-field appearance="fill" *ngIf="flagDocente; else notDocente">
-        <mat-label>Docente</mat-label>
-        <mat-select formControlName="docente">
-            <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id"> {{ docente.nombre }}
-            </mat-option>
-        </mat-select>
-        <mat-error>{{ validarCampo('docente') }}</mat-error>
-      </mat-form-field>
-      <ng-template #notDocente>
-        <mat-label class="mat-label-red">No hay <strong>DOCENTES</strong> registrados</mat-label>
-      </ng-template>
+    <div *ngIf="!flagCurso">
+      <mat-label class="mat-label-red">No hay <strong>CURSOS</strong> registrados</mat-label>
+    </div>
+    <div *ngIf="!flagDocente">
+      <mat-label class="mat-label-red">No hay <strong>DOCENTES</strong> registrados</mat-label>
     </div>
     <br>
     <button mat-raised-button color="primary" [disabled]="claseForm.invalid">Guardar</button>

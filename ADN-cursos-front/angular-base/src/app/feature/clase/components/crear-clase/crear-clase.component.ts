@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { ClaseService } from '@clase/shared/service/clase.service';
@@ -63,9 +63,10 @@ export class CrearClaseComponent implements OnInit {
 
   private construirFormularioClase() {
     this.claseForm = new FormGroup({
-      id: new FormControl(''),
-      curso: new FormControl('', [Validators.required]),
-      docente: new FormControl('', [Validators.required])
+      id      : new FormControl(''),
+      nombre  : new FormControl('', [Validators.required]),
+      curso   : new FormControl('', [Validators.required]),
+      docente : new FormControl('', [Validators.required])
     });
   }
 
