@@ -58,6 +58,13 @@ describe('CrearDocenteComponent', () => {
     expect(component.docenteForm.valid).toBeFalsy();
   });
 
+  /* it('formulario es invalido cuando número de identificación es menor de 4', () => {
+    //expect(component.docenteForm.valid).toBeFalsy();
+    component.docenteForm.controls.identificacion.setValue('123');
+    //let error = component.validarCampo('identificacion');
+    expect(component.docenteForm.controls.identificacion.errors).toThrowError('Longitud minima de 4');
+  }); */
+
   it('Registrando docente', () => {
     expect(component.docenteForm.valid).toBeFalsy();
     component.docenteForm.controls.identificacion.setValue('1234');
