@@ -11,7 +11,9 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
   styleUrls: ['./crear-producto.component.css']
 })
 export class CrearProductoComponent implements OnInit {
+  
   productoForm: FormGroup;
+
   constructor(protected productoServices: ProductoService) { }
 
   ngOnInit() {
