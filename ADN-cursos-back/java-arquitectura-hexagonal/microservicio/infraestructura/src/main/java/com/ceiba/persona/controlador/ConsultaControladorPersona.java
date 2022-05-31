@@ -24,15 +24,15 @@ public class ConsultaControladorPersona {
     @ApiOperation("Listar personas")
     public List<DtoPersona> listar(){ return this.manejadorListarPersonas.listar(); }
 
-    @GetMapping(value = "/listar-alumnos")
-    @ApiOperation("Listar personas")
+    @GetMapping(value = "/alumnos")
+    @ApiOperation("Listar alumnos")
     public List<DtoPersona> listarAlumnos(){ return this.manejadorListarPersonas.listarAlumnos(); }
 
-    @GetMapping(value = "/listar-docentes")
-    @ApiOperation("Listar personas")
+    @GetMapping(value = "/docentes")
+    @ApiOperation("Listar docentes")
     public List<DtoPersona> listarDocentes(){ return this.manejadorListarPersonas.listarDocentes(); }
 
-    @GetMapping(value = "/docente/{id}")
+    @GetMapping(value = "/docentes/{id}")
     @ApiOperation("Obtener docente")
     public DtoPersona obtenerDocentePorId(@PathVariable Long id){ return this.manejadorListarPersonas.obtenerDocentePorId(id); }
 }

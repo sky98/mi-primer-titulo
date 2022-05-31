@@ -11,7 +11,7 @@ describe('DocenteService', () => {
   let httpMock: HttpTestingController;
   let docenteService: DocenteService;
 
-  const apiEndpointDocenteConsulta = `${environment.endpoint}personas/listar-docentes`;
+  const apiEndpointDocenteConsulta = `${environment.endpoint}personas/docentes`;
   const apiEndpointDocentes = `${environment.endpoint}personas`;
 
   const dummyDocentes  = [
@@ -59,6 +59,15 @@ describe('DocenteService', () => {
     const req = httpMock.expectOne(apiEndpointDocenteConsulta);
     expect(req.request.method).toBe('GET');
     req.flush(dummyDocentes);
+  });
+
+  it('deberia obtener un docente segun su id', () => {
+    docenteService.obtenerDocente(dummyDocentes[0].id).subscribe(docente => {
+      expect(docente).toEqual(dummyDocentes[0]);
+    });
+    const req = httpMock.expectOne(`${apiEndpointDocenteConsulta}/1`);
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyDocentes[0]);
   });
 
   it('deberia crear un docente', () => {

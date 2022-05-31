@@ -13,7 +13,7 @@ export class AlumnoService {
   constructor(protected http: HttpService) { }
 
   consultar(){
-    return this.http.doGet<Alumno[]>(`${this.BASE_URL_ALUMNO}/listar-alumnos`, this.http.optsName('consultar alumnos'));
+    return this.http.doGet<Alumno[]>(`${this.BASE_URL_ALUMNO}/alumnos`, this.http.optsName('consultar alumnos'));
   }
 
   public guardar(alumno: Alumno) {

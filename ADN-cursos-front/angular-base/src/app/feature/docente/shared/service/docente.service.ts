@@ -14,11 +14,11 @@ export class DocenteService {
   constructor(protected http: HttpService) { }
 
   consultar(){
-    return this.http.doGet<Docente[]>(`${this.BASE_URL_DOCENTE}/listar-docentes`, this.http.optsName('consultar docentes'));
+    return this.http.doGet<Docente[]>(`${this.BASE_URL_DOCENTE}/docentes`, this.http.optsName('consultar docentes'));
   }
 
   obtenerDocente(docenteId: number){
-    return this.http.doGet<Docente>(`${this.BASE_URL_DOCENTE}/docente/${docenteId}`, this.http.optsName('obtener docente'));
+    return this.http.doGet<Docente>(`${this.BASE_URL_DOCENTE}/docentes/${docenteId}`, this.http.optsName('obtener docente'));
   }
 
   guardar(docente: Docente) {
