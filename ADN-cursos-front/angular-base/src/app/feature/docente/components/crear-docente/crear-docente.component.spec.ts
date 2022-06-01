@@ -16,7 +16,6 @@ describe('CrearDocenteComponent', () => {
   let fixture: ComponentFixture<CrearDocenteComponent>;
   let docenteService: DocenteService;
   let router: Router;
-
   const routes: Routes = [
     {path: 'listar', component: ListarDocenteComponent}
   ];
@@ -73,7 +72,6 @@ describe('CrearDocenteComponent', () => {
     component.docenteForm.controls.direccion.setValue('test 1');
     component.docenteForm.controls.telefono.setValue('test 1');
     component.docenteForm.controls.correoElectronico.setValue('test 1');
-    component.docenteForm.controls.tipo.setValue(1);
     expect(component.docenteForm.valid).toBeTruthy();
 
     component.crear();

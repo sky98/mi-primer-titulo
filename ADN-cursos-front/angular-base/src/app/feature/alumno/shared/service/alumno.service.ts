@@ -16,12 +16,12 @@ export class AlumnoService {
     return this.http.doGet<Alumno[]>(`${this.BASE_URL_ALUMNO}/alumnos`, this.http.optsName('consultar alumnos'));
   }
 
-  public guardar(alumno: Alumno) {
+  guardar(alumno: Alumno) {
     return this.http.doPost<Alumno, boolean>(this.BASE_URL_ALUMNO, alumno,
                                                 this.http.optsName('crear/actualizar alumnos'));
   }
 
-  public eliminar(alumno: Alumno) {
+  eliminar(alumno: Alumno) {
     return this.http.doDelete<boolean>(`${this.BASE_URL_ALUMNO}/${alumno.id}`,
                                                  this.http.optsName('eliminar alumnos'));
   }
