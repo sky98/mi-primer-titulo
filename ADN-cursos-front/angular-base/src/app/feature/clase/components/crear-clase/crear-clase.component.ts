@@ -19,8 +19,8 @@ export class CrearClaseComponent implements OnInit {
 
   claseForm: FormGroup;
 
-  listaCursos: Curso[];
-  listaDocentes: Docente[];
+  listaCursos: Curso[] = [];
+  listaDocentes: Docente[] = [];
 
   flagDocente: boolean = false;
   flagCurso: boolean = false;

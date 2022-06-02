@@ -11,10 +11,11 @@ import { CursoService } from '@curso/shared/service/curso.service';
 import { HttpService } from '@core/services/http.service';
 import { ListarClaseComponent } from '../listar-clase/listar-clase.component';
 
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Docente } from '@docente/shared/model/docente';
+
 import { Curso } from '@curso/shared/model/curso';
+import { Docente } from '@docente/shared/model/docente';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 describe('CrearClaseComponent', () => {
@@ -51,8 +52,6 @@ describe('CrearClaseComponent', () => {
       providers: [ClaseService, CursoService, DocenteService, HttpService],
     })
     .compileComponents();
-    router = TestBed.inject(Router);
-    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
   });
 
   beforeEach(() => {
@@ -70,17 +69,33 @@ describe('CrearClaseComponent', () => {
     spyOn(docenteService, 'consultar').and.returnValue(
       of(listDocente)
     );
+    router = TestBed.inject(Router);
+    spyOn(router, 'navigate').and.returnValue(Promise.resolve(true));
     //fixture.detectChanges();
     router.initialNavigation();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    //expect(component.claseForm.valid).toBeFalsy();
+    expect(component.claseForm).toBeFalsy();
+    expect(component.flagDocente).toBeFalsy();
+    expect(component.flagCurso).toBeFalsy();
     expect(component.listaCursos.length).toBe(0);
     expect(component.listaDocentes.length).toBe(0);
-    expect(component.flagCurso).toBeFalsy();
-    expect(component.flagDocente).toBeFalsy();
   });
+
+  // NO ME DEJA ACCEDER A LAS PROPIEDADES DE LA CLASEFORM
+
+  /* it('Registrando clase', () => {
+    expect(component.claseForm).toBeFalsy();
+    component.claseForm.controls.nombre.setValue('test 1');
+    component.claseForm.controls.curso.setValue(1);
+    component.claseForm.controls.docente.setValue(1);
+    expect(component.claseForm).toBeTruthy();
+
+    component.crear();
+    
+    expect(router.navigate).toHaveBeenCalledWith(['clase/listar']);
+  }); */
 
 });
