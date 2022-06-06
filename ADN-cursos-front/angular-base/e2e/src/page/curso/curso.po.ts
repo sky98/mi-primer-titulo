@@ -1,29 +1,42 @@
 import { by, element } from 'protractor';
 
 export class CursoPage {
-    private linkCrearProducto = element(by.id('linkCrearProducto'));
-    private linkListarProductos = element(by.id('linkListarProducto'));
-    private inputIdProducto = element(by.id('idProducto'));
-    private inputDescripcionProducto = element(by.id('descripcionProducto'));
-    private listaProductos = element.all(by.css('ul.productos li'));
+    
+    private linkCrearCurso = element(by.id('linkCrearCurso'));
+    private linkListarCursos = element(by.id('linkListarCursos'));
+    private listaCursos = element.all(by.css('table.cursos td'));
 
-    async clickBotonCrearProductos() {
-        await this.linkCrearProducto.click();
+    private inputNombreCurso = element(by.id('nombreCurso'));
+    private inputDescripcionCurso = element(by.id('descripcionCurso'));
+    private inputHorasCurso = element(by.id('horasCurso'));
+
+    private buttonGuardarCurso = element(by.id('btnGuardarCurso'));
+
+    async clickBotonCrearCursos() {
+        await this.linkCrearCurso.click();
     }
 
-    async clickBotonListarProductos() {
-        await this.linkListarProductos.click();
+    async clickBotonListarCursos() {
+        await this.linkListarCursos.click();
     }
 
-    async ingresarId(idProducto) {
-        await this.inputIdProducto.sendKeys(idProducto);
+    async clickBotonGuardarCurso() {
+        await this.buttonGuardarCurso.click();
     }
 
-    async ingresarDescripcion(descripcionProducto) {
-        await this.inputDescripcionProducto.sendKeys(descripcionProducto);
+    async ingresarNombre(nombreCurso) {
+        await this.inputNombreCurso.sendKeys(nombreCurso);
     }
 
-    async contarProductos() {
-        return this.listaProductos.count();
+    async ingresarDescripcion(descripcionCurso) {
+        await this.inputDescripcionCurso.sendKeys(descripcionCurso);
+    }
+    
+    async ingresarHoras(horasCurso) {
+        await this.inputHorasCurso.sendKeys(horasCurso);
+    }
+
+    async contarCursos() {
+        return this.listaCursos.count();
     }
 }

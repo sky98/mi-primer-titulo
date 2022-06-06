@@ -1,4 +1,4 @@
-<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+<a id="linkListarDocentes" class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
   <mat-icon>arrow_back</mat-icon>
 </a>
 <div class="center"><h1>Registrar Docente</h1></div>
@@ -8,47 +8,47 @@
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Identificación</mat-label>
-        <input matInput formControlName="identificacion">
+        <input id="identificacionDocente" matInput formControlName="identificacion">
         <mat-error>{{ validarCampo('identificacion') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre">
+        <input id="nombreDocente" matInput formControlName="nombre">
         <mat-error>{{ validarCampo('nombre') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
-        <input matInput formControlName="apellido">
+        <input id="apellidoDocente" matInput formControlName="apellido">
         <mat-error>{{ validarCampo('apellido') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Dirección</mat-label>
-        <input matInput formControlName="direccion">
+        <input id="direccionDocente" matInput formControlName="direccion">
         <mat-error>{{ validarCampo('direccion') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Telefóno</mat-label>
-        <input matInput formControlName="telefono">
+        <input id="telefonoDocente" matInput formControlName="telefono">
         <mat-error>{{ validarCampo('telefono') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Correo Electrónico</mat-label>
-        <input matInput formControlName="correoElectronico">
+        <input id="correoElectronicoDocente" matInput formControlName="correoElectronico">
         <mat-error>{{ validarCampo('correoElectronico') }}</mat-error>
       </mat-form-field>
     </div>
     <br>
-    <button mat-raised-button color="primary" [disabled]="docenteForm.invalid">Guardar</button>
+    <button id="btnGuardarDocente" mat-raised-button color="primary" [disabled]="docenteForm.invalid">Guardar</button>
   </form>
 
 </div>

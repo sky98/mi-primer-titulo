@@ -1,4 +1,4 @@
-<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+<a id="linkListarClases" class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
   <mat-icon>arrow_back</mat-icon>
 </a>
 <div class="center"><h1>Registrar clase</h1></div>
@@ -9,14 +9,14 @@
       <div class="row">
         <mat-form-field appearance="fill">
           <mat-label>Nombre</mat-label>
-          <input matInput formControlName="nombre">
+          <input id="nombreClase" matInput formControlName="nombre">
           <mat-error>{{ validarCampo('nombre') }}</mat-error>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="fill" *ngIf="flagCurso">
           <mat-label>Curso</mat-label>
-          <mat-select formControlName="curso">
+          <mat-select id="cursoClase" formControlName="curso">
               <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
               </mat-option>
           </mat-select>
@@ -27,7 +27,7 @@
       <div class="row">
         <mat-form-field appearance="fill" *ngIf="flagDocente">
           <mat-label>Docente</mat-label>
-          <mat-select formControlName="docente">
+          <mat-select id="docenteClase" formControlName="docente">
               <mat-option *ngFor="let docente of listaDocentes" [value]="docente.id"> {{ docente.nombre }}
               </mat-option>
           </mat-select>
@@ -42,7 +42,7 @@
       <mat-label class="mat-label-red">No hay <strong>DOCENTES</strong> registrados</mat-label>
     </div>
     <br>
-    <button mat-raised-button color="primary" [disabled]="claseForm.invalid">Guardar</button>
+    <button id="btnGuardarClase" mat-raised-button color="primary" [disabled]="claseForm.invalid">Guardar</button>
   </form>
 
 </div>

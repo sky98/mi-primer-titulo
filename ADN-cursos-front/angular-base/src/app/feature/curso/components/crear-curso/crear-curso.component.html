@@ -1,4 +1,4 @@
-<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+<a id="linkCrearCurso" class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
   <mat-icon>arrow_back</mat-icon>
 </a>
 <div class="center"><h1>Registrar Curso</h1></div>
@@ -8,26 +8,26 @@
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre">
+        <input id="nombreCurso" matInput formControlName="nombre">
         <mat-error>{{ validarCampo('nombre') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Descripción</mat-label>
-        <input matInput formControlName="descripcion">
+        <input id="descripcionCurso" matInput formControlName="descripcion">
         <mat-error>{{ validarCampo('descripcion') }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Horas</mat-label>
-        <input matInput type="number" formControlName="horas">
+        <input id="horasCurso" matInput type="number" formControlName="horas">
         <mat-error>{{ validarCampo('horas') }}</mat-error>
       </mat-form-field>
     </div>
     <br>
-    <button mat-raised-button color="primary" [disabled]="cursoForm.invalid">Guardar</button>
+    <button id="btnGuardarCurso" mat-raised-button color="primary" [disabled]="cursoForm.invalid">Guardar</button>
   </form>
 
 </div>

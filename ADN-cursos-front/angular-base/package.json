@@ -7,7 +7,8 @@
     "build": "ng build --prod",
     "test": "ng test --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "backend" : "json-server --watch ./e2e/src/backend/db.json"
   },
   "private": true,
   "dependencies": {

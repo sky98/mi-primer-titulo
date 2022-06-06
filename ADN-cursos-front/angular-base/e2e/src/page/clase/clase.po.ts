@@ -1,29 +1,42 @@
 import { by, element } from 'protractor';
 
 export class ClasePage {
-    private linkCrearProducto = element(by.id('linkCrearProducto'));
-    private linkListarProductos = element(by.id('linkListarProducto'));
-    private inputIdProducto = element(by.id('idProducto'));
-    private inputDescripcionProducto = element(by.id('descripcionProducto'));
-    private listaProductos = element.all(by.css('ul.productos li'));
 
-    async clickBotonCrearProductos() {
-        await this.linkCrearProducto.click();
+    private linkCrearClase = element(by.id('linkCrearClase'));
+    private linkListarClases = element(by.id('linkListarClase'));
+    private listaClases = element.all(by.css('table.clases td'));
+
+    private inputNombreClase = element(by.id('nombreClase'));
+    private selectCursoClase = element(by.id('cursoClase'));
+    private selectDocenteClase = element(by.id('docenteClase'));
+
+    private buttonGuardarClase = element(by.id('btnGuardarClase'));
+
+    async clickBotonCrearClases() {
+        await this.linkCrearClase.click();
     }
 
-    async clickBotonListarProductos() {
-        await this.linkListarProductos.click();
+    async clickBotonListarClases() {
+        await this.linkListarClases.click();
     }
 
-    async ingresarId(idProducto) {
-        await this.inputIdProducto.sendKeys(idProducto);
+    async clickBotonGuardarClase() {
+        await this.buttonGuardarClase.click();
     }
 
-    async ingresarDescripcion(descripcionProducto) {
-        await this.inputDescripcionProducto.sendKeys(descripcionProducto);
+    async ingresarNombre(idClase) {
+        await this.inputNombreClase.sendKeys(idClase);
     }
 
-    async contarProductos() {
-        return this.listaProductos.count();
+    async ingresarCurso(cursoClase) {
+        await this.selectCursoClase.sendKeys(cursoClase);
+    }
+
+    async ingresarDocente(docenteClase) {
+        await this.selectDocenteClase.sendKeys(docenteClase);
+    }
+
+    async contarClases() {
+        return this.listaClases.count();
     }
 }

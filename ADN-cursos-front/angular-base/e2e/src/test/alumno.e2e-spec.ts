@@ -1,16 +1,13 @@
-//import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
 import { AlumnoPage } from '../page/alumno/alumno.po';
 
 describe('workspace-project Alumno', () => {
     
     let page: AppPage;
-    //let navBar: NavbarPage;
     let alumno: AlumnoPage;
 
     beforeEach(() => {
         page = new AppPage();
-        //navBar = new NavbarPage();
         alumno = new AlumnoPage();
     });
 
@@ -39,9 +36,7 @@ describe('workspace-project Alumno', () => {
     });
 
     it('Deberia listar alumnos', async () => {        
-        page.navigateTo();
-        /* navBar.clickBotonAlumnos();
-        alumno.clickBotonListarAlumnos(); */
+        page.navigateTo('/alumno/listar');
 
         expect(0).toBe(alumno.contarAlumnos());
     });

@@ -1,11 +1,11 @@
 <div class="mg-1">
-    <a routerLink="../crear" class="pointer" style="color:green;" matTooltip="Agregar Clase" matTooltipPosition="above">
+    <a id="linkCrearClase" routerLink="../crear" class="pointer" style="color:green;" matTooltip="Agregar Clase" matTooltipPosition="above">
       <mat-icon>assignment</mat-icon>
     </a>
     <div class="mg-1">
       <div *ngIf="flagClases; else notClases">
   
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table class="clases" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
    
           <ng-container matColumnDef="nombre_clase">
             <th mat-header-cell *matHeaderCellDef> Clase </th>
