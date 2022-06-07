@@ -1,57 +1,245 @@
 {
-    "cursos":[
-        {
-            "id"                : 1,
-            "identificacion"    : "12345",
-            "nombre"            : "Curso 1",
-            "descripcion"       : "Curso 1",
-            "horas"             : 2
-        },
-        {
-            "id"                : 2,
-            "identificacion"    : "123456",
-            "nombre"            : "Curso 2",
-            "descripcion"       : "Curso 2",
-            "horas"             : 2
-        },
-        {
-            "id"                : 3,
-            "identificacion"    : "123457",
-            "nombre"            : "Curso 3",
-            "descripcion"       : "Curso 3",
-            "horas"             : 2
-        }
-    ],
-    "docentes":[
-        {
-            "id"                : 1,
-            "identificacion"    : "12345",
-            "nombre"            : "Docente 1",
-            "apellido"          : "Docente 1",
-            "direccion"         : "Docente 1",
-            "telefono"          : "Docente 1",
-            "correoElectronico" : "Docente 1",
-            "tipo"              : 2
-        },
-        {
-            "id"                : 2,
-            "identificacion"    : "123456",
-            "nombre"            : "Docente 2",
-            "apellido"          : "Docente 2",
-            "direccion"         : "Docente 2",
-            "telefono"          : "Docente 2",
-            "correoElectronico" : "Docente 2",
-            "tipo"              : 2
-        },
-        {
-            "id"                : 3,
-            "identificacion"    : "123457",
-            "nombre"            : "Docente 3",
-            "apellido"          : "Docente 3",
-            "direccion"         : "Docente 3",
-            "telefono"          : "Docente 3",
-            "correoElectronico" : "Docente 3",
-            "tipo"              : 2
-        }
-    ]
+  "cursos": [
+    {
+      "id": 1,
+      "identificacion": "12345",
+      "nombre": "Curso 1",
+      "descripcion": "Curso 1",
+      "horas": 2
+    },
+    {
+      "id": 2,
+      "identificacion": "123456",
+      "nombre": "Curso 2",
+      "descripcion": "Curso 2",
+      "horas": 2
+    },
+    {
+      "id": 3,
+      "identificacion": "123457",
+      "nombre": "Curso 3",
+      "descripcion": "Curso 3",
+      "horas": 2
+    }
+  ],
+  "docentes": [
+    {
+      "id": 1,
+      "identificacion": "12345",
+      "nombre": "Docente 1",
+      "apellido": "Docente 1",
+      "direccion": "Docente 1",
+      "telefono": "Docente 1",
+      "correoElectronico": "Docente 1",
+      "tipo": 2
+    },
+    {
+      "id": 2,
+      "identificacion": "123456",
+      "nombre": "Docente 2",
+      "apellido": "Docente 2",
+      "direccion": "Docente 2",
+      "telefono": "Docente 2",
+      "correoElectronico": "Docente 2",
+      "tipo": 2
+    },
+    {
+      "id": 3,
+      "identificacion": "123457",
+      "nombre": "Docente 3",
+      "apellido": "Docente 3",
+      "direccion": "Docente 3",
+      "telefono": "Docente 3",
+      "correoElectronico": "Docente 3",
+      "tipo": 2
+    }
+  ],
+  "alumnos": [
+    {
+      "id": 4,
+      "identificacion": "54321",
+      "nombre": "Alumno 1",
+      "apellido": "Alumno 1",
+      "direccion": "Alumno 1",
+      "telefono": "Alumno 1",
+      "correoElectronico": "Alumno 1",
+      "tipo": 1
+    },
+    {
+      "id": 5,
+      "identificacion": "654321",
+      "nombre": "Alumno 2",
+      "apellido": "Alumno 2",
+      "direccion": "Alumno 2",
+      "telefono": "Alumno 2",
+      "correoElectronico": "Alumno 2",
+      "tipo": 1
+    },
+    {
+      "id": 6,
+      "identificacion": "7654321",
+      "nombre": "Alumno 3",
+      "apellido": "Alumno 3",
+      "direccion": "Alumno 3",
+      "telefono": "Alumno 3",
+      "correoElectronico": "Alumno 3",
+      "tipo": 1
+    },
+    {
+      "id": 7,
+      "identificacion": "12345",
+      "nombre": "Alumno de pruebas",
+      "apellido": "Alumno de pruebas",
+      "direccion": "Alumno de pruebas",
+      "telefono": "Alumno de pruebas",
+      "correoElectronico": "Alumno de pruebas"
+    },
+    {
+      "id": 8,
+      "identificacion": "12345",
+      "nombre": "Alumno de pruebas",
+      "apellido": "Alumno de pruebas",
+      "direccion": "Alumno de pruebas",
+      "telefono": "Alumno de pruebas",
+      "correoElectronico": "Alumno de pruebas"
+    },
+    {
+      "id": 9,
+      "identificacion": "12345",
+      "nombre": "Alumno de pruebas",
+      "apellido": "Alumno de pruebas",
+      "direccion": "Alumno de pruebas",
+      "telefono": "Alumno de pruebas",
+      "correoElectronico": "Alumno de pruebas"
+    },
+    {
+      "id": 10,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 11,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 12,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 13,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 14,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 15,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 16,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    }
+  ],
+  "clases": [
+    {
+      "id": 1,
+      "nombre": "Clase 1",
+      "docente": 1,
+      "curso": 1
+    },
+    {
+      "id": 2,
+      "nombre": "Clase 2",
+      "docente": 1,
+      "curso": 2
+    },
+    {
+      "id": 1,
+      "nombre": "Clase 3",
+      "docente": 1,
+      "curso": 3
+    }
+  ],
+  "horarios": [
+    {
+      "id": 1,
+      "clase": 1,
+      "dia": 2,
+      "horaInicio": 8,
+      "cantidadHoras": 2
+    },
+    {
+      "id": 2,
+      "clase": 1,
+      "dia": 2,
+      "horaInicio": 8,
+      "cantidadHoras": 2
+    },
+    {
+      "id": 3,
+      "clase": 1,
+      "dia": 2,
+      "horaInicio": 8,
+      "cantidadHoras": 2
+    }
+  ],
+  "salones": [
+    {
+      "id": 1,
+      "clase": 1,
+      "dia": 2,
+      "horaInicio": 8,
+      "cantidadHoras": 2
+    },
+    {
+      "id": 2,
+      "clase": 1,
+      "dia": 2,
+      "horaInicio": 8,
+      "cantidadHoras": 2
+    },
+    {
+      "id": 3,
+      "clase": 1,
+      "dia": 2,
+      "horaInicio": 8,
+      "cantidadHoras": 2
+    }
+  ]
 }

@@ -1,0 +1,6 @@
+{
+    "/personas/alumnos" : "/alumnos",
+    "/personas" : "/alumnos",
+    "/personas/docentes" : "/docentes",
+    "/personas/docentes/:id" : "/docentes/:id"
+}

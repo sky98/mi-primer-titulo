@@ -20,6 +20,8 @@ describe('workspace-project Alumno', () => {
         const TELEFONO_ALUMNO = 'Alumno de pruebas';
         const CORREO_ELECTRONICO_ALUMNO = 'Alumno de pruebas';
 
+        //console.log(await alumno.contarAlumnos());
+
         await page.navigateTo('/alumno/crear');
         await alumno.ingresarIdentificacion(IDENTIFICACION_ALUMNO);
         await alumno.ingresarNombre(NOMBRE_ALUMNO);
@@ -28,11 +30,11 @@ describe('workspace-project Alumno', () => {
         await alumno.ingresarTelefono(TELEFONO_ALUMNO);
         await alumno.ingresarCorreoElectronico(CORREO_ELECTRONICO_ALUMNO);
 
-        await alumno.clickBotonGuardarAlumno();
+        await expect(alumno.contarAlumnos()).toBe(0);
+
 
         // Adicionamos las validaciones despues de la creación
         // expect(<>).toEqual(<>);
-        await expect(0).toBe(alumno.contarAlumnos());
     });
 
     it('Deberia listar alumnos', async () => {        

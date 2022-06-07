@@ -4,7 +4,7 @@ export class AlumnoPage {
     
     private linkCrearAlumno = element(by.id('linkCrearAlumno'));
     private linkListarAlumnos = element(by.id('linkListarAlumnos'));
-    private listaAlumnos = element.all(by.css('table.alumnos td'));
+    private listaAlumnos = element.all(by.css('.alumnos .element'));
 
     private inputIdentificacionAlumno = element(by.id('identificacionAlumno'));
     private inputNombreAlumno = element(by.id('nombreAlumno'));

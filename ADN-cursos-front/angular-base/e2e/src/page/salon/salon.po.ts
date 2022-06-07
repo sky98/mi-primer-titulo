@@ -1,29 +1,31 @@
 import { by, element } from 'protractor';
 
 export class SalonPage {
-    private linkCrearProducto = element(by.id('linkCrearProducto'));
-    private linkListarProductos = element(by.id('linkListarProducto'));
-    private inputIdProducto = element(by.id('idProducto'));
-    private inputDescripcionProducto = element(by.id('descripcionProducto'));
-    private listaProductos = element.all(by.css('ul.productos li'));
+    private linkCrearSalon = element(by.id('linkCrearSalon'));
+    private linkListarSalones = element(by.id('linkListarSalones'));
 
-    async clickBotonCrearProductos() {
-        await this.linkCrearProducto.click();
+    private selectAlumnoSalon = element(by.id('alumnoSalon'));
+    private selectCursoSalon = element(by.id('cursoSalon'));
+
+    private buttonGuardarSalon = element(by.id('btnGuardarSalon'));
+
+    async clickBotonCrearSalones() {
+        await this.linkCrearSalon.click();
     }
 
-    async clickBotonListarProductos() {
-        await this.linkListarProductos.click();
+    async clickBotonListarSalones() {
+        await this.linkListarSalones.click();
     }
 
-    async ingresarId(idProducto) {
-        await this.inputIdProducto.sendKeys(idProducto);
+    async clickBotonGuardarSalon() {
+        await this.buttonGuardarSalon.click();
     }
 
-    async ingresarDescripcion(descripcionProducto) {
-        await this.inputDescripcionProducto.sendKeys(descripcionProducto);
+    async ingresarAlumno(alumno) {
+        await this.selectAlumnoSalon.sendKeys(alumno);
     }
 
-    async contarProductos() {
-        return this.listaProductos.count();
+    async ingresarCurso(curso) {
+        await this.selectCursoSalon.sendKeys(curso);
     }
 }

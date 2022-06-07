@@ -26,12 +26,12 @@ describe('workspace-project Curso', () => {
 
         // Adicionamos las validaciones despues de la creación
         // expect(<>).toEqual(<>);
-        await expect(1).toBe(curso.contarCursos());
+        await expect(0).toBe(curso.contarCursos());
     });
 
     it('Deberia listar cursos', async () => {        
         page.navigateTo('/curso/listar');
 
-        expect(0).toBe(curso.contarCursos());
+        await expect(0).toBe(curso.contarCursos());
     });
 });

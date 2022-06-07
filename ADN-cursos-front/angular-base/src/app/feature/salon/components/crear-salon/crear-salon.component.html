@@ -1,4 +1,4 @@
-<a class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
+<a id="linkListarSalones" class="pointer" style="color:dodgerblue;" matTooltip="Volver" matTooltipPosition="above" routerLink="../listar">
     <mat-icon>arrow_back</mat-icon>
   </a>
   <div class="center"><h1>Registrar Salon</h1></div>
@@ -8,7 +8,7 @@
       <div class="row">
         <mat-form-field appearance="fill" >
           <mat-label>Alumno</mat-label>
-          <mat-select formControlName="alumno">
+          <mat-select id="alumnoSalon" formControlName="alumno">
               <mat-option *ngFor="let alumno of listaAlumnos" [value]="alumno.id"> {{ alumno.nombre }} {{ alumno.apellido }}
               </mat-option>
           </mat-select>
@@ -18,7 +18,7 @@
       <div class="row">
         <mat-form-field appearance="fill" >
           <mat-label>Curso</mat-label>
-          <mat-select formControlName="curso">
+          <mat-select id="cursoSalon" formControlName="curso">
               <mat-option *ngFor="let curso of listaCursos" [value]="curso.id"> {{ curso.nombre }}
               </mat-option>
           </mat-select>
@@ -26,7 +26,7 @@
         </mat-form-field>
       </div>
       <br>
-      <button mat-raised-button color="primary" [disabled]="salonForm.invalid">Guardar</button>
+      <button id="btnGuardarSalon" mat-raised-button color="primary" [disabled]="salonForm.invalid">Guardar</button>
     </form>
 
     <form>
