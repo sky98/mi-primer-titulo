@@ -1,5 +1,6 @@
 package com.ceiba.persona.adaptador.dao;
 
+import com.ceiba.base.TipoUsuario;
 import com.ceiba.persona.modelo.dto.DtoPersona;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,6 +23,6 @@ public class MapeoPersona implements RowMapper<DtoPersona>, MapperResult {
         String correoElectronico = rs.getString("correo_electronico");
         int tipo = rs.getInt("tipo");
 
-        return new DtoPersona(id, identificacion, nombre, apellido, direccion, telefono, correoElectronico, tipo);
+        return new DtoPersona(id, identificacion, nombre, apellido, direccion, telefono, correoElectronico, TipoUsuario.decode(tipo));
     }
 }

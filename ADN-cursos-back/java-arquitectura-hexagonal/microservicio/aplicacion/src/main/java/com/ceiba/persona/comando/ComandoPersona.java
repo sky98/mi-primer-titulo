@@ -1,5 +1,6 @@
 package com.ceiba.persona.comando;
 
+import com.ceiba.base.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,5 @@ public class ComandoPersona {
     private String direccion;
     private String telefono;
     private String correoElectronico;
-    private int tipo;
+    private TipoUsuario tipo;
 }

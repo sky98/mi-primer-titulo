@@ -1,6 +1,7 @@
 package com.ceiba.persona.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.base.TipoUsuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -53,7 +54,7 @@ class ConsultaControladorPersonaTest {
     void deberiaListarAlumnos() throws Exception {
         // arrange
         // act - assert
-        mocMvc.perform(get("/personas/listar-alumnos")
+        mocMvc.perform(get("/personas/alumnos")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -63,7 +64,7 @@ class ConsultaControladorPersonaTest {
                 .andExpect(jsonPath("$[0].direccion", is("1234")))
                 .andExpect(jsonPath("$[0].telefono", is("1234")))
                 .andExpect(jsonPath("$[0].correoElectronico", is("1234")))
-                .andExpect(jsonPath("$[0].tipo", is(1)))
+                .andExpect(jsonPath("$[0].tipo", is(TipoUsuario.ESTUDIANTE.getCode())))
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }
@@ -73,7 +74,7 @@ class ConsultaControladorPersonaTest {
     void deberiaListarDocentes() throws Exception {
         // arrange
         // act - assert
-        mocMvc.perform(get("/personas/listar-docentes")
+        mocMvc.perform(get("/personas/docentes")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -83,7 +84,7 @@ class ConsultaControladorPersonaTest {
                 .andExpect(jsonPath("$[0].direccion", is("12345")))
                 .andExpect(jsonPath("$[0].telefono", is("12345")))
                 .andExpect(jsonPath("$[0].correoElectronico", is("12345")))
-                .andExpect(jsonPath("$[0].tipo", is(2)))
+                .andExpect(jsonPath("$[0].tipo", is(TipoUsuario.DOCENTE.getCode())))
                 .andExpect(jsonPath("$[0].id", is(2)));
 
     }
@@ -94,7 +95,7 @@ class ConsultaControladorPersonaTest {
         // arrange
         Long id = 2L;
         // act - assert
-        mocMvc.perform(get("/personas/docente/{id}",id)
+        mocMvc.perform(get("/personas/docentes/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

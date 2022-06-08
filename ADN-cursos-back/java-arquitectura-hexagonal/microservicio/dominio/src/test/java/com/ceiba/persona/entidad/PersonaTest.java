@@ -1,6 +1,7 @@
 package com.ceiba.persona.entidad;
 
 import com.ceiba.BasePrueba;
+import com.ceiba.base.TipoUsuario;
 import com.ceiba.persona.modelo.entidad.Persona;
 import com.ceiba.persona.servicio.testdatabuilder.PersonaTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PersonaTest {
 
     @Test
-    @DisplayName("Debería crear correctamente el persona")
+    @DisplayName("Debería crear correctamente la persona")
     void deberiaCrearCorrectamenteLaPersona() {
         // arrange
         //act
@@ -25,7 +26,7 @@ public class PersonaTest {
         assertEquals("12345", persona.getDireccion());
         assertEquals("12345", persona.getTelefono());
         assertEquals("12345", persona.getCorreoElectronico());
-        assertEquals(1, persona.getTipo());
+        assertEquals(TipoUsuario.ESTUDIANTE.getCode(), persona.getTipo());
     }
 
     @Test

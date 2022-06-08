@@ -1,5 +1,6 @@
 package com.ceiba.persona.servicio.testdatabuilder;
 
+import com.ceiba.base.TipoUsuario;
 import com.ceiba.persona.comando.ComandoPersona;
 
 public class ComandoPersonaTestDataBuilder {
@@ -11,7 +12,7 @@ public class ComandoPersonaTestDataBuilder {
     private String direccion;
     private String telefono;
     private String correoElectronico;
-    private int tipo;
+    private TipoUsuario tipo;
 
     public ComandoPersonaTestDataBuilder(){
         id = 1234L;
@@ -21,7 +22,7 @@ public class ComandoPersonaTestDataBuilder {
         direccion = "12345";
         telefono = "12345";
         correoElectronico = "12345";
-        tipo = 1;
+        tipo = TipoUsuario.ESTUDIANTE;
     }
 
     public ComandoPersonaTestDataBuilder conId(Long id){
@@ -52,7 +53,7 @@ public class ComandoPersonaTestDataBuilder {
         this.correoElectronico =  correoElectronico;
         return this;
     }
-    public ComandoPersonaTestDataBuilder conTipo(int tipo){
+    public ComandoPersonaTestDataBuilder conTipo(TipoUsuario tipo){
         this.tipo =  tipo;
         return this;
     }

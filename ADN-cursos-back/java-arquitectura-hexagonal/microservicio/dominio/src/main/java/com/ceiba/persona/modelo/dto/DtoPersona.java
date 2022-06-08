@@ -1,5 +1,6 @@
 package com.ceiba.persona.modelo.dto;
 
+import com.ceiba.base.TipoUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,5 +15,5 @@ public class DtoPersona {
     private String direccion;
     private String telefono;
     private String correoElectronico;
-    private int tipo;
+    private TipoUsuario tipo;
 }
