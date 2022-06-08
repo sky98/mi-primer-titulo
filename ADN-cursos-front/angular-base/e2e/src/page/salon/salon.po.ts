@@ -1,4 +1,4 @@
-import { by, element } from 'protractor';
+import { browser, by, element, until } from 'protractor';
 
 export class SalonPage {
     private linkCrearSalon = element(by.id('linkCrearSalon'));
@@ -28,4 +28,9 @@ export class SalonPage {
     async ingresarCurso(curso) {
         await this.selectCursoSalon.sendKeys(curso);
     }
+
+    getSnackBar(){
+        const snackBar =  browser.driver.wait(until.elementLocated(by.tagName('simple-snack-bar')), 4000);
+        return snackBar.getText() as Promise<any>;
+      }
 }

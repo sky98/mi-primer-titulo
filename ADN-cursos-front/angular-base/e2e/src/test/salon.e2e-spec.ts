@@ -22,6 +22,6 @@ describe('workspace-project Salon', () => {
 
         await salon.clickBotonGuardarSalon();
 
-        
+        await expect(salon.getSnackBar()).toEqual('Registro Creado');
     });
 });

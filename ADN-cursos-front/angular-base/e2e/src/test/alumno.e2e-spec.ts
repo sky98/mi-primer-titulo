@@ -33,9 +33,8 @@ describe('workspace-project Alumno', () => {
         await expect(page.getLocation()).toMatch('/alumno/listar');
     });
 
-    it('Deberia listar alumnos', async () => {        
-        page.navigateTo('/alumno/listar');
-
-        expect(0).toBe(alumno.contarAlumnos());
+    it('Deberia listar alumnos', async () => {       
+        //console.log('Cantidad de alumnos test ===> '+ await alumno.contarAlumnos());
+        await expect(0).toBe(await alumno.contarAlumnos());
     });
 });

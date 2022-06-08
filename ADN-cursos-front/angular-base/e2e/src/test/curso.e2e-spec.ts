@@ -13,9 +13,9 @@ describe('workspace-project Curso', () => {
 
     it('Deberia crear curso', async () => {
 
-        const NOMBRE_CURSO = 'Curso de pruebas';
+        const NOMBRE_CURSO = 'Curso 1';
         const DESCRIPCION_CURSO = 'Curso de pruebas';
-        const HORAS_CURSO = 'Curso de pruebas';
+        const HORAS_CURSO = 2;
 
         await page.navigateTo('/curso/crear');
         await curso.ingresarNombre(NOMBRE_CURSO);

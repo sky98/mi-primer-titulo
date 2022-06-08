@@ -13,10 +13,10 @@ describe('workspace-project Horario', () => {
 
     it('Deberia crear horario', async () => {
 
-        const CLASE_HORARIO = 1;
+        const CLASE_HORARIO = 'Clase 1';
         const DIA_HORARIO = 'Martes';
         const HORA_INICIO_HORARIO = '8 AM';
-        const CANTIDAD_HORAS_HORARIO = '2';
+        const CANTIDAD_HORAS_HORARIO = 2;
 
         await page.navigateTo('/horario/crear');
         await horario.ingresarNombreClase(CLASE_HORARIO);

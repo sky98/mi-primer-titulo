@@ -4,7 +4,10 @@ export class AlumnoPage {
     
     private linkCrearAlumno = element(by.id('linkCrearAlumno'));
     private linkListarAlumnos = element(by.id('linkListarAlumnos'));
-    private listaAlumnos = element.all(by.css('.alumnos .element'));
+    private listaAlumnos = element.all(by.css('table .alumnos td'));
+    //private listaAlumnos = element.all(by.css('[dataSource="dataSource"]'));
+    //private listaAlumnos = element(by.xpath('//table[1]'));
+    //listAlumnos = element(by.xpath('//table[1]'));
 
     private inputIdentificacionAlumno = element(by.id('identificacionAlumno'));
     private inputNombreAlumno = element(by.id('nombreAlumno'));
@@ -51,7 +54,7 @@ export class AlumnoPage {
         await this.inputCorreoElectronicoAlumno.sendKeys(correoElectronicoAlumno);
     }
 
-    async contarAlumnos() {
-        return this.listaAlumnos.count();
+    contarAlumnos() {
+        return this.listaAlumnos.count() as Promise<any>;
     }
 }

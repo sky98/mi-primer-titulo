@@ -2,7 +2,7 @@
   <a id="linkCrearAlumno" routerLink="../crear" class="pointer" style="color:green;" matTooltip="Agregar alumno" matTooltipPosition="above">
     <mat-icon>person_add</mat-icon>
   </a>
-  <div class="mg-1">
+  <div class="mg-1 tabla-alumnos">
     <div *ngIf="flagAlumnos; else notAlumnos">
 
       <table class="alumnos" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
