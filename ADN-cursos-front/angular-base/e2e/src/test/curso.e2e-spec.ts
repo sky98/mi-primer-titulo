@@ -24,9 +24,7 @@ describe('workspace-project Curso', () => {
 
         await curso.clickBotonGuardarCurso();
 
-        // Adicionamos las validaciones despues de la creación
-        // expect(<>).toEqual(<>);
-        await expect(0).toBe(curso.contarCursos());
+        await expect(page.getLocation()).toMatch('/curso/listar');
     });
 
     it('Deberia listar cursos', async () => {        

@@ -13,14 +13,15 @@ describe('workspace-project Salon', () => {
 
     it('Deberia crear salon', async () => {
 
-        const ALUMNO_SALON = 1;
-        const CURSO_SALON = 1;
+        const ALUMNO_SALON = 'Alumno 1';
+        const CURSO_SALON = 'Curso 1';
 
         await page.navigateTo('/salon/crear');
         await salon.ingresarAlumno(ALUMNO_SALON);
         await salon.ingresarCurso(CURSO_SALON);
 
-        // Adicionamos las validaciones despues de la creación
-        // expect(<>).toEqual(<>);
+        await salon.clickBotonGuardarSalon();
+
+        
     });
 });

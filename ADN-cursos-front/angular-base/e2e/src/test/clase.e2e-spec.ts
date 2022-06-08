@@ -11,11 +11,11 @@ describe('workspace-project Clase', () => {
         clase = new ClasePage();
     });
 
-    /* it('Deberia crear clase', async () => {
+    it('Deberia crear clase', async () => {
 
         const NOMBRE_CLASE = 'Clase de pruebas';
-        const CURSO_CLASE = 1;
-        const DOCENTE_CLASE = 1;
+        const CURSO_CLASE = 'Curso 1';
+        const DOCENTE_CLASE = 'Docente 1';
 
         await page.navigateTo('/clase/crear');
         await clase.ingresarNombre(NOMBRE_CLASE);
@@ -24,10 +24,8 @@ describe('workspace-project Clase', () => {
 
         await clase.clickBotonGuardarClase();
 
-        // Adicionamos las validaciones despues de la creación
-        // expect(<>).toEqual(<>);
-        await expect(0).toBe(clase.contarClases());
-    }); */
+        await expect(page.getLocation()).toMatch('/clase/listar');
+    });
 
     it('Deberia listar clases', async () => {        
         page.navigateTo('/clase/listar');

@@ -174,6 +174,60 @@
       "direccion": "Docente de pruebas",
       "telefono": "Docente de pruebas",
       "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 17,
+      "identificacion": "12345",
+      "nombre": "Alumno de pruebas",
+      "apellido": "Alumno de pruebas",
+      "direccion": "Alumno de pruebas",
+      "telefono": "Alumno de pruebas",
+      "correoElectronico": "Alumno de pruebas"
+    },
+    {
+      "id": 18,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 19,
+      "identificacion": "12345",
+      "nombre": "Alumno de pruebas",
+      "apellido": "Alumno de pruebas",
+      "direccion": "Alumno de pruebas",
+      "telefono": "Alumno de pruebas",
+      "correoElectronico": "Alumno de pruebas"
+    },
+    {
+      "id": 20,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
+    },
+    {
+      "id": 21,
+      "identificacion": "12345",
+      "nombre": "Alumno de pruebas",
+      "apellido": "Alumno de pruebas",
+      "direccion": "Alumno de pruebas",
+      "telefono": "Alumno de pruebas",
+      "correoElectronico": "Alumno de pruebas"
+    },
+    {
+      "id": 22,
+      "identificacion": "12345",
+      "nombre": "Docente de pruebas",
+      "apellido": "Docente de pruebas",
+      "direccion": "Docente de pruebas",
+      "telefono": "Docente de pruebas",
+      "correoElectronico": "Docente de pruebas"
     }
   ],
   "clases": [
@@ -194,6 +248,18 @@
       "nombre": "Clase 3",
       "docente": 1,
       "curso": 3
+    },
+    {
+      "id": 3,
+      "nombre": "Clase de pruebas",
+      "curso": 1,
+      "docente": 1
+    },
+    {
+      "id": 4,
+      "nombre": "Clase de pruebas",
+      "curso": 1,
+      "docente": 1
     }
   ],
   "horarios": [

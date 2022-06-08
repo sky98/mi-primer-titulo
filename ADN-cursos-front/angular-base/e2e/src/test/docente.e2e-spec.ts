@@ -30,9 +30,7 @@ describe('workspace-project Docente', () => {
 
         await docente.clickBotonGuardarDocente();
 
-        // Adicionamos las validaciones despues de la creación
-        // expect(<>).toEqual(<>);
-        await expect(0).toBe(docente.contarDocentes());
+        await expect(page.getLocation()).toMatch('/docente/listar');
     });
 
     it('Deberia listar docentes', async () => {        
