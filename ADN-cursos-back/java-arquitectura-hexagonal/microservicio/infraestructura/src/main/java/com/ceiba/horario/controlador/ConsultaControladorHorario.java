@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/horarios")
 @Api(tags = {"Controlador consulta horario"})
-@CrossOrigin(value = "*")
+@CrossOrigin(value = "http://localhost:4200")
 public class ConsultaControladorHorario {
 
     private final ManejadorListarHorarios manejadorListarHorarios;

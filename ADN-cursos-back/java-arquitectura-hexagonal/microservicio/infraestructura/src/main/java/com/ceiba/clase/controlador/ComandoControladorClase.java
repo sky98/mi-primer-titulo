@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/clases")
 @Api(tags = "Controlador comando clase")
-@CrossOrigin(value = "*")
+@CrossOrigin(value = "http://localhost:4200")
 public class ComandoControladorClase {
 
     private final ManejadorCrearClase manejadorCrearClase;

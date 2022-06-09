@@ -52,7 +52,8 @@ export class CrearAlumnoComponent implements OnInit {
       apellido: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
-      correoElectronico: new FormControl('', [Validators.required])
+      correoElectronico: new FormControl('', [Validators.required]),
+      tipo: new FormControl(1)
     });
   }
 

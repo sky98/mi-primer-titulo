@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/personas")
 @Api(tags = {"Controlador consulta persona"})
-@CrossOrigin(value = "*")
+@CrossOrigin(value = "http://localhost:4200")
 public class ConsultaControladorPersona {
 
     private final ManejadorListarPersonas manejadorListarPersonas;
