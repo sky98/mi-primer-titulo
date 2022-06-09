@@ -4,7 +4,6 @@ import com.ceiba.curso.modelo.dto.DtoCurso;
 import com.ceiba.curso.puerto.dao.DaoCurso;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.persona.adaptador.dao.MapeoPersona;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
