@@ -46,7 +46,7 @@ public class ServicioCrearClase {
     private void validarHorasDocente(Clase clase){
         Integer horasRegistradas = repositorioClase.validaHorasInscritasDocente(clase.getDocente());
         Integer horaCursoNuevo = repositorioClase.obtenerHorasCurso(clase.getCurso());
-        horaCursoNuevo = (horasRegistradas == null)? horaCursoNuevo: horasRegistradas+horaCursoNuevo;
+        horaCursoNuevo = (horasRegistradas == null)? horaCursoNuevo: (horasRegistradas+horaCursoNuevo);
         if(horaCursoNuevo > 15 ){
             throw new ExcepcionValorInvalido(EL_DOCENTE_NO_PUEDE_SUPERAR_EL_LIMITE_DE_HORAS_MAXIMAS);
         }
