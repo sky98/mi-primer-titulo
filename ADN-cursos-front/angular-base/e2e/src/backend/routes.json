@@ -1,6 +1,10 @@
 {
-    "/personas/alumnos" : "/alumnos",
-    "/personas" : "/alumnos",
-    "/personas/docentes" : "/docentes",
-    "/personas/docentes/:id" : "/docentes/:id"
+    "/university-service/personas/alumnos" : "/alumnos",
+    "/university-service/personas" : "/alumnos",
+    "/university-service/personas/docentes" : "/docentes",
+    "/university-service/personas/docentes/:id" : "/docentes/:id",
+    "/university-service/cursos" : "/cursos",
+    "/university-service/clases" : "/clases",
+    "/university-service/horarios" : "/horarios",
+    "/university-service/salones" : "/salones"
 }

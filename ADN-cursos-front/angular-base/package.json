@@ -8,7 +8,7 @@
     "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "backend" : "json-server --watch ./e2e/src/backend/db.json --routes ./e2e/src/backend/routes.json"
+    "backend" : "json-server --port 8085 --watch ./e2e/src/backend/db.json --routes ./e2e/src/backend/routes.json"
   },
   "private": true,
   "dependencies": {
