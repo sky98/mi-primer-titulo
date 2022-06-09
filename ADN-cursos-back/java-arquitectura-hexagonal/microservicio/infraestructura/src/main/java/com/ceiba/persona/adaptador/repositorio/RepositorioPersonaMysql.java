@@ -13,19 +13,19 @@ public class RepositorioPersonaMysql implements RepositorioPersona {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="persona", value="crear")
-    private static String sqlCrear;
+    private static String sqlCrearPersona;
 
     @SqlStatement(namespace="persona", value="actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarPersona;
 
     @SqlStatement(namespace="persona", value="eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarPersona;
 
     @SqlStatement(namespace="persona", value="existePorId")
-    private static String sqlExistePorId;
+    private static String sqlExistePorIdPersona;
 
     @SqlStatement(namespace="persona", value="existePorIdentificacion")
-    private static String sqlExistePorIdentificacion;
+    private static String sqlExistePorIdentificacionPersona;
 
     public RepositorioPersonaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -33,32 +33,32 @@ public class RepositorioPersonaMysql implements RepositorioPersona {
 
     @Override
     public Long crear(Persona persona) {
-        return this.customNamedParameterJdbcTemplate.crear(persona, sqlCrear);
+        return this.customNamedParameterJdbcTemplate.crear(persona, sqlCrearPersona);
     }
 
     @Override
     public void actualizar(Persona persona) {
-        this.customNamedParameterJdbcTemplate.actualizar(persona, sqlActualizar);
+        this.customNamedParameterJdbcTemplate.actualizar(persona, sqlActualizarPersona);
     }
 
     @Override
     public void eliminar(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarPersona, paramSource);
     }
 
     @Override
     public boolean existePorIdentificacion(String identificacion) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("identificacion", identificacion);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdentificacion,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdentificacionPersona,paramSource, Boolean.class);
     }
 
     @Override
     public boolean existePorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorIdPersona,paramSource, Boolean.class);
     }
 }

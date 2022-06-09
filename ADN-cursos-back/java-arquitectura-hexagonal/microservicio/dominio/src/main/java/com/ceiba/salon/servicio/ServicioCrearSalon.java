@@ -57,7 +57,7 @@ public class ServicioCrearSalon {
     private void validarHorasAlumno(Salon salon){
         Integer contadorHorasAlumno = repositorioSalon.contadorHorasAlumno(salon.getAlumno());
         Integer horasCursoNuevo = repositorioSalon.obtenerHorasCurso(salon.getCurso());
-        horasCursoNuevo = (contadorHorasAlumno == null)? horasCursoNuevo: contadorHorasAlumno+horasCursoNuevo;
+        horasCursoNuevo = (contadorHorasAlumno == null)? horasCursoNuevo: (contadorHorasAlumno+horasCursoNuevo);
         if(horasCursoNuevo > HORAS_MAXIMAS_ALUMNO){
             throw new ExcepcionValorInvalido(NO_SE_PERMITE_PORQUE_EXCEDE_EL_MAXIMO_DE_HORAS_PERMITIDAS);
         }
