@@ -43,24 +43,20 @@ describe('CrearSalonComponent', () => {
     alumnoService = TestBed.inject(AlumnoService);
     spyOn(service, 'guardar').and.returnValue(
       of(true)
-    );
-    
+    );   
+    spyOn(alumnoService, 'consultar').and.returnValue(
+      of(listaAlumnos)
+    ); 
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
     expect(component.salonForm.valid).toBeFalsy();
-    expect(component.flagAlumno).toBeFalsy();
+    expect(component.flagAlumno).toBeTruthy();
     expect(component.flagCurso).toBeFalsy();
-    expect(component.listaAlumnos.length).toBe(0);
+    expect(component.listaAlumnos.length).toBe(2);
     expect(component.listaCursos.length).toBe(0);
-  });
-
-  it('####', () => {
-    spyOn(alumnoService, 'consultar').and.returnValue(
-      of(listaAlumnos)
-    );
   });
 
   it('formulario es invalido', () => {
