@@ -33,7 +33,7 @@ export class CrearSalonComponent implements OnInit {
     this.cargarCursos();    
   }
 
-  private cargarAlumnos(){
+  cargarAlumnos(){
     this.alumnoService.consultar().subscribe(alumnos =>{
       if(alumnos.length > 0){
         this.listaAlumnos = alumnos;

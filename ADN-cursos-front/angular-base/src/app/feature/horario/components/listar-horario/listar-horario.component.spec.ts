@@ -38,6 +38,9 @@ describe('ListarHorarioComponent', () => {
     spyOn(service, 'consultar').and.returnValue(
       of(listaHorarios)
     );
+    spyOn(service, 'eliminar').and.returnValue(
+      of(true)
+    );
   });
 
   it('should create', () => {
@@ -51,5 +54,16 @@ describe('ListarHorarioComponent', () => {
     fixture.detectChanges();
     expect(component.dataSource.length).toBe(2);
     expect(component.flagHorarios).toBeTruthy();
+  });
+
+  it('eliminar un horario', () => {
+    fixture.detectChanges();
+    component.eliminar(listaHorarios[0]);
+    expect(component.dataSource.length).toBe(1);
+    expect(component.flagHorarios).toBeTruthy();
+
+    component.eliminar(listaHorarios[1]);
+    expect(component.dataSource.length).toBe(0);
+    expect(component.flagHorarios).toBeFalsy();
   });
 });

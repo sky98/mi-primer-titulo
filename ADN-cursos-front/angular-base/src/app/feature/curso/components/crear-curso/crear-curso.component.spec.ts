@@ -56,6 +56,15 @@ describe('CrearCursoComponent', () => {
     expect(component.cursoForm.valid).toBeFalsy();
   });
 
+  it('formulario es invalido', () => {
+    component.cursoForm.controls.horas.setValue(6);
+    component.cursoForm.markAsTouched();
+    expect(component.validarCampo('horas')).toEqual('Debe ingresar un valor mayor a 1 y menor a 5');
+    component.cursoForm.controls.horas.setValue(null);
+    component.cursoForm.markAsTouched();
+    expect(component.validarCampo('horas')).toEqual('El campo es obligatorio');
+  });
+
   it('Registrando curso', () => {
     expect(component.cursoForm.valid).toBeFalsy();
     component.cursoForm.controls.nombre.setValue('test 1');

@@ -38,6 +38,9 @@ describe('ListarCursoComponent', () => {
     spyOn(service, 'consultar').and.returnValue(
       of(listaCursos)
     );
+    spyOn(service, 'eliminar').and.returnValue(
+      of(true)
+    );
   });
 
   it('should create', () => {
@@ -51,5 +54,16 @@ describe('ListarCursoComponent', () => {
     fixture.detectChanges();
     expect(component.dataSource.length).toBe(2);
     expect(component.flagCursos).toBeTruthy();
+  });
+
+  it('eliminar un curso', () => {
+    fixture.detectChanges();
+    component.eliminar(listaCursos[0]);
+    expect(component.dataSource.length).toBe(1);
+    expect(component.flagCursos).toBeTruthy();
+
+    component.eliminar(listaCursos[1]);
+    expect(component.dataSource.length).toBe(0);
+    expect(component.flagCursos).toBeFalsy();
   });
 });

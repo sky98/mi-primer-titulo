@@ -40,6 +40,9 @@ describe('ListarClaseComponent', () => {
     spyOn(claseService, 'consultar').and.returnValue(
       of(listaClase)
     );
+    spyOn(claseService, 'eliminar').and.returnValue(
+      of(true)
+    );
   });
 
   it('should create', () => {
@@ -54,4 +57,16 @@ describe('ListarClaseComponent', () => {
     expect(component.dataSource.length).toBe(2);
     expect(component.flagClases).toBeTruthy();
   });
+
+  it('eliminar una clase', () => {
+    fixture.detectChanges();
+    component.eliminar(listaClase[0]);
+    expect(component.dataSource.length).toBe(1);
+    expect(component.flagClases).toBeTruthy();
+
+    component.eliminar(listaClase[1]);
+    expect(component.dataSource.length).toBe(0);
+    expect(component.flagClases).toBeFalsy();
+  });
+
 });

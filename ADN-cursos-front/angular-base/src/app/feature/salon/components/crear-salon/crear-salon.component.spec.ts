@@ -1,3 +1,5 @@
+import { Alumno } from '@alumno/shared/model/alumno';
+import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +15,12 @@ describe('CrearSalonComponent', () => {
   let fixture: ComponentFixture<CrearSalonComponent>;
 
   let service: SalonService;
+  let alumnoService: AlumnoService;
+
+  const listaAlumnos = [
+    new Alumno(1, 'Alumno 1', 'Alumno 1', 'Alumno 1', 'Alumno 1', 'Alumno 1', 'Alumno 1'),
+    new Alumno(2, 'Alumno 2', 'Alumno 2', 'Alumno 2', 'Alumno 2', 'Alumno 2', 'Alumno 2')
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +31,7 @@ describe('CrearSalonComponent', () => {
         FormsModule,
         MatSnackBarModule
       ],
-      providers: [ SalonService, HttpService],
+      providers: [ AlumnoService, SalonService, HttpService],
     })
     .compileComponents();
   });
@@ -32,9 +40,11 @@ describe('CrearSalonComponent', () => {
     fixture = TestBed.createComponent(CrearSalonComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(SalonService);
+    alumnoService = TestBed.inject(AlumnoService);
     spyOn(service, 'guardar').and.returnValue(
       of(true)
     );
+    
     fixture.detectChanges();
   });
 
@@ -45,6 +55,18 @@ describe('CrearSalonComponent', () => {
     expect(component.flagCurso).toBeFalsy();
     expect(component.listaAlumnos.length).toBe(0);
     expect(component.listaCursos.length).toBe(0);
+  });
+
+  it('####', () => {
+    spyOn(alumnoService, 'consultar').and.returnValue(
+      of(listaAlumnos)
+    );
+  });
+
+  it('formulario es invalido', () => {
+    component.salonForm.controls.alumno.setValue(null);
+    component.salonForm.markAsTouched();
+    expect(component.validarCampo('alumno')).toEqual('El campo es obligatorio');
   });
 
   it('Registrando salones', () => {

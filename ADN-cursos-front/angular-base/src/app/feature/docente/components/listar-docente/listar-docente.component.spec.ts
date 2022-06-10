@@ -39,6 +39,9 @@ describe('ListarDocenteComponent', () => {
     spyOn(docenteService, 'consultar').and.returnValue(
       of(listDocente)
     );
+    spyOn(docenteService, 'eliminar').and.returnValue(
+      of(true)
+    );
   });
 
   it('should create', () => {
@@ -54,12 +57,15 @@ describe('ListarDocenteComponent', () => {
     expect(component.flagDocentes).toBeTruthy();
   });
 
-  /* it('accionando el eliminar', () => {
-    spyOn(docenteService, 'eliminar')
-        .withArgs(listDocente[0]).and.returnValue(of(true));
-    component.eliminar(listDocente[0]);
+  it('eliminar un docente', () => {
     fixture.detectChanges();
+    component.eliminar(listDocente[0]);
     expect(component.dataSource.length).toBe(1);
-  }); */
+    expect(component.flagDocentes).toBeTruthy();
+
+    component.eliminar(listDocente[1]);
+    expect(component.dataSource.length).toBe(0);
+    expect(component.flagDocentes).toBeFalsy();
+  });
 
 });

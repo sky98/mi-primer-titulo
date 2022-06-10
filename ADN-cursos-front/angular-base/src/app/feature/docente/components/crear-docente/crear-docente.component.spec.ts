@@ -16,6 +16,7 @@ describe('CrearDocenteComponent', () => {
   let fixture: ComponentFixture<CrearDocenteComponent>;
   let docenteService: DocenteService;
   let router: Router;
+
   const routes: Routes = [
     {path: 'listar', component: ListarDocenteComponent}
   ];
@@ -30,7 +31,7 @@ describe('CrearDocenteComponent', () => {
         FormsModule,
         MatSnackBarModule
       ],
-      providers: [DocenteService, HttpService],
+      providers: [ DocenteService, HttpService],
     })
     .compileComponents();
     router = TestBed.inject(Router);
@@ -57,12 +58,14 @@ describe('CrearDocenteComponent', () => {
     expect(component.docenteForm.valid).toBeFalsy();
   });
 
-  /* it('formulario es invalido cuando número de identificación es menor de 4', () => {
-    //expect(component.docenteForm.valid).toBeFalsy();
+  it('formulario es invalido', () => {
     component.docenteForm.controls.identificacion.setValue('123');
-    //let error = component.validarCampo('identificacion');
-    expect(component.docenteForm.controls.identificacion.errors).toThrowError('Longitud minima de 4');
-  }); */
+    component.docenteForm.markAsTouched();
+    expect(component.validarCampo('identificacion')).toEqual('longitud minima de 4');
+    component.docenteForm.controls.identificacion.setValue(null);
+    component.docenteForm.markAsTouched();
+    expect(component.validarCampo('identificacion')).toEqual('El campo es obligatorio');
+  });
 
   it('Registrando docente', () => {
     expect(component.docenteForm.valid).toBeFalsy();

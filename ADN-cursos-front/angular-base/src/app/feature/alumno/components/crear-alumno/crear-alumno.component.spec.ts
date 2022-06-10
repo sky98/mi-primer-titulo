@@ -58,6 +58,15 @@ describe('CrearAlumnoComponent', () => {
     expect(component.alumnoForm.valid).toBeFalsy();
   });
 
+  it('formulario es invalido', () => {
+    component.alumnoForm.controls.identificacion.setValue('123');
+    component.alumnoForm.markAsTouched();
+    expect(component.validarCampo('identificacion')).toEqual('longitud minima de 4');
+    component.alumnoForm.controls.identificacion.setValue(null);
+    component.alumnoForm.markAsTouched();
+    expect(component.validarCampo('identificacion')).toEqual('El campo es obligatorio');
+  });
+
   it('Registrando alumno', () => {
     expect(component.alumnoForm.valid).toBeFalsy();
     component.alumnoForm.controls.identificacion.setValue('1234');
