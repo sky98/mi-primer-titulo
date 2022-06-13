@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Curso } from '@curso/shared/model/curso';
 import { Docente } from '@docente/shared/model/docente';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 
 describe('CrearClaseComponent', () => {
@@ -47,7 +50,10 @@ describe('CrearClaseComponent', () => {
         RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         FormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [ClaseService, CursoService, DocenteService, HttpService],
     })
@@ -75,27 +81,34 @@ describe('CrearClaseComponent', () => {
     router.initialNavigation();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-    expect(component.claseForm).toBeFalsy();
+  it('should create', async () => {
+    await expect(component).toBeTruthy();
+    await expect(component.claseForm).toBeFalsy();
     expect(component.flagDocente).toBeFalsy();
     expect(component.flagCurso).toBeFalsy();
     expect(component.listaCursos.length).toBe(0);
     expect(component.listaDocentes.length).toBe(0);
   });
 
-  // NO ME DEJA ACCEDER A LAS PROPIEDADES DE LA CLASEFORM
+  it('formulario es invalido',async () => {
+    await component.ngOnInit();
+    await component.claseForm.controls.nombre.setValue(null);
+    await component.claseForm.markAsTouched();
+    await expect(component.validarCampo('nombre')).toEqual('El campo es obligatorio');
+    await expect(component.validarCampo('test')).toEqual(undefined);
+  });
 
-  /* it('Registrando clase', () => {
-    expect(component.claseForm).toBeFalsy();
-    component.claseForm.controls.nombre.setValue('test 1');
-    component.claseForm.controls.curso.setValue(1);
-    component.claseForm.controls.docente.setValue(1);
-    expect(component.claseForm).toBeTruthy();
+  it('Registrando clase',async () => {
+    await expect(component.claseForm).toBeFalsy();
+    await component.ngOnInit();
+    await component.claseForm.controls.nombre.setValue('test 1');
+    await component.claseForm.controls.curso.setValue(1);
+    await component.claseForm.controls.docente.setValue(1);
+    await expect(component.claseForm).toBeTruthy();
 
-    component.crear();
+    await component.crear();
     
-    expect(router.navigate).toHaveBeenCalledWith(['clase/listar']);
-  }); */
+    await expect(router.navigate).toHaveBeenCalledWith(['clase/listar']);
+  });
 
 });

@@ -1,7 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { Router, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
@@ -28,7 +31,10 @@ describe('CrearHorarioComponent', () => {
         RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         FormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [ HorarioService, HttpService],
     })
@@ -57,6 +63,32 @@ describe('CrearHorarioComponent', () => {
     expect(component.horarioForm.valid).toBeFalsy();
     expect(component.listaClases.length).toBe(0);
     expect(component.flagClases).toBeFalsy();
+  });
+
+  it('formulario es invalido', () => {
+    component.horarioForm.controls.clase.setValue(null);
+    component.horarioForm.markAsTouched();
+    expect(component.validarCampo('clase')).toEqual('El campo es obligatorio');
+    expect(component.validarCampo('test')).toEqual(undefined);
+  });
+
+  it('habilitar cantidad horas segun la hora seleccionada', () => {
+    component.selectHoraInicio(8);
+    component.selectHoraInicio(9);
+    component.selectHoraInicio(10);
+    component.selectHoraInicio(11);
+    component.selectHoraInicio(14);
+    component.selectHoraInicio(15);
+    component.selectHoraInicio(16);
+    component.selectHoraInicio(17);
+    expect(component.cantidadHoras.length).toBe(1);
+  });
+
+  it('obteniendo las clases', () => {
+    component.horarioForm.controls.clase.setValue(null);
+    component.horarioForm.markAsTouched();
+    expect(component.validarCampo('clase')).toEqual('El campo es obligatorio');
+    expect(component.validarCampo('test')).toEqual(undefined);
   });
 
   it('Registrando horario', () => {

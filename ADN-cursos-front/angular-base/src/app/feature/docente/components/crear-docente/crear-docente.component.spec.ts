@@ -10,6 +10,8 @@ import { HttpService } from '@core/services/http.service';
 import { Router, Routes } from '@angular/router';
 import { ListarDocenteComponent } from '../listar-docente/listar-docente.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 describe('CrearDocenteComponent', () => {
   let component: CrearDocenteComponent;
@@ -29,7 +31,9 @@ describe('CrearDocenteComponent', () => {
         RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         FormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [ DocenteService, HttpService],
     })

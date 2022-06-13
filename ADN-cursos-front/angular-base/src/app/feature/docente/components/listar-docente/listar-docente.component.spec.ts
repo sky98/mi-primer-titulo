@@ -8,6 +8,9 @@ import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs/internal/observable/of';
 
 import { ListarDocenteComponent } from './listar-docente.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('ListarDocenteComponent', () => {
   let component: ListarDocenteComponent;
@@ -26,6 +29,9 @@ describe('ListarDocenteComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [DocenteService, HttpService]
     })

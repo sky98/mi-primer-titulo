@@ -3,8 +3,13 @@ import { AlumnoService } from '@alumno/shared/service/alumno.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { HttpService } from '@core/services/http.service';
+import { Curso } from '@curso/shared/model/curso';
+import { CursoService } from '@curso/shared/service/curso.service';
 import { SalonService } from '@salon/shared/service/salon.service';
 import { of } from 'rxjs/internal/observable/of';
 
@@ -16,10 +21,16 @@ describe('CrearSalonComponent', () => {
 
   let service: SalonService;
   let alumnoService: AlumnoService;
+  let cursoService: CursoService;
 
   const listaAlumnos = [
     new Alumno(1, 'Alumno 1', 'Alumno 1', 'Alumno 1', 'Alumno 1', 'Alumno 1', 'Alumno 1'),
     new Alumno(2, 'Alumno 2', 'Alumno 2', 'Alumno 2', 'Alumno 2', 'Alumno 2', 'Alumno 2')
+  ];
+
+  const listaCursos = [
+    new Curso(1, 'Curso 1', 'Curso 1', 'Curso 1', 2),
+    new Curso(2, 'Curso 2', 'Curso 2', 'Curso 2', 3)
   ];
 
   beforeEach(async () => {
@@ -29,9 +40,12 @@ describe('CrearSalonComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatIconModule
       ],
-      providers: [ AlumnoService, SalonService, HttpService],
+      providers: [ AlumnoService, CursoService, SalonService, HttpService],
     })
     .compileComponents();
   });
@@ -41,35 +55,41 @@ describe('CrearSalonComponent', () => {
     component = fixture.componentInstance;
     service = TestBed.inject(SalonService);
     alumnoService = TestBed.inject(AlumnoService);
+    cursoService = TestBed.inject(CursoService);
     spyOn(service, 'guardar').and.returnValue(
       of(true)
     );   
     spyOn(alumnoService, 'consultar').and.returnValue(
       of(listaAlumnos)
     ); 
-    fixture.detectChanges();
+    spyOn(cursoService, 'consultar').and.returnValue(
+      of(listaCursos)
+    ); 
+    //fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-    expect(component.salonForm.valid).toBeFalsy();
-    expect(component.flagAlumno).toBeTruthy();
-    expect(component.flagCurso).toBeFalsy();
-    expect(component.listaAlumnos.length).toBe(2);
-    expect(component.listaCursos.length).toBe(0);
+  it('should create',async () => {
+    await expect(component).toBeTruthy();
+    await expect(component.salonForm).toBeFalsy();
+    await expect(component.flagAlumno).toBeFalsy();
+    await expect(component.flagCurso).toBeFalsy();
+    await expect(component.listaAlumnos.length).toBe(0);
+    await expect(component.listaCursos.length).toBe(0);
   });
 
-  it('formulario es invalido', () => {
-    component.salonForm.controls.alumno.setValue(null);
-    component.salonForm.markAsTouched();
-    expect(component.validarCampo('alumno')).toEqual('El campo es obligatorio');
+  it('formulario es invalido',async () => {
+    await component.ngOnInit();
+    await component.salonForm.controls.alumno.setValue(null);
+    await component.salonForm.markAsTouched();
+    await expect(component.validarCampo('alumno')).toEqual('El campo es obligatorio');
   });
 
-  it('Registrando salones', () => {
-    expect(component.salonForm.valid).toBeFalsy();
-    component.salonForm.controls.alumno.setValue(1);
-    component.salonForm.controls.curso.setValue(2);
-    expect(component.salonForm.valid).toBeTruthy();
+  it('Registrando salones',async () => {
+    await component.ngOnInit();
+    await expect(component.salonForm.valid).toBeFalsy();
+    await component.salonForm.controls.alumno.setValue(1);
+    await component.salonForm.controls.curso.setValue(2);
+    await expect(component.salonForm.valid).toBeTruthy();
   });
 
 });

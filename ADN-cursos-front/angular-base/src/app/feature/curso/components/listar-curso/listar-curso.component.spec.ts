@@ -1,6 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { HttpService } from '@core/services/http.service';
 import { Curso } from '@curso/shared/model/curso';
 import { CursoService } from '@curso/shared/service/curso.service';
@@ -25,6 +28,9 @@ describe('ListarCursoComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [ CursoService, HttpService ]
     })

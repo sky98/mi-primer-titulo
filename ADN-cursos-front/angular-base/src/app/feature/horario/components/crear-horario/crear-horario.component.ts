@@ -88,8 +88,6 @@ export class CrearHorarioComponent implements OnInit {
     if (this.horarioForm.touched) {
       if (this.horarioForm.get(campo)?.hasError('required')) {
         return `El campo es obligatorio`
-      }else if(this.horarioForm.get(campo)?.hasError('pattern')){
-        return `Valor invalido`;
       }
     }
     return;

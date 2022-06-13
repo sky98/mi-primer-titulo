@@ -11,6 +11,8 @@ import { HttpService } from '@core/services/http.service';
 import { ListarAlumnoComponent } from '../listar-alumno/listar-alumno.component';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 
 describe('CrearAlumnoComponent', () => {
@@ -30,7 +32,9 @@ describe('CrearAlumnoComponent', () => {
         RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         FormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [AlumnoService, HttpService],
     })

@@ -8,6 +8,9 @@ import { ClaseService } from '@clase/shared/service/clase.service';
 import { HttpService } from '@core/services/http.service';
 import { ListarClaseComponent } from './listar-clase.component';
 import { of } from 'rxjs/internal/observable/of';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 describe('ListarClaseComponent', () => {
@@ -27,6 +30,9 @@ describe('ListarClaseComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatIconModule
       ],
       providers: [ClaseService, HttpService]
     })
